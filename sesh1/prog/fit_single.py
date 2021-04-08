@@ -19,9 +19,10 @@ def main():
     data = np.loadtxt('./data/SND-VFF.txt')
     s = data[:,0]
     F2 = data[:, 1]
+    sigma = np.sqrt(data[:, 2])
 
-    p0 = [0.7, 0.2, 0.8, 0.2, 2e-3, -522.90, 191.40, 0.5]   # in GeV
-    popt, pcov = curve_fit(model, s, F2, p0)
+    p0 = [0.7, 0.2, 1, 0.2, 2e-3, 13.4, 45.3, 8.5]   # in GeV
+    popt, pcov = curve_fit(model, s, F2, p0, sigma=sigma)
     popt, uncert = np.round(popt, 3), np.round(np.sqrt(np.diagonal(pcov)), 3)
 
     s_model = np.linspace(s[0], s[-1], 500)
@@ -30,7 +31,6 @@ def main():
     plt.title('SND DATA FIT')
     plt.scatter(s, F2, marker='.', c='black')
     plt.plot(s_model, model(s_model, *popt), color='red')
-    plt.annotate('A guessing game with the parameters', (0.15, 40))
     plt.annotate(r'$\Gamma_{\omega}$ bad fit', (0.15, 38))
 
     plt.annotate(r'$M_{\rho} = $' + f'({popt[0]}' + r'$\pm$' + f'{uncert[0]}) GeV', (0.7, 40))
