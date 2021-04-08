@@ -24,19 +24,21 @@ def main():
     popt, pcov = curve_fit(model, s, F2, p0)
     popt, uncert = np.round(popt, 3), np.round(np.sqrt(np.diagonal(pcov)), 3)
 
+    s_model = np.linspace(s[0], s[-1], 500)
+
     plt.figure(figsize=[10, 7])
     plt.title('SND DATA FIT')
     plt.scatter(s, F2, marker='.', c='black')
-    plt.plot(s, model(s, *popt), color='red')
-    plt.annotate('Very Bad, A guessing game with the parameters', (0.15, 40))
-    plt.annotate(r'No $\omega$ resonance recognized by the fit', (0.15, 35))
+    plt.plot(s_model, model(s_model, *popt), color='red')
+    plt.annotate('A guessing game with the parameters', (0.15, 40))
+    plt.annotate(r'$\Gamma_{\omega}$ bad fit', (0.15, 38))
 
     plt.annotate(r'$M_{\rho} = $' + f'({popt[0]}' + r'$\pm$' + f'{uncert[0]}) GeV', (0.7, 40))
-    plt.annotate(r'$\Gamma_{\rho} = $' + f'({popt[1]}' + r'$\pm$' + f'{uncert[1]}) GeV', (0.7, 36))
-    plt.annotate(r'$M_{\omega} = $' + f'({popt[2]}' + r'$\pm$' + f'{uncert[2]}) GeV', (0.7, 34))
-    plt.annotate(r'$\Gamma_{\omega} = $' + f'({popt[3]}' + r'$\pm$' + f'{uncert[3]}) GeV', (0.7, 32))
+    plt.annotate(r'$\Gamma_{\rho} = $' + f'({popt[1]}' + r'$\pm$' + f'{uncert[1]}) GeV', (0.7, 38))
+    plt.annotate(r'$M_{\omega} = $' + f'({popt[2]}' + r'$\pm$' + f'{uncert[2]}) GeV', (0.7, 36))
+    plt.annotate(r'$\Gamma_{\omega} = $' + f'({popt[3]}' + r'$\pm$' + f'{uncert[3]}) GeV', (0.7, 34))
 
-    plt.savefig('automated.png')
+    plt.savefig('fit_single.png')
 
 
 if __name__ == "__main__":
