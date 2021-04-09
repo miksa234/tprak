@@ -1,5 +1,5 @@
-# 43+10+29 = 82 data points	
-# normalization uncertainty, totally correlated: 0.6% for the first 43 points, 0.7% for the next 10 points, 0.8% for the last 29 points	
+# 43+10+29 = 82 data points
+# normalization uncertainty, totally correlated: 0.6% for the first 43 points, 0.7% for the next 10 points, 0.8% for the last 29 points
 # s/GeV	|F(s)|^2	sigma_stat(|F(s)|^2)
 0.37271025	8.10930218	1.14188265
 0.38502025	9.87674407	0.732981756
