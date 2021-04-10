@@ -22,7 +22,7 @@ def SND():
                     cov_relsyst)
 
     sigma = np.diag(cov_stat)
-    my_plot('SND-fit', x_data, y_data, p, dp, sigma)
+    my_plot('SND', x_data, y_data, p, dp, sigma)
 
 def CMD2():
     data = np.loadtxt('../data/CMD2-VFF.txt')
@@ -34,7 +34,7 @@ def CMD2():
     for i in range(len(x_data)):
         if i<=43:
             cov_relsyst.append(0.006)
-        elif i>10 and i<=53:
+        elif i>43 and i<=53:
             cov_relsyst.append(0.007)
         else:
             cov_relsyst.append(0.008)
@@ -46,7 +46,7 @@ def CMD2():
                     cov_relsyst)
 
     sigma = np.sqrt(np.diag(cov_stat))
-    my_plot('CMD2-fit', x_data, y_data, p, dp, sigma)
+    my_plot('CMD2', x_data, y_data, p, dp, sigma)
 
 def KLOE():
     data = np.loadtxt('../data/KLOE-VFF.txt')
@@ -60,7 +60,7 @@ def KLOE():
                     cov_relsyst)
 
     sigma = np.sqrt(np.diag(cov_stat))
-    my_plot('KLOE-fit', x_data, y_data, p, dp, sigma)
+    my_plot('KLOE', x_data, y_data, p, dp, sigma)
 
 def BABAR():
     data = np.loadtxt('../data/BABAR-VFF.txt')
