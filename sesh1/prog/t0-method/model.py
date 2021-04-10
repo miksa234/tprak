@@ -13,7 +13,7 @@ g_s = lambda s, m_q, g_q: g_q*s/m_q**2 * (sig_p(s)/sig_p(m_q**2))**3 * sp.Heavis
 def model(s, m_q, g_q, m_w, g_w, e_w, a, b, c):
     part1 = (m_q)**4/((m_q**2 - s)**2 + m_q**2*g_s(s, m_q, g_q)**2)
     part2 = 1 + (e_w * 2*s * (m_w**2 - s))/((m_w**2 - s)**2 + m_w**2*g_w**2)
-    part3 = c*(1 + a*s + b*s**2)**2
+    part3 = (1 + a*s + b*s**2 + c*s**3)**2
     return part1 * part2 * part3
 
 
@@ -38,6 +38,10 @@ def my_plot(name, x_data, y_data, p, dp, sigma):
     plt.annotate(r'$\Gamma_{\rho} = $' + f'({p[1]}' + r'$\pm$' + f'{dp[1]}) GeV', (0.2, 38))
     plt.annotate(r'$M_{\omega} = $' + f'({p[2]}' + r'$\pm$' + f'{dp[2]}) GeV', (0.2, 36))
     plt.annotate(r'$\Gamma_{\omega} = $' + f'({p[3]}' + r'$\pm$' + f'{dp[3]}) GeV', (0.2, 34))
+    plt.annotate(r'$\epsilon_{\omega} = $' + f'({p[4]}' + r'$\pm$' + f'{dp[4]}) GeV', (0.2, 32))
+    plt.annotate(r'$a = $' + f'({p[5]}' + r'$\pm$' + f'{dp[5]}) GeV', (0.2, 30))
+    plt.annotate(r'$b = $' + f'({p[6]}' + r'$\pm$' + f'{dp[6]}) GeV', (0.2, 28))
+    plt.annotate(r'$c = $' + f'({p[7]}' + r'$\pm$' + f'{dp[7]}) GeV', (0.2, 26))
 
     plt.title(f't0-Singlefit of {name}')
     plt.legend(loc='best')

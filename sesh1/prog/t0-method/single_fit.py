@@ -14,7 +14,7 @@ def SND():
     data = np.loadtxt('../data/SND-VFF.txt')
     x_data = data[:, 0]
     y_data = data[:, 1]
-    cov_stat = (np.eye(len(x_data)) * data[:, 2])
+    cov_stat = (np.eye(len(x_data)) * data[:, 2])**2
     cov_relsyst = (np.eye(len(x_data)) * np.array([0.032 if i<=2 else 0.013 for i in range(len(x_data))]))**2
 
     var_str = "m_q g_q m_w g_w e_w a b c"

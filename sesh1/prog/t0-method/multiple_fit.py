@@ -77,6 +77,11 @@ def main():
     plt.annotate(r'$\Gamma_{\rho} = $' + f'({p[1]}' + r'$\pm$' + f'{dp[1]}) GeV', (0.1, 38))
     plt.annotate(r'$M_{\omega} = $' + f'({p[2]}' + r'$\pm$' + f'{dp[2]}) GeV', (0.1, 36))
     plt.annotate(r'$\Gamma_{\omega} = $' + f'({p[3]}' + r'$\pm$' + f'{dp[3]}) GeV', (0.1, 34))
+    plt.annotate(r'$\epsilon_{\omega} = $' + f'({p[4]}' + r'$\pm$' + f'{dp[4]}) GeV', (0.1, 32))
+    plt.annotate(r'$a = $' + f'({p[5]}' + r'$\pm$' + f'{dp[5]}) GeV', (0.1, 30))
+    plt.annotate(r'$b = $' + f'({p[6]}' + r'$\pm$' + f'{dp[6]}) GeV', (0.1, 28))
+    plt.annotate(r'$c = $' + f'({p[7]}' + r'$\pm$' + f'{dp[7]}) GeV', (0.1, 26))
+
 
     plt.title('t0-Multifit')
     plt.legend(loc='best')

@@ -7,7 +7,7 @@ from model import *
 
 
 global p0
-p0 = [0.9, 0.2, 0.81, 0.04, 0.02, -1, 0.84, 1.55]   # in GeV
+p0 = [0.77, 0.15, 0.78, 0.09, 0.0085, 0.002, 0.16, 0.3]   # in GeV
 
 def SND():
     data = np.loadtxt('../data/SND-VFF.txt')
