@@ -23,8 +23,8 @@ def myplot(name, x_data, y_data, p, dp, sigma):
     plt.figure(figsize=[10, 7])
     plt.title(f'{name} DATA FIT')
 
-    plt.errorbar(x_data, y_data, yerr=sigma, fmt='.k', c='black')
-    plt.plot(x_model, y_model, color='red')
+    plt.errorbar(x_data, y_data, yerr=sigma, fmt='.k', c='black', label=f'{name}')
+    plt.plot(x_model, y_model, color='red', label='fit')
 
     p, dp = np.round(p, 3), np.round(dp, 3)
     plt.annotate(r'$M_{\rho} = $' + f'({p[0]}' + r'$\pm$' + f'{dp[0]}) GeV', (0.2, 40))
@@ -34,7 +34,7 @@ def myplot(name, x_data, y_data, p, dp, sigma):
 
     plt.title(f't0-Singlefit of {name}')
     plt.ylabel(r'$|F_{\pi}^V(s)|^2|$')
-    plt.xlabel(r'$\sqrt(s)$[GeV]')
+    plt.xlabel(r'$\sqrt{s}$[GeV]')
     plt.legend(loc='best')
 
     plt.savefig(f'./plots/{name}.png')

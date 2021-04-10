@@ -74,7 +74,7 @@ def BABAR():
                     cov_relsyst)
 
     sigma = np.sqrt(np.diag(cov_stat))
-    my_plot('BABAR-fit', x_data, y_data, p, dp, sigma)
+    my_plot('BABAR', x_data, y_data, p, dp, sigma)
 
 def main():
     SND()

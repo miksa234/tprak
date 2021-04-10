@@ -11,6 +11,7 @@ global p0;
 p0 = [0.9, 0.2, 0.81, 0.04, 0.02, -1, 0.84, 1.55]   # in GeV
 
 def main():
+    # Preparation
     SND_data = np.loadtxt('../data/SND-VFF.txt')
     SND_x = SND_data[:, 0]
     SND_y = SND_data[:, 1]
@@ -50,9 +51,12 @@ def main():
     cov_relsyst = block_diag(SND_relsystcov, CMD2_relsystcov, KLOE_relsystcov, BABAR_relsystcov)
     var_str = "m_q g_q m_w g_w e_w a b c"
 
+    # Fit
     p, dp = t0_fit(model, var_str, x_data, y_data, p0, cov_stat,\
                     cov_relsyst)
 
+
+    # Plot
     x_model = np.linspace(x_data[0], x_data[-1], 500)
     x = sp.symbols('x')
     la_mod = model(x, *p)

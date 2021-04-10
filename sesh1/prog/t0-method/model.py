@@ -42,7 +42,7 @@ def my_plot(name, x_data, y_data, p, dp, sigma):
     plt.title(f't0-Singlefit of {name}')
     plt.legend(loc='best')
     plt.ylabel(r'$|F_{\pi}^V(s)|^2|$')
-    plt.xlabel(r'$\sqrt(s)$[GeV]')
+    plt.xlabel(r'$\sqrt{s}$[GeV]')
 
     plt.savefig(f'./plots/{name}.png')
     plt.close()

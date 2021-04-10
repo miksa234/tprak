@@ -16,7 +16,7 @@ def f2_lambda(model, var):
     return f2_f
 
 def t0_fit(model, var_str, x_data, y_data,\
-           p0, cov_stat, cov_relsyst, iterations=100):
+           p0, cov_stat, cov_relsyst, iterations=100, alpha=0.1):
 
     var = sp.Matrix(sp.symbols(var_str))
     A_func = design_matrix(model, var)
@@ -29,7 +29,7 @@ def t0_fit(model, var_str, x_data, y_data,\
         P = np.linalg.inv(cov_relsyst @ np.outer(f2, f2) + cov_stat)
 
         delta_p = np.linalg.inv(A.T @ P @ A) @ A.T @ P @ (y_data - f2)
-        p0 = p0 + 0.1*delta_p
+        p0 = p0 + alpha*delta_p
         print(f"{i} Iterations completed")
 
     print('Done\n')
