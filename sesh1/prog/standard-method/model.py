@@ -15,7 +15,7 @@ def model(s, m_q, g_q, m_w, g_w, e_w, a, b, c):
     part3 = c*(1 + a*s + b*s**2)**2
     return part1 * part2 * part3
 
-def myplot(name, x_data, y_data, p, dp):
+def myplot(name, x_data, y_data, p, dp, sigma):
 
     x_model = np.linspace(x_data[0], x_data[-1], 500)
     y_model = model(x_model, *p)
@@ -23,7 +23,7 @@ def myplot(name, x_data, y_data, p, dp):
     plt.figure(figsize=[10, 7])
     plt.title(f'{name} DATA FIT')
 
-    plt.scatter(x_data, y_data, marker='.', c='black')
+    plt.errorbar(x_data, y_data, yerr=sigma, fmt='.k', c='black')
     plt.plot(x_model, y_model, color='red')
 
     p, dp = np.round(p, 3), np.round(dp, 3)
@@ -32,4 +32,10 @@ def myplot(name, x_data, y_data, p, dp):
     plt.annotate(r'$M_{\omega} = $' + f'({p[2]}' + r'$\pm$' + f'{dp[2]}) GeV', (0.2, 36))
     plt.annotate(r'$\Gamma_{\omega} = $' + f'({p[3]}' + r'$\pm$' + f'{dp[3]}) GeV', (0.2, 34))
 
+    plt.title(f't0-Singlefit of {name}')
+    plt.ylabel(r'$|F_{\pi}^V(s)|^2|$')
+    plt.xlabel(r'$\sqrt(s)$[GeV]')
+    plt.legend(loc='best')
+
     plt.savefig(f'./plots/{name}.png')
+    plt.close()

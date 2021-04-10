@@ -16,7 +16,7 @@ def SND():
     sigma = data[:, 2]
 
     p, pcov = curve_fit(model, x_data, y_data, p0, sigma=sigma)
-    myplot('SND', x_data, y_data, p, np.sqrt(np.diag(pcov)))
+    myplot('SND', x_data, y_data, p, np.sqrt(np.diag(pcov)), sigma)
 
     return p
 
@@ -27,7 +27,7 @@ def CMD2():
     sigma = data[:, 2]
 
     p, pcov = curve_fit(model, x_data, y_data, p0, sigma=sigma)
-    myplot('CMD2', x_data, y_data, p, np.sqrt(np.diag(pcov)))
+    myplot('CMD2', x_data, y_data, p, np.sqrt(np.diag(pcov)), sigma)
 
     return p
 
@@ -38,7 +38,7 @@ def BABAR():
     y_data = data[:, 1]
 
     p, pcov = curve_fit(model, x_data, y_data, p0, sigma=cov_stat)
-    myplot('BABAR', x_data, y_data, p, np.sqrt(np.diag(pcov)))
+    myplot('BABAR', x_data, y_data, p, np.sqrt(np.diag(pcov)), sigma=np.sqrt(np.diag(cov_stat)))
 
     return p
 
@@ -49,7 +49,7 @@ def KLOE():
     y_data = data[:, 1]
 
     p, pcov = curve_fit(model, x_data, y_data, p0, sigma=cov_stat)
-    myplot('KLOE', x_data, y_data, p, np.sqrt(np.diag(pcov)))
+    myplot('KLOE', x_data, y_data, p, np.sqrt(np.diag(pcov)), sigma=np.sqrt(np.diag(cov_stat)))
 
     return p
 

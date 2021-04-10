@@ -30,14 +30,19 @@ def my_plot(name, x_data, y_data, p, dp, sigma):
     y_model = la_mod(x_model)
 
     plt.figure(figsize=[10, 7])
-    plt.errorbar(x_data, y_data, yerr=sigma, c='black', fmt='.k')
-    plt.plot(x_model, y_model, c='red')
+    plt.errorbar(x_data, y_data, yerr=sigma, c='black', fmt='.k', label=f'{name}')
+    plt.plot(x_model, y_model, c='red', label='Fit')
 
     p, dp = np.round(p, 5), np.round(dp, 3)
     plt.annotate(r'$M_{\rho} = $' + f'({p[0]}' + r'$\pm$' + f'{dp[0]}) GeV', (0.2, 40))
     plt.annotate(r'$\Gamma_{\rho} = $' + f'({p[1]}' + r'$\pm$' + f'{dp[1]}) GeV', (0.2, 38))
     plt.annotate(r'$M_{\omega} = $' + f'({p[2]}' + r'$\pm$' + f'{dp[2]}) GeV', (0.2, 36))
     plt.annotate(r'$\Gamma_{\omega} = $' + f'({p[3]}' + r'$\pm$' + f'{dp[3]}) GeV', (0.2, 34))
+
+    plt.title(f't0-Singlefit of {name}')
+    plt.legend(loc='best')
+    plt.ylabel(r'$|F_{\pi}^V(s)|^2|$')
+    plt.xlabel(r'$\sqrt(s)$[GeV]')
 
     plt.savefig(f'./plots/{name}.png')
     plt.close()
