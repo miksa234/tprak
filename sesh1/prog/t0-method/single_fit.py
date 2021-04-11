@@ -1,9 +1,6 @@
 #!/usr/bin/env python3.9
 
-import numpy as np
-import sympy as sp
-from matplotlib import pyplot as plt
-
+from my_plot import *
 from method import *
 from model import *
 
@@ -18,11 +15,11 @@ def SND():
     cov_relsyst = (np.eye(len(x_data)) * np.array([0.032 if i<=2 else 0.013 for i in range(len(x_data))]))**2
 
     var_str = "m_q g_q m_w g_w e_w a b c"
-    p, dp = t0_fit(model, var_str, x_data, y_data, p0, cov_stat,\
+    p, dp, chi_sq = t0_fit(model, var_str, x_data, y_data, p0, cov_stat,\
                     cov_relsyst)
 
     sigma = np.diag(cov_stat)
-    my_plot('SND', x_data, y_data, p, dp, sigma)
+    my_plot('SND', x_data, y_data, p, dp, chi_sq, sigma)
 
 def CMD2():
     data = np.loadtxt('../data/CMD2-VFF.txt')
@@ -42,11 +39,11 @@ def CMD2():
 
 
     var_str = "m_q g_q m_w g_w e_w a b c"
-    p, dp = t0_fit(model, var_str, x_data, y_data, p0, cov_stat,\
+    p, dp, chi_sq = t0_fit(model, var_str, x_data, y_data, p0, cov_stat,\
                     cov_relsyst)
 
     sigma = np.sqrt(np.diag(cov_stat))
-    my_plot('CMD2', x_data, y_data, p, dp, sigma)
+    my_plot('CMD2', x_data, y_data, p, dp, chi_sq, sigma)
 
 def KLOE():
     data = np.loadtxt('../data/KLOE-VFF.txt')
@@ -56,11 +53,11 @@ def KLOE():
     cov_stat = np.loadtxt('../data/KLOE-StatCov.txt')
 
     var_str = "m_q g_q m_w g_w e_w a b c"
-    p, dp = t0_fit(model, var_str, x_data, y_data, p0, cov_stat,\
+    p, dp, chi_sq = t0_fit(model, var_str, x_data, y_data, p0, cov_stat,\
                     cov_relsyst)
 
     sigma = np.sqrt(np.diag(cov_stat))
-    my_plot('KLOE', x_data, y_data, p, dp, sigma)
+    my_plot('KLOE', x_data, y_data, p, dp, chi_sq, sigma)
 
 def BABAR():
     data = np.loadtxt('../data/BABAR-VFF.txt')
@@ -70,11 +67,11 @@ def BABAR():
     cov_stat = np.loadtxt('../data/BABAR-StatCov.txt')
 
     var_str = "m_q g_q m_w g_w e_w a b c"
-    p, dp = t0_fit(model, var_str, x_data, y_data, p0, cov_stat,\
+    p, dp, chi_sq = t0_fit(model, var_str, x_data, y_data, p0, cov_stat,\
                     cov_relsyst)
 
     sigma = np.sqrt(np.diag(cov_stat))
-    my_plot('BABAR', x_data, y_data, p, dp, sigma)
+    my_plot('BABAR', x_data, y_data, p, dp, chi_sq, sigma)
 
 def main():
     SND()

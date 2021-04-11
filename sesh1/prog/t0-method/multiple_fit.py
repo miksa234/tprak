@@ -3,6 +3,7 @@ import numpy as np
 import sympy as sp
 from scipy.linalg import block_diag
 from matplotlib import pyplot as plt
+from scipy.special import gammaincc
 
 from method import *
 from model import *
@@ -52,7 +53,7 @@ def main():
     var_str = "m_q g_q m_w g_w e_w a b c"
 
     # Fit
-    p, dp = t0_fit(model, var_str, x_data, y_data, p0, cov_stat,\
+    p, dp, chi_sq = t0_fit(model, var_str, x_data, y_data, p0, cov_stat,\
                     cov_relsyst)
 
 
@@ -89,6 +90,19 @@ def main():
     plt.xlabel(r'$\sqrt{s}$[GeV]')
 
     plt.savefig('./plots/all-fit.png')
+    plt.close()
+
+    dof = len(x_data) - len(p)
+    p_value = 1 - gammaincc(chi_sq/2, dof/2)
+
+    plt.figure(figsize=[10, 7])
+    plt.plot(chi_sq/dof, p_value, label=r'$\chi^2_{min}/dof = $' + f'{round(chi_sq[-1]/dof, 3)}')
+    plt.title(r'$\chi^2$'+'Multifit')
+    plt.xlabel(r'$\chi^2/dof$')
+    plt.ylabel('p-value')
+    plt.legend(loc='best')
+
+    plt.savefig(f'./plots/all-chisq.png')
     plt.close()
 
 if __name__ == "__main__":
