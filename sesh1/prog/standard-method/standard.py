@@ -18,7 +18,7 @@ def SND():
     p, pcov = curve_fit(model, x_data, y_data, p0, sigma=sigma)
     myplot('SND', x_data, y_data, p, np.sqrt(np.diag(pcov)), sigma)
 
-    return p
+    return p, np.sqrt(np.diag(pcov))
 
 def CMD2():
     data = np.loadtxt('../data/CMD2-VFF.txt')
@@ -29,7 +29,7 @@ def CMD2():
     p, pcov = curve_fit(model, x_data, y_data, p0, sigma=sigma)
     myplot('CMD2', x_data, y_data, p, np.sqrt(np.diag(pcov)), sigma)
 
-    return p
+    return p, np.sqrt(np.diag(pcov))
 
 def BABAR():
     data = np.loadtxt('../data/BABAR-VFF.txt')
@@ -40,7 +40,7 @@ def BABAR():
     p, pcov = curve_fit(model, x_data, y_data, p0, sigma=cov_stat)
     myplot('BABAR', x_data, y_data, p, np.sqrt(np.diag(pcov)), sigma=np.sqrt(np.diag(cov_stat)))
 
-    return p
+    return p, np.sqrt(np.diag(pcov))
 
 def KLOE():
     data = np.loadtxt('../data/KLOE-VFF.txt')
@@ -51,18 +51,20 @@ def KLOE():
     p, pcov = curve_fit(model, x_data, y_data, p0, sigma=cov_stat)
     myplot('KLOE', x_data, y_data, p, np.sqrt(np.diag(pcov)), sigma=np.sqrt(np.diag(cov_stat)))
 
-    return p
+    return p, np.sqrt(np.diag(pcov))
 
 
 def main():
-    p1 = SND()
-    p2 = CMD2()
-    p3 = BABAR()
-    p4 = KLOE()
+    p1, dp1 = SND()
+    p2, dp2 = CMD2()
+    p3, dp3 = BABAR()
+    p4, dp4 = KLOE()
 
     p = 1/4*(p1 + p2 + p3 + p4)
+    dp = 1/4*(dp1 + dp2 + dp3 + dp4)
 
-    print(*p, sep='\n')
+    for i in range(len(p)):
+        print(p[i], dp[i], sep='\t')
 
 
 if __name__ == "__main__":
