@@ -16,10 +16,10 @@ def SND():
 
     var_str = "m_q g_q m_w g_w e_w a b c"
     p, dp, chi_sq = t0_fit(model, var_str, x_data, y_data, p0, cov_stat,\
-                    cov_relsyst)
+                    cov_relsyst, way=1)
 
     sigma = np.diag(cov_stat)
-    my_plot('SND', x_data, y_data, p, dp, chi_sq, sigma)
+    my_plot('wrong-SND', x_data, y_data, p, dp, chi_sq, sigma)
 
 def CMD2():
     data = np.loadtxt('../data/CMD2-VFF.txt')
@@ -40,10 +40,10 @@ def CMD2():
 
     var_str = "m_q g_q m_w g_w e_w a b c"
     p, dp, chi_sq = t0_fit(model, var_str, x_data, y_data, p0, cov_stat,\
-                    cov_relsyst)
+                    cov_relsyst, way=1)
 
     sigma = np.sqrt(np.diag(cov_stat))
-    my_plot('CMD2', x_data, y_data, p, dp, chi_sq, sigma)
+    my_plot('wrong-CMD2', x_data, y_data, p, dp, chi_sq, sigma)
 
 def KLOE():
     data = np.loadtxt('../data/KLOE-VFF.txt')
@@ -54,10 +54,10 @@ def KLOE():
 
     var_str = "m_q g_q m_w g_w e_w a b c"
     p, dp, chi_sq = t0_fit(model, var_str, x_data, y_data, p0, cov_stat,\
-                    cov_relsyst)
+                    cov_relsyst, way=1)
 
     sigma = np.sqrt(np.diag(cov_stat))
-    my_plot('KLOE', x_data, y_data, p, dp, chi_sq, sigma)
+    my_plot('wrong-KLOE', x_data, y_data, p, dp, chi_sq, sigma)
 
 def BABAR():
     data = np.loadtxt('../data/BABAR-VFF.txt')
@@ -68,10 +68,10 @@ def BABAR():
 
     var_str = "m_q g_q m_w g_w e_w a b c"
     p, dp, chi_sq = t0_fit(model, var_str, x_data, y_data, p0, cov_stat,\
-                    cov_relsyst)
+                    cov_relsyst, way=1)
 
     sigma = np.sqrt(np.diag(cov_stat))
-    my_plot('BABAR', x_data, y_data, p, dp, chi_sq, sigma)
+    my_plot('wrong-BABAR', x_data, y_data, p, dp, chi_sq, sigma)
 
 def main():
     SND()

@@ -24,7 +24,7 @@ def t0_fit(model, var_str, x_data, y_data,\
         if way == 0: # consider D'Agostini bias
             P = np.linalg.inv(cov_relsyst @ np.outer(f2, f2) + cov_stat)
         else:       # don't consider D'Agostini bias
-            P = np.linalg.inv(cov_relsyst * (p0@p0) + cov_stat)
+            P = np.linalg.inv(cov_relsyst * (y_data@y_data) + cov_stat)
 
         delta_p = np.linalg.inv(A.T @ P @ A) @ A.T @ P @ (y_data - f2)
         p0 = p0 + alpha*delta_p

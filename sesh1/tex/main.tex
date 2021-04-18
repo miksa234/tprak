@@ -106,11 +106,12 @@ provided by \texttt{scipy}.
     \begin{align}
             \vec{p_0} =
             \begin{pmatrix}
-            0.9,\; 0.2,\; 0.81,\; 0.04,\; 0.02,\; -1,\; 0.84,\; 1.55
+            900,\; 200,\; 810,\; 40,\; 20,\; -1000,\; 840,\; 1550
             \end{pmatrix}
     \end{align}
 
-The code can be viewed and/or downloaded from here \cite{code} (including the calculation of the guess parameters).
+The code can be viewed and/or downloaded from here \cite{code}
+(including the calculation of the guess parameters).
 
 
 \section{Results}
@@ -124,17 +125,17 @@ the literature values. The plots of the given data and fitted models can be foun
 \subsection{Single Experiment Fits under consideration of the D'Agostini bias}
 In this section the data is fitted under consideration of the D'Agostini bias of all experiments separately.
 \begin{table}[h!]
-    \caption{Results of all experiment data fitted separately}
+    \caption{Results of all experiment data fitted separately\label{tabs}}
     \centering
-    \begin{tabular}{|l|c|c|c|c|}
+    \begin{tabular}{|c|c|c|c|c|}
         \hline
         $\vec{p}$ & SND & CMD2 & KLOE & BABAR \\ \hline
-        $M_{\rho}$              & $772.72	\pm 0.59$ & $773.93	\pm 0.67$ &$773.91	\pm 0.25 $&$773.33	\pm 0.43$ \\
-        $\Gamma_{\rho}$         & $149.53	\pm 1.15$ & $147.67	\pm 1.32$ &$149.72	\pm 0.37 $&$149.19	\pm 0.81$\\
-        $M_{\omega}$            & $781.94	\pm 0.09$ & $782.32	\pm 0.07$ &$782.44	\pm 0.11 $&$782.18	\pm 0.07$\\
-        $\Gamma_{\omega}$       & $8.55	\pm 0.33    $ & $8.65	\pm 0.44$ &$9.66	\pm 0.33 $&$8.17	\pm 0.16$\\
-        $\varepsilon_{\omega}$  & $2.02	\pm 0.09    $ & $1.92	\pm 0.12$ &$2.07	\pm 0.05 $&$1.95	\pm 0.03$\\
-        \hline
+        $M_{\rho}$    [MeV]          & $772.72	\pm 0.59$ & $773.93	\pm 0.67$ &$773.91	\pm 0.25 $&$773.33	\pm 0.43$ \\
+        $\Gamma_{\rho}$   [MeV]      & $149.53	\pm 1.15$ & $147.67	\pm 1.32$ &$149.72	\pm 0.37 $&$149.19	\pm 0.81$\\
+        $M_{\omega}$      [MeV]      & $781.94	\pm 0.09$ & $782.32	\pm 0.07$ &$782.44	\pm 0.11 $&$782.18	\pm 0.07$\\
+        $\Gamma_{\omega}$    [MeV]   & $8.55	\pm 0.33    $ & $8.65	\pm 0.44$ &$9.66	\pm 0.33 $&$8.17	\pm 0.16$\\
+        $\varepsilon_{\omega}$ [] & $2.02	\pm 0.09    $ & $1.92	\pm 0.12$ &$2.07	\pm 0.05 $&$1.95	\pm 0.03$\\
+        \hline \hline
         $\chi^2_{min}/dof$      & $1.001$&$ 1.054$&$ 1.443$&$ 1.031$\\
         $p\text{-value}$        & $0.530$&$ 0.395$&$ 0.001$&$ 0.377$\\
         \hline
@@ -148,15 +149,15 @@ two experiments together then the data of all experiments.
 \begin{table}[h!]
     \caption{Results of data fits of experimental data fitted in pairs}
     \centering
-    \begin{tabular}{|l|c|c|c|}
+    \begin{tabular}{|c|c|c|c|}
         \hline
         $\vec{p}$ & SND-CMD2 & SND-KLOE & SND-BABAR  \\ \hline
-        $M_{\rho}$              & $772.72	\pm 0.42$ & $773.92	\pm 0.23$ &$773.17	\pm 0.36 $ \\
-        $\Gamma_{\rho}$         & $149.53	\pm 0.81$ & $149.42	\pm 0.35$ &$149.70	\pm 0.64 $\\
-        $M_{\omega}$            & $781.95	\pm 0.07$ & $782.39	\pm 0.07$ &$782.07	\pm 0.06 $\\
-        $\Gamma_{\omega}$       & $8.56	\pm 0.24    $ & $9.42	\pm 0.20$ &$8.27	\pm 0.13 $\\
-        $\varepsilon_{\omega}$  & $2.02	\pm 0.07    $ & $2.07	\pm 0.05$ &$1.96	\pm 0.03 $\\
-        \hline
+        $M_{\rho}$[MeV]              & $772.72	\pm 0.42$ & $773.92	\pm 0.23$ &$773.17	\pm 0.36 $ \\
+        $\Gamma_{\rho}$[MeV]         & $149.53	\pm 0.81$ & $149.42	\pm 0.35$ &$149.70	\pm 0.64 $\\
+        $M_{\omega}$  [MeV]          & $781.95	\pm 0.07$ & $782.39	\pm 0.07$ &$782.07	\pm 0.06 $\\
+        $\Gamma_{\omega}$ [MeV]      & $8.56	\pm 0.24    $ & $9.42	\pm 0.20$ &$8.27	\pm 0.13 $\\
+        $\varepsilon_{\omega}$[]  & $2.02	\pm 0.07    $ & $2.07	\pm 0.05$ &$1.96	\pm 0.03 $\\
+        \hline \hline
         $\chi^2_{min}/dof$      & $0.904$&$ 1.839$&$ 0.945$\\
         $p\text{-value}$        & $0.754$&$ 0.001$&$ 0.763$\\
         \hline
@@ -164,18 +165,19 @@ two experiments together then the data of all experiments.
     \end{tabular}
 \end{table}
 
+
 \begin{table}[h!]
     \caption{Results of data fits of experimental data fitted in pairs}
     \centering
-    \begin{tabular}{|l|c|c|c|}
+    \begin{tabular}{|c|c|c|c|}
         \hline
         $\vec{p}$ & CMD2-KLOE & CMD2-BABAR & KLOE-BABAR  \\ \hline
-        $M_{\rho}$              & $773.92	\pm 0.23$ & $773.17	\pm 0.36$ &$773.66	\pm 0.20 $ \\
-        $\Gamma_{\rho}$         & $149.42	\pm 0.35$ & $149.70	\pm 0.64$ &$149.41	\pm 0.32 $\\
-        $M_{\omega}$            & $782.39	\pm 0.07$ & $782.07	\pm 0.06$ &$782.49	\pm 0.06 $\\
-        $\Gamma_{\omega}$       & $9.42	\pm 0.02    $ & $8.27	\pm 0.13$ &$8.98	\pm 0.12 $\\
-        $\varepsilon_{\omega}$  & $2.07	\pm 0.05    $ & $1.96	\pm 0.03$ &$1.98	\pm 0.02 $\\
-        \hline
+        $M_{\rho}$        [MeV]      & $773.92	\pm 0.23$ & $773.17	\pm 0.36$ &$773.66	\pm 0.20 $ \\
+        $\Gamma_{\rho}$     [MeV]    & $149.42	\pm 0.35$ & $149.70	\pm 0.64$ &$149.41	\pm 0.32 $\\
+        $M_{\omega}$         [MeV]   & $782.39	\pm 0.07$ & $782.07	\pm 0.06$ &$782.49	\pm 0.06 $\\
+        $\Gamma_{\omega}$    [MeV]   & $9.42	\pm 0.02    $ & $8.27	\pm 0.13$ &$8.98	\pm 0.12 $\\
+        $\varepsilon_{\omega}$ [] & $2.07	\pm 0.05    $ & $1.96	\pm 0.03$ &$1.98	\pm 0.02 $\\
+        \hline \hline
         $\chi^2_{min}/dof$      & $1.838$&$ 0.943$&$ 1.470$\\
         $p\text{-value}$        & $0.001$&$ 0.772$&$ 0.001$\\
         \hline
@@ -186,14 +188,16 @@ two experiments together then the data of all experiments.
 \begin{table}[h!]
     \caption{Results of data fit of all experimental data fitted together\label{tabmulti}}
     \centering
-    \begin{tabular}{|l|c|}
+    \begin{tabular}{|c|c|}
         \hline
-        $M_{\rho}$              & $773.62	\pm 0.18$   \\
-        $\Gamma_{\rho}$         & $149.42	\pm 0.29$  \\
-        $M_{\omega}$            & $782.36	\pm 0.08$  \\
-        $\Gamma_{\omega}$       & $8.75	\pm 0.08    $  \\
-        $\varepsilon_{\omega}$  & $1.96	\pm 0.02    $  \\
+        $\vec{p}$   & Multi-Fit\\
         \hline
+        $M_{\rho}$       [MeV]       & $773.62	\pm 0.18$   \\
+        $\Gamma_{\rho}$     [MeV]    & $149.42	\pm 0.29$  \\
+        $M_{\omega}$         [MeV]   & $782.36	\pm 0.08$  \\
+        $\Gamma_{\omega}$   [MeV]    & $8.75	\pm 0.08    $  \\
+        $\varepsilon_{\omega}$[]  & $1.96	\pm 0.02    $  \\
+        \hline \hline
         $\chi^2_{min}/dof$      & $1.735$\\
         $p\text{-value}$        & $0.000$\\
         \hline
@@ -202,20 +206,50 @@ two experiments together then the data of all experiments.
 \end{table}
 
 \subsection{Litrature comparison}
-In the following table \ref{tabref}, we took the results of all experimental data fitted together
-in table \ref{tabmulti} and compared them with the literature values \cite{particleref}.
+In this section the fitted parameters of CMD2-BABAR and the literature values\cite{particleref} are compared.
+The reason why CMD2-BABAR was chosen, is that it has a value of $\chi^2_{min}$ close to $1$.
 \begin{table}[ht!]
     \caption{Result comparison with literature\label{tabref}}
     \centering
-    \begin{tabular}{|l|c|}
+    \begin{tabular}{|l|c|c|c|}
         \hline
-        $M_{\rho}$              & $775.26	\pm 0.25$   \\
-        $\Gamma_{\rho}$         & $147.8	\pm 0.9$  \\
-        $M_{\omega}$            & $782.65	\pm 0.12$  \\
-        $\Gamma_{\omega}$       & $8.49	\pm 0.08    $\\
+        $\vec{p}$     & Literature    &   CMD2-BABAR      & Relative error \\
+        \hline
+        $M_{\rho}$   [MeV]           & $775.26	\pm 0.25$ & $773.17	\pm 0.36$ & $ 0.02 \%$\\
+        $\Gamma_{\rho}$   [MeV]      & $147.80	\pm 0.90$  & $149.70	\pm 0.64$  & $ 1.02 \%$ \\
+        $M_{\omega}$       [MeV]     & $782.65	\pm 0.12$  & $782.07	\pm 0.06$ & $ 0.0008\% $ \\
+        $\Gamma_{\omega}$  [MeV]     & $8.49	\pm 0.08    $ & $8.27	\pm 0.13$  & $ 0.03 \%$\\
         \hline
     \end{tabular}
 \end{table}
+
+\subsection{Fitting with D'Agostini bias}
+Furthermore here we compare the results of the t0-method, with the incorrect method of
+multiplying the relative systematic uncertainties with the data provided, instead of
+calculating the systematic uncertainties in regards of the newly calculated parameters in
+every iteration. For demonstrational purposes only the single fitted experiments are pulled.
+Again we would like to reference the plots in Section \ref{plots}. In the following table
+the results of the incorrect method applied to fitting are shown.
+
+\begin{table}[h!]
+    \caption{Results of all experiment data wrongly fitted  separately}
+    \centering
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        $\vec{p}$ & SND & CMD2 & KLOE & BABAR \\ \hline
+        $M_{\rho}$   [MeV]           & $772.21	\pm 4.97$ & $774.51	\pm 2.59$ &$774.09	\pm 0.25 $&$773.42 \pm 0.54$ \\
+        $\Gamma_{\rho}$   [MeV]      & $151.26	\pm 13.11$ & $145.18	\pm 5.83$ &$149.89	\pm 0.84 $&$149.29	\pm 1.01$\\
+        $M_{\omega}$      [MeV]      & $781.03	\pm 0.47$ & $782.09	\pm 0.32$ &$782.79	\pm 0.18 $&$782.18	\pm 0.07$\\
+        $\Gamma_{\omega}$  [MeV]     & $8.96	\pm 2.25    $ & $8.58	\pm 0.15$ &$11.11	\pm 0.70 $&$8.18	\pm 0.18$\\
+        $\varepsilon_{\omega}$[]  & $2.14	\pm 0.68    $ & $1.85	\pm 0.38$ &$2.15	\pm 0.08 $&$1.94	\pm 0.04$\\
+        \hline \hline
+        $\chi^2_{min}/dof$      & $0.016$&$ 0.125$&$ 0.903$&$ 1.118$\\
+        $p\text{-value}$        & $1.000$&$ 1.000$&$ 0.839$&$ 0.099$\\
+        \hline
+    \end{tabular}
+\end{table}
+
+Obviously the results are much worse than in Table \ref{tabs}.
 
 \subsubsection{Plots\label{plots}}
 \begin{figure}[H]
@@ -278,6 +312,27 @@ in table \ref{tabmulti} and compared them with the literature values \cite{parti
     \centering
     \includegraphics[width=0.8\textwidth]{./plots/multi.png}
     \caption{SND, CMD, KLOE and BABAR fitted togther   \label{fig10}}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{./plots/wrong-SND.png}
+    \caption{Wrong method, SND data fit\label{fig1}}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{./plots/wrong-CMD2.png}
+    \caption{Wrong method, CMD2 data fit\label{fig2}}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{./plots/wrong-KLOE.png}
+    \caption{Wrong method, KLOE data fit\label{fig3}}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{./plots/wrong-BABAR.png}
+    \caption{Wrong method, BABAR data fit\label{fig4}}
 \end{figure}
 
 \printbibliography
