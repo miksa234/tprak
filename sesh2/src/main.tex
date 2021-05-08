@@ -1,0 +1,257 @@
+\documentclass[a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage{mathptmx}
+
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{subcaption}
+\usepackage[shortlabels]{enumitem}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{bbm}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[colorlinks=true,naturalnames=true,plainpages=false,pdfpagelabels=true]{hyperref}
+\usepackage[parfill]{parskip}
+\usepackage[backend=biber, sorting=none]{biblatex}
+\addbibresource{uni.bib}
+\pagestyle{myheadings}
+\markright{Popovic, Vogel\hfill Unbiased Fitting \hfill}
+
+\title{Theoretical Physics Lab-Course 2021S\\ University of Vienna \vspace{1.25cm}\\
+Quantum Entanglement at High Energies}
+\author{Milutin Popovic \\ Tim Vogel \vspace{1cm}\\ Supervisor: Prof. Dr. Beatrix C.
+Hiesmayr}
+\date{April 18, 2021}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{Bell Theorem and Bell Inequality}
+The Enstein-Podolsky-Rosen paradox argues that, because of hidden variables
+not considered, quantum mechanics is incomplete. J.S. Bell in his paper \cite{bell},
+published in 1964 discovered what is known as the Bell's Theorem. The theorem
+states in short that "In certain experiments all local realistic theories are
+incompatible with quantum mechanics" \cite{bell}. This is achieved by
+establishing a so called Bell inequality which satysiefs the local realistic
+theories but violates quantum mechanics.
+
+To demonstrate the results of Bell, we consider a Wiegner-type Bell inequality
+for spin-$\frac{1}{2}$ particles with a source that generates a Bell state
+\begin{align}\label{eq:wtb}
+    P(\Uparrow \vec{a}, \Uparrow \vec{b}) \leq
+    P(\Uparrow \vec{a}, \Uparrow \vec{c}) + P(\Uparrow \vec{c}, \Uparrow \vec{b})
+\end{align}
+
+here we denote the joint probability, of say Alice and Bob to find their
+particles in the spin-up state, with respect to their orientation $\vec{a},
+\vec{b}$, $P(\Uparrow \vec{a}, \Uparrow \vec{b})$.For the source we consider
+an antisymmetric Bell state $|\psi ^-\rangle$ in terms of $\vec{a}$.
+\begin{align}
+    |\psi ^-\rangle = \frac{1}{\sqrt{2}}(|\Uparrow \vec{a}; \Downarrow
+    \vec{a}\rangle - |\Downarrow \vec{a}; \Uparrow \vec{a}\rangle).
+\end{align}
+Quantum Mechanics tells us how to calculate the probability
+\begin{align}\label{eq:prob}
+    P^{QM}(\Uparrow \vec{a}, \Uparrow \vec{b}) = \left\|\langle\Uparrow \vec{a}; \Uparrow
+    \vec{b}|\psi ^-\rangle \right\|^2.
+\end{align}
+
+Furthermore quantum mechanics tells us how we can represent the ket
+$|\Uparrow \vec{b}\rangle$ in terms $|\Uparrow \vec{a}\rangle$ and the other
+way around.
+\begin{align}
+    |\Uparrow \vec{b}\rangle &= \cos(\frac{\phi_{ab}}{2})|\Uparrow
+    \vec{a}\rangle + e^{i\theta_{ab}} \sin(\frac{\phi_{ab}}{2})|\Downarrow
+    \vec{a}\rangle\\
+    |\Uparrow \vec{a}\rangle &= \sin(\frac{\phi_{ab}}{2})|\Uparrow
+    \vec{b}\rangle - e^{i\theta_{ab}} \cos(\frac{\phi_{ab}}{2})|\Downarrow
+    \vec{b}\rangle
+\end{align}
+
+where $\theta_{ab}$ is an unphysical phase and can be set to zero.
+
+With this information we can derive the following results for the
+probability in Equation \ref{eq:prob} (Task 1)
+\begin{align}
+    P^{QM}(\Uparrow \vec{a}, \Uparrow \vec{b}) &= \left\|\langle\Uparrow \vec{a}; \Uparrow
+    \vec{b}|\psi ^-\rangle \right\|^2 \\
+    &=\frac{1}{2} \left\|\langle\Uparrow \vec{a}; \Uparrow \vec{b}|\Uparrow
+    \vec{a}; \Downarrow \vec{a}\rangle - \langle \Uparrow \vec{a}; \Uparrow
+    \vec{b}| \Downarrow \vec{a}; \Uparrow \vec{a}\rangle\right\|^2 \\
+    &= \frac{1}{2}\left\|(\langle\Uparrow \vec{a}|\Uparrow\vec{a}\rangle)
+    (\langle\Uparrow \vec{b}| \Downarrow \vec{a}\rangle) - (\underbrace{\langle\Uparrow
+    \vec{a}| \Downarrow \vec{a}\rangle}_{\bot})(\langle\Uparrow \vec{b}|
+    \Uparrow\vec{a}\rangle)\right\|^2 \\
+    &=\frac{1}{2}\left\|\langle\Uparrow\vec{b}|\Downarrow\vec{a}\rangle\right\|^2
+    =\frac{1}{2}\sin^2(\frac{\phi_{ab}}{2})
+\end{align}
+
+For the remaining probabilities in $|\Uparrow \vec{a}\Downarrow \vec{b}\rangle$,$|\Downarrow
+\vec{a}\Uparrow\vec{b}\rangle$ and $|\Downarrow\vec{a}\Downarrow\vec{b} \rangle$
+we apply the same procedure to get
+\begin{align}
+    P^{QM}(\Uparrow \vec{a}, \Downarrow \vec{b}) &= \left\|\langle\Uparrow
+    \vec{a}; \Downarrow \vec{b}|\psi^- \rangle\right\|^2 \\
+    &=\frac{1}{2}\left\|\langle\Downarrow \vec{b}|\Downarrow
+    \vec{a}\rangle\right\|^2 = \frac{1}{2}\cos^2(\frac{\phi_{ab}}{2})\\
+    \\
+    P^{QM}(\Downarrow \vec{a}, \Downarrow \vec{b}) &= \left\|\langle\Downarrow
+    \vec{a}; \Downarrow \vec{b}|\psi^- \rangle\right\|^2 \\
+    &=\frac{1}{2}\left\|\langle\Downarrow \vec{b}|\Uparrow
+    \vec{a}\rangle\right\|^2 = \frac{1}{2}\sin^2(\frac{\phi_{ab}}{2})
+\end{align}
+
+Thus for the Bell inequality we get
+
+\begin{align}
+    \frac{1}{2}sin^2(\frac{\phi_{ab}}{2}) \leq
+    \frac{1}{2}sin^2(\frac{\phi_{ac}}{2})+
+    \frac{1}{2}sin^2(\frac{\phi_{cb}}{2})
+\end{align}
+We can take $\vec{a}$, $\vec{b}$ to be in the same plane in $\mathbb{R}^3$ and
+$\vec{c}$ ($\in \mathbb{R}^2$) to be the bisector of these two. This would imply
+$\phi_{ac}=\phi_{cb}= \phi$ and $\phi_{ab}=2\phi$, which gives us.
+\begin{align}
+    \sin^2(\phi) &\leq 2\sin^2(\frac{\phi}{2})\\
+    \Leftrightarrow \cos(\frac{\phi}{2}) &\leq \frac{1}{2}
+\end{align}
+This is not always the case and is thereby an obvious contradiction.
+
+Now we will derive the original inequality of John Stuart Bell\cite{bell}.
+For this we consider the expectation values. The expectation value $E$ is expressed
+in terms of probabilities of all possible outcomes.
+\begin{align}
+    E(\vec{a}, \vec{b}) &= P(\Uparrow \vec{a}, \Uparrow \vec{b}) + P(\Downarrow
+    \vec{a}, \Downarrow \vec{b}) -P(\Uparrow \vec{a}, \Downarrow \vec{b})
+    -P(\Downarrow \vec{a}, \Uparrow \vec{b})\\
+    E(\vec{a}, \vec{c}) &= P(\Uparrow \vec{a}, \Uparrow \vec{c}) + P(\Downarrow
+    \vec{a}, \Downarrow \vec{c}) -P(\Uparrow \vec{a}, \Downarrow \vec{c})
+    -P(\Downarrow \vec{a}, \Uparrow \vec{c})\\
+    E(\vec{c}, \vec{b}) &= P(\Uparrow \vec{c}, \Uparrow \vec{b}) + P(\Downarrow
+    \vec{c}, \Downarrow \vec{b}) -P(\Uparrow \vec{c}, \Downarrow \vec{b})
+    -P(\Downarrow \vec{c}, \Uparrow \vec{b})
+\end{align}
+The sum of spin-up/spin-down and spin-down/spin-up probabilities needs to be
+one, with this we get.
+\begin{align}
+    P(\Uparrow \vec{a}, \Uparrow \vec{b}) = E(\vec{a}, \vec{b}) - P(\Downarrow
+    \vec{a}, \Downarrow \vec{b}) + 1\\
+    P(\Uparrow \vec{a}, \Uparrow \vec{c}) = E(\vec{a}, \vec{c}) - P(\Downarrow
+    \vec{a}, \Downarrow \vec{c}) + 1\\
+    P(\Uparrow \vec{c}, \Uparrow \vec{b}) = E(\vec{c}, \vec{b}) - P(\Downarrow
+    \vec{c}, \Downarrow \vec{b}) + 1
+\end{align}
+Plugging this into the inequality in equation \ref{eq:wtb} we get
+\begin{align}
+    E(\vec{a}, \vec{b}) - E(\vec{a}, \vec{c}) &\leq E(\vec{c}, \vec{b}) + 1\\
+    & + P(\Downarrow \vec{a}, \Downarrow \vec{b}) -P(\Downarrow \vec{a},
+    \Downarrow \vec{c}) -P(\Downarrow \vec{c}, \Downarrow \vec{b})
+    \label{eq:rightside}
+\end{align}
+The term in equation \ref{eq:rightside} satisfies the bell inequality if the
+term on the left is strictly positive. Thus we get the original Bell inequality
+\begin{align}
+    |E(\vec{a}, \vec{b}) - E(\vec{a}, \vec{c})| \leq E(\vec{c}, \vec{b}) + 1
+\end{align}
+\section{Quantum System of K-mesons}
+Kaons were discovered in 1947 by Rochester and Butler, where cosmic ray
+particles hit a lead plate and produced a neutral particle. The neutral
+particle is named kaon, it was noticed through its decay in two charged
+pions. $K^0$, the kaon, is the first strange particle.
+The neutral kaons are states of quarks and anti-quarks, the ket
+$|K^0\rangle = |d\bar{s}\rangle$ denotes the neutral K-meson, and its
+antiparticle is $|\bar{K}^0\rangle = |\bar{d}s\rangle$. The state of the kaon
+is entangled in the sense that the particle $K^0$ can turn into an antiparticle
+$\bar{K}^0$ before decay through strangeness oscillation, a particle-antiparticle oscillation.
+
+
+There are two states, the long lived kaon $K_L$ and the short lived kaon $K_S$
+which diagonalize the Hamiltonian,
+the difference of their decay rates is about a factor of $600$.
+The thing is $K_L$ should decay into three pions, while $K_S$ should decay
+into two pions. But in 1964 Cronin and Fitch found out that the long lived
+kaon can also decay into two pions, which directly implies a $CP$ symmetry violation.
+$CP$ symmetry (charge conjugation parity symmetry) in particle physics states
+that physics is the same if instead of looking at an particle we looked at its
+antiparticle.
+
+The short lived kaon $K_S$ and the long lived kaon $K_L$ can be expressed in
+terms of $|K^0\rangle$ and $|\bar{K^0}\rangle$ as follows,
+
+\begin{align}
+    |K_S\rangle &=  \frac{1}{N}(p|K^0\rangle - q|\bar{K}^0\rangle) \\
+    |K_L\rangle &=  \frac{1}{N}(p|K^0\rangle + q|\bar{K}^0\rangle)
+\end{align}
+
+Where $p = 1+\varepsilon$, $q=1-\varepsilon$ and $N^2 = |p|^2 + |q|^2$,
+$\varepsilon$ is called the $CP$ violating parameter and can be measured, with
+a magnitude of $|\varepsilon| \approx 10^{-3}$ \cite{Bertlmann} . Note
+that these two states are NOT orthogonal due to the $CP$ violation.
+
+
+Furthermore the connection to the $CP$ basis is,
+\begin{align}
+    |K_1\rangle &=  \frac{1}{\sqrt{2}}(|K^0\rangle - e^{i\alpha}|\bar{K}^0\rangle) \\
+    |K_2\rangle &=  \frac{1}{\sqrt{2}}(|K^0\rangle + e^{i\alpha}|\bar{K}^0\rangle) \\
+\end{align}
+where $\alpha$ is an unphysical phase and is conventionally set to zero.
+
+
+\subsection{CP-Symmetry violation}
+The violation in symmetry can be seen considering the Bell inequality
+\begin{align}\label{eq:leqk}
+    P(K_S, \bar{K}^0) \leq P(K_S, K_1) + P(K_1, \bar{K}^0)
+\end{align}
+where $P(K_S, \bar{K}^0)$ is the probability of finding $K_S$ on the right and
+$\bar{K}^0$ on the left at the time of measurement at $t=0$, $K_1$ denotes a
+completely unphysical state and cannot be measured. Quantum mechanics gives us
+the tools to calculate these probabilities, the calculation gives
+\begin{align}
+    |p|&\leq |q|\\
+    \Leftrightarrow \delta &:= \frac{|p|^2 - |q|^2}{|p|^2+|q|^2} \leq 0
+\end{align}
+
+Changing the choice of $\bar{K}^0$ and $K^0$ in equation \ref{eq:leqk} we
+calculate the probabilities:
+\begin{align}
+    P^{QM}(K_S, K^0)&=\left\|\langle K_S, K^0|\psi ^-\rangle\right\|
+    ^2=\frac{1}{2}\frac{|q|^2}{2N^2} \\
+    P^{QM}(K_S, K_1)&= \left\|\langle K_S, K_1|\psi ^-\rangle\right\|^2=
+    \frac{1}{4N^2}\left|q-pe^{i\alpha}\right|\\
+    P^{QM}(K_1, K^0)&=\left\|\langle K_1, K^0|\psi ^-\rangle\right\| ^2=
+    \frac{1}{4}|e^{i\alpha}|^2
+\end{align}
+Inserting this into the inequality in equation \ref{eq:leqk} and applying some
+basic algebra we get
+\begin{align}
+    |q| &\leq |p|\\
+    \Leftrightarrow \delta &= \frac{|p|^2 - |q|^2}{|p|^2+|q|^2} \geq 0
+\end{align}
+implying a strict equality
+\begin{align}
+        \delta = 0.
+\end{align}
+This contradicts the experimental value of $\delta$.
+\begin{align}
+    \delta_{exp} = (3.27\pm 0.12)\cdot 10^{-1}.
+\end{align}
+
+We can say that the CP-violation is directly related to the violation of the
+Bell Inequality and entanglement.
+If CP-symmetry were true the long lived kaon would decay via two paths in equal
+amounts, which is not the case. Also
+according to the Big-Bang-Theory the amount
+of matter and antimatter initially created is equal, but according to
+experimental results CP-asymmetry means that there is an imbalance in
+matter and that physics differs for particles and antiparticles.
+
+
+
+
+\printbibliography
+\end{document}

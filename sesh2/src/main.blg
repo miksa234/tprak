@@ -1,0 +1,17 @@
+[0] Config.pm:312> INFO - This is Biber 2.15
+[0] Config.pm:315> INFO - Logfile is 'main.blg'
+[77] biber:330> INFO - === Fri May  7, 2021, 17:23:53
+[90] Biber.pm:415> INFO - Reading 'main.bcf'
+[158] Biber.pm:952> INFO - Found 2 citekeys in bib section 0
+[172] Biber.pm:4334> INFO - Processing section 0
+[183] Biber.pm:4523> INFO - Looking for bibtex format file 'uni.bib' for section 0
+[183] bibtex.pm:1682> INFO - LaTeX decoding ...
+[187] bibtex.pm:1494> INFO - Found BibTeX data source 'uni.bib'
+[214] Utils.pm:395> WARN - month field 'Nov' in entry 'bell' is not an integer - this will probably not sort properly.
+[240] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[240] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[240] Biber.pm:4162> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[240] Biber.pm:4168> INFO - No sort tailoring available for locale 'en-US'
+[246] bbl.pm:651> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[247] bbl.pm:754> INFO - Output to main.bbl
+[247] Biber.pm:128> INFO - WARNINGS: 1

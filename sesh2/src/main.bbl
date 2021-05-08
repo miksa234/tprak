@@ -1,0 +1,100 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{bell}{article}{}
+      \name{author}{1}{}{%
+        {{hash=b325c069ba584d7afe84b2cffd384202}{%
+           family={Bell},
+           familyi={B\bibinitperiod},
+           given={J.\bibnamedelimi S.},
+           giveni={J\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Physical Society}%
+      }
+      \strng{namehash}{b325c069ba584d7afe84b2cffd384202}
+      \strng{fullhash}{b325c069ba584d7afe84b2cffd384202}
+      \strng{bibnamehash}{b325c069ba584d7afe84b2cffd384202}
+      \strng{authorbibnamehash}{b325c069ba584d7afe84b2cffd384202}
+      \strng{authornamehash}{b325c069ba584d7afe84b2cffd384202}
+      \strng{authorfullhash}{b325c069ba584d7afe84b2cffd384202}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issue}{3}
+      \field{journaltitle}{Physics Physique Fizika}
+      \field{month}{11}
+      \field{title}{On the Einstein Podolsky Rosen paradox}
+      \field{volume}{1}
+      \field{year}{1964}
+      \field{pages}{195\bibrangedash 200}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1103/PhysicsPhysiqueFizika.1.195
+      \endverb
+      \verb{urlraw}
+      \verb https://link.aps.org/doi/10.1103/PhysicsPhysiqueFizika.1.195
+      \endverb
+      \verb{url}
+      \verb https://link.aps.org/doi/10.1103/PhysicsPhysiqueFizika.1.195
+      \endverb
+    \endentry
+    \entry{Bertlmann}{article}{}
+      \name{author}{1}{}{%
+        {{hash=1fc198cd70606b7212e38e7dc57f3e65}{%
+           family={Bertlmann},
+           familyi={B\bibinitperiod},
+           given={R.A.},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer-Verlag}%
+      }
+      \strng{namehash}{1fc198cd70606b7212e38e7dc57f3e65}
+      \strng{fullhash}{1fc198cd70606b7212e38e7dc57f3e65}
+      \strng{bibnamehash}{1fc198cd70606b7212e38e7dc57f3e65}
+      \strng{authorbibnamehash}{1fc198cd70606b7212e38e7dc57f3e65}
+      \strng{authornamehash}{1fc198cd70606b7212e38e7dc57f3e65}
+      \strng{authorfullhash}{1fc198cd70606b7212e38e7dc57f3e65}
+      \field{sortinit}{4}
+      \field{sortinithash}{e071e0bcb44634fab398d68ad04e69f4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{3540300856}
+      \field{journaltitle}{Lecture Notes in Physics}
+      \field{title}{Entanglement, Bell Inequalities and Decoherence in Particle Physics}
+      \field{pages}{1\bibrangedash 45}
+      \range{pages}{45}
+      \verb{doi}
+      \verb 10.1007/11398448_1
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.1007/11398448_1
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1007/11398448_1
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
