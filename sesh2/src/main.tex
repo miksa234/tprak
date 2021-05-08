@@ -21,14 +21,20 @@
 \pagestyle{myheadings}
 \markright{Popovic, Vogel\hfill Unbiased Fitting \hfill}
 
-\title{Theoretical Physics Lab-Course 2021S\\ University of Vienna \vspace{1.25cm}\\
+\title{University of Vienna\\ Faculty of Physics\\ \vspace{1.25cm} Theoretical Physics Lab-Course 2021S\\
 Quantum Entanglement at High Energies}
-\author{Milutin Popovic \\ Tim Vogel \vspace{1cm}\\ Supervisor: Prof. Dr. Beatrix C.
+\author{Milutin Popovic \& Tim Vogel \vspace{1cm}\\ Supervisor: Prof. Dr. Beatrix C.
 Hiesmayr}
-\date{April 18, 2021}
+\date{May the 9th, 2021}
 
 \begin{document}
 \maketitle
+\noindent\rule[0.5ex]{\linewidth}{1pt}
+\begin{abstract}
+Some text in the abstract
+\end{abstract}
+\noindent\rule[0.5ex]{\linewidth}{1pt}
+
 \tableofcontents
 
 \section{Bell Theorem and Bell Inequality}
@@ -37,7 +43,7 @@ not considered, quantum mechanics is incomplete. J.S. Bell in his paper \cite{be
 published in 1964 discovered what is known as the Bell's Theorem. The theorem
 states in short that "In certain experiments all local realistic theories are
 incompatible with quantum mechanics" \cite{bell}. This is achieved by
-establishing a so called Bell inequality which satysiefs the local realistic
+establishing a so called Bell inequality which satisfies the local realistic
 theories but violates quantum mechanics.
 
 To demonstrate the results of Bell, we consider a Wiegner-type Bell inequality
@@ -49,7 +55,7 @@ for spin-$\frac{1}{2}$ particles with a source that generates a Bell state
 
 here we denote the joint probability, of say Alice and Bob to find their
 particles in the spin-up state, with respect to their orientation $\vec{a},
-\vec{b}$, $P(\Uparrow \vec{a}, \Uparrow \vec{b})$.For the source we consider
+\vec{b}$, $P(\Uparrow \vec{a}, \Uparrow \vec{b})$. For the source we consider
 an antisymmetric Bell state $|\psi ^-\rangle$ in terms of $\vec{a}$.
 \begin{align}
     |\psi ^-\rangle = \frac{1}{\sqrt{2}}(|\Uparrow \vec{a}; \Downarrow
@@ -73,7 +79,7 @@ way around.
     \vec{b}\rangle
 \end{align}
 
-where $\theta_{ab}$ is an unphysical phase and can be set to zero.
+where $\theta_{ab}$ is an unphysical phase in this case and is set to zero.
 
 With this information we can derive the following results for the
 probability in Equation \ref{eq:prob} (Task 1)
@@ -187,8 +193,7 @@ terms of $|K^0\rangle$ and $|\bar{K^0}\rangle$ as follows,
     |K_S\rangle &=  \frac{1}{N}(p|K^0\rangle - q|\bar{K}^0\rangle) \\
     |K_L\rangle &=  \frac{1}{N}(p|K^0\rangle + q|\bar{K}^0\rangle)
 \end{align}
-
-Where $p = 1+\varepsilon$, $q=1-\varepsilon$ and $N^2 = |p|^2 + |q|^2$,
+where $p = 1+\varepsilon$, $q=1-\varepsilon$ and $N^2 = |p|^2 + |q|^2$,
 $\varepsilon$ is called the $CP$ violating parameter and can be measured, with
 a magnitude of $|\varepsilon| \approx 10^{-3}$ \cite{Bertlmann} . Note
 that these two states are NOT orthogonal due to the $CP$ violation.
@@ -199,7 +204,7 @@ Furthermore the connection to the $CP$ basis is,
     |K_1\rangle &=  \frac{1}{\sqrt{2}}(|K^0\rangle - e^{i\alpha}|\bar{K}^0\rangle) \\
     |K_2\rangle &=  \frac{1}{\sqrt{2}}(|K^0\rangle + e^{i\alpha}|\bar{K}^0\rangle) \\
 \end{align}
-where $\alpha$ is an unphysical phase and is conventionally set to zero.
+here $\alpha$ is an unphysical phase and is conventionally set to zero.
 
 
 \subsection{CP-Symmetry violation}
@@ -217,10 +222,10 @@ the tools to calculate these probabilities, the calculation gives
 \end{align}
 
 Changing the choice of $\bar{K}^0$ and $K^0$ in equation \ref{eq:leqk} we
-calculate the probabilities:
+calculate the probabilities again:
 \begin{align}
     P^{QM}(K_S, K^0)&=\left\|\langle K_S, K^0|\psi ^-\rangle\right\|
-    ^2=\frac{1}{2}\frac{|q|^2}{2N^2} \\
+    ^2=\frac{|q|^2}{4N^2} \\
     P^{QM}(K_S, K_1)&= \left\|\langle K_S, K_1|\psi ^-\rangle\right\|^2=
     \frac{1}{4N^2}\left|q-pe^{i\alpha}\right|\\
     P^{QM}(K_1, K^0)&=\left\|\langle K_1, K^0|\psi ^-\rangle\right\| ^2=
@@ -236,7 +241,7 @@ implying a strict equality
 \begin{align}
         \delta = 0.
 \end{align}
-This contradicts the experimental value of $\delta$.
+This contradicts the experimental value of $\delta$ (citation from slides).
 \begin{align}
     \delta_{exp} = (3.27\pm 0.12)\cdot 10^{-1}.
 \end{align}
@@ -249,9 +254,107 @@ according to the Big-Bang-Theory the amount
 of matter and antimatter initially created is equal, but according to
 experimental results CP-asymmetry means that there is an imbalance in
 matter and that physics differs for particles and antiparticles.
+\subsection{Density Matrix Approach for decaying Quantum Systems}
+In this section we describe an open quantum system with unstable particles
+(e.g. K-mesons) with the Lindbad-Gorini-Kossakowsky-Sudarhasanan master equation,
+an density matrix approach, by enlarging the Hilbertspace\cite{bgh}. With this
+larger Hilbertspace $\textbf{H}_{tot} = \textbf{H}_s \oplus \textbf{H}_f$ we take
+into consideration both the "surviving"($\textbf{H}_s$) and the "decaying" or
+"final" ($\textbf{H}_f$)
+states and thus get a positive time evolution described by a non-hermitian
+Hamiltonian $H_{eff}$ and a dissipator $\mathcal{D}$ of the Lindbad operator
+$L$. The time evolution of the density matrix $\varrho \in \mathbf{H}_{tot}$ is given by the master
+equation in the Lindbad form
+\begin{align}\label{eq:master}
+    \frac{d\varrho}{dt} &= -[H, \varrho] - \mathcal{D}[\varrho]\\
+    \text{with}\;\;\;\;    \mathcal{D}[\varrho] &= \frac{1}{2} \sum_{j=0} (L^{\dagger}_j L_j \varrho + \varrho
+    L^{\dagger}_j L_j - L_j \varrho L^{\dagger}_j)
+\end{align}
+where the density matrix $\varrho$ is a $4x4$ matrix with components
+$\varrho_{ij}$ ($i,j = s,f$) which are $2x2$ matrices, with the property
+$\varrho^\dagger_{sf} = \varrho_{fs}$
+\begin{align}
+    \varrho =
+    \begin{pmatrix}
+        \varrho_{ss} &  \varrho_{sf} \\
+        \varrho_{fs} &  \varrho_{ff}
+    \end{pmatrix}.
+\end{align}
+The Hamiltonian $H$ is an extension of the effective Hamiltonian $H_{eff}$ on
+the total Hilbertspace $\textbf{H}_{tot}$
+\begin{align}
+    H =
+    \begin{pmatrix}
+        H_{eff} &  0 \\
+        0 &  0
+    \end{pmatrix}.
+\end{align}
+Furthermore the Lindbad generator $L_0$ is defined with
+$B:\textbf{H}_s \rightarrow \textbf{H}_f$, where $B^\dagger B = \Gamma$, decay
+matrix $\Gamma$ from the effective Hamiltonian $H_{eff}$,
+\begin{align}
+    L_0 =
+    \begin{pmatrix}
+        0 &  0 \\
+        B &  0
+    \end{pmatrix} \;\;\;\;
+    L_j =
+    \begin{pmatrix}
+        A_j &  0 \\
+        0 &  0
+    \end{pmatrix} \;\;\;\;\;  (\text{with}\; j > 0).
+\end{align}
 
+Rewriting the master equation in \ref{eq:master} we get the following
+differential equations for the density matrix components
+\begin{align}
+    \dot{\varrho}_{ss} &= -i[H_{eff},\varrho{ss}] - \frac{1}{2}\{B^\dagger
+    B,\varrho_{ss} \} - \tilde{D}[\varrho_{ss}],\\
+    \dot{\varrho}_{sf} &= -iH_{eff}\varrho_{sf} - \frac{1}{2} B^\dagger B \varrho_{sf}
+    -\frac{1}{2}\sum_j A_j^\dagger A_j \varrho_{sf},\\
+    \dot{\varrho}_{ff} &=B\varrho_{ss}B^\dagger .
+\end{align}
+with $\tilde{D}[\varrho_{ss}] = \frac{1}{2} \sum_{j=0} (A^{\dagger}_j A_j
+\varrho_{ss} + \varrho_{ss}
+    A^{\dagger}_j A_j - A_j \varrho_{ss} A^{\dagger}_j)$.\newline
 
+Now we solve these equations for the case without decoherence, meaning the
+Lindbad Operators operators $A_j$ disappear and we can rewrite the equations
+for $\varrho_{ss}$ above in
+\begin{align}
+    \dot{\varrho_{ss}} &= -[H_{eff}, \varrho_{ss}] - \frac{1}{2} \{\Gamma,
+    \varrho_{ss}\}=\\
+    &=-i((M-\frac{i}{2}\Gamma)\varrho_{ss} - \varrho_{ss}(M-\frac{i}{2}\Gamma))
+    -\frac{1}{2}(\Gamma \varrho_{ss} + \varrho_{ss}\Gamma)\\
+    &= -i\underbrace{[M, \varrho_{ss}]}_{=0} - \varrho_{ss} \Gamma\\
+    &= -\varrho_{ss}\Gamma \\
+    \Rightarrow \;\;\; \varrho_{ss} &= \varrho_{ss}(0) e^{-\Gamma t}.
+\end{align}
+For $\varrho_{sf}$ we get
+\begin{align}
+    \dot{\varrho}_{sf} &= -i H_{eff} \varrho_{sf} - \frac{1}{2} \Gamma
+    \varrho_{sf} =\\
+    &= -iM\varrho_{sf}\\
+    \Rightarrow \;\;\; \varrho_{sf} &= \varrho_{sf}(0) e^{-iM t}.
+\end{align}
+And for $\varrho_{ff}$
+\begin{align}
+    \dot{\varrho}_{ff} &= B\varrho_{ss}B^\dagger \\
+    \Rightarrow \;\;\; \varrho_{ff}&= B\int \varrho_{ss}dt B^\dagger \\
+    &= -B\varrho_{ss}(0) \Gamma^{-1} e^{-\Gamma t} B^\dagger + \varrho_{ff}(0)
+\end{align}
 
+In reality the decay rates of particles differ e.g. $K_S$ and $K_L$, the
+density matrix allows such things to be taken care of by mathematically
+extending the Hilbertspace and including the Lindbad operator. We could also
+consider a particle with three different decay rates, though the Hamiltonian
+would be a nine dimensional. In this regard we might say that the master
+equation \ref{eq:master} is a more general Schrödinger equation,
+because it not only describes pure quantum states but
+also mixed states.
 
+\nocite{carla}
+\nocite{bgh}
+\nocite{mexico}
 \printbibliography
 \end{document}
