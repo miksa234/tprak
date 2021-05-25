@@ -1,0 +1,103 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{meinel}{book}{}
+      \name{author}{1}{}{%
+        {{hash=7982bee2061edc377a221ef868cabe03}{%
+           family={Meinel},
+           familyi={M\bibinitperiod},
+           given={Reinhard},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer-Verlag}%
+      }
+      \strng{namehash}{7982bee2061edc377a221ef868cabe03}
+      \strng{fullhash}{7982bee2061edc377a221ef868cabe03}
+      \strng{bibnamehash}{7982bee2061edc377a221ef868cabe03}
+      \strng{authorbibnamehash}{7982bee2061edc377a221ef868cabe03}
+      \strng{authornamehash}{7982bee2061edc377a221ef868cabe03}
+      \strng{authorfullhash}{7982bee2061edc377a221ef868cabe03}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-3-662-58966-3}
+      \field{title}{Spezielle und allgemeine Relativitätstheorie für Bachelorstudenten}
+      \field{year}{2019}
+      \true{nocite}
+    \endentry
+    \entry{piotr}{book}{}
+      \name{author}{1}{}{%
+        {{hash=3d02c0c0652252477db9d81ba7828f1f}{%
+           family={Chruściel},
+           familyi={C\bibinitperiod},
+           given={Piotr},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Birkhäuser}%
+      }
+      \strng{namehash}{3d02c0c0652252477db9d81ba7828f1f}
+      \strng{fullhash}{3d02c0c0652252477db9d81ba7828f1f}
+      \strng{bibnamehash}{3d02c0c0652252477db9d81ba7828f1f}
+      \strng{authorbibnamehash}{3d02c0c0652252477db9d81ba7828f1f}
+      \strng{authornamehash}{3d02c0c0652252477db9d81ba7828f1f}
+      \strng{authorfullhash}{3d02c0c0652252477db9d81ba7828f1f}
+      \field{sortinit}{2}
+      \field{sortinithash}{ed39bb39cf854d5250e95b1c1f94f4ed}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-3-030-28415-2}
+      \field{title}{Elements of General Relativity}
+      \field{year}{2019}
+      \true{nocite}
+    \endentry
+    \entry{oloff}{book}{}
+      \name{author}{1}{}{%
+        {{hash=d70439dc5227fbd78ce8e386d5a5172e}{%
+           family={Oloff},
+           familyi={O\bibinitperiod},
+           given={Reiner},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer-Verlag}%
+      }
+      \strng{namehash}{d70439dc5227fbd78ce8e386d5a5172e}
+      \strng{fullhash}{d70439dc5227fbd78ce8e386d5a5172e}
+      \strng{bibnamehash}{d70439dc5227fbd78ce8e386d5a5172e}
+      \strng{authorbibnamehash}{d70439dc5227fbd78ce8e386d5a5172e}
+      \strng{authornamehash}{d70439dc5227fbd78ce8e386d5a5172e}
+      \strng{authorfullhash}{d70439dc5227fbd78ce8e386d5a5172e}
+      \field{sortinit}{3}
+      \field{sortinithash}{a37a8ef248a93c322189792c34fc68c9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{ISBN 978-3-662-56736-4}
+      \field{title}{Geometrie der Raumzeit, Eine mathematische Einführung}
+      \field{year}{2018}
+      \true{nocite}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

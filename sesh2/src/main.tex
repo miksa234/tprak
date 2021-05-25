@@ -11,6 +11,7 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{mathtools}
+\usepackage{braket}
 \usepackage{bbm}
 \usepackage{graphicx}
 \usepackage{float}
@@ -31,7 +32,14 @@ Hiesmayr}
 \maketitle
 \noindent\rule[0.5ex]{\linewidth}{1pt}
 \begin{abstract}
-Some text in the abstract
+In this article we go through the lecture notes of Prof. Dr. Beatrix C.
+Hiesmayr and the exercises given to us in the Theoretical Physics Lab-Course
+in the summer semester of  2021. Precisely  we look at entangled systems at high
+energies, we learn about the Bells inequality and it's violation within the world
+of quantum mechanics.
+Furthermore we learn about the density matrix approach in quantum mechanics,
+which allows us to look at the unstable particles with different decay rates
+e.g. the K-meson.
 \end{abstract}
 \noindent\rule[0.5ex]{\linewidth}{1pt}
 
@@ -254,7 +262,146 @@ according to the Big-Bang-Theory the amount
 of matter and antimatter initially created is equal, but according to
 experimental results CP-asymmetry means that there is an imbalance in
 matter and that physics differs for particles and antiparticles.
-\subsection{Density Matrix Approach for decaying Quantum Systems}
+
+\subsection{Efficient description of decaying quantum systems}
+The neutral kaon system, is usually described by an effective Schrödinger-equation,
+which is given by the Lioville von Neumann form as:
+\begin{equation}
+    \frac{d}{dt}\rho=-iH_{eff}\rho+i\rho H^\dagger_{eff}
+\end{equation}
+where $\rho$ is a 2x2 density matrix and $H_{eff}$ non hermitian. The Hamiltonian can
+be decomposed via the Wigner-Weisskopf approximation into: $H_{eff}=M-\frac{i}{2}\Gamma$,
+with the 2x2 mass matrix $H$ and the 2x2 decay matrix $\Gamma$ both being positive and hermitian.
+What we are now concerned with, is the question, whether $H^\dagger_{eff}$
+can also be decomposed and the implications the result gives.
+Starting from the decomposed $H_{eff}$, applying the dagger, we get:
+\begin{equation}
+    H^\dagger_{eff}=M^T+\frac{i}{2}\Gamma^T
+\end{equation}
+which leads to:
+\begin{equation}
+    H^\dagger_{eff}=\left( \begin{array}{cc}
+        M_0+\frac{i}{2}\Gamma_0 & (M_{12})^*+\frac{i}{2}(\Gamma_{12})^* \\
+        (M_{12})+\frac{i}{2}(\Gamma_{12})^* & M_0+\frac{i}{2}\Gamma_0
+    \end{array}\right)
+\end{equation}
+This final matrix can now be brought into the form:
+\begin{equation}
+    \begin{pmatrix}
+        A^* & B^*r \\
+        \frac{B^*}{r} & A^*
+    \end{pmatrix}
+\end{equation}
+with $A,B and r$ being complex numbers.
+\newline
+We now compute the Eigenvalues of this matrix, giving:
+\begin{equation}
+    (A^*-\lambda)^2-(B^*)^2 \rightarrow \lambda=A^*\pm B^*
+\end{equation}
+With this, the Eigenvectors take the form:
+\begin{equation}
+    v_1=\begin{pmatrix}
+        r^* \\
+        1
+    \end{pmatrix}
+\end{equation}
+and
+\begin{equation}
+    v_2=\begin{pmatrix}
+        -r^* \\
+        1
+    \end{pmatrix}
+\end{equation}
+We now define the matrices:
+\begin{equation}
+    R^{-1}=
+  \begin{pmatrix}
+        r^* & -r^* \\
+        1 & 1
+    \end{pmatrix}
+\end{equation}
+and
+\begin{equation}
+    R= \frac{1}{2r}
+    \begin{pmatrix}
+        1 & r^* \\
+        -1 & r^*
+    \end{pmatrix}
+\end{equation}
+and with
+\begin{equation}
+    RH^\dagger_{eff}R^{-1}=
+    \begin{pmatrix}
+        A^*+B^* & 0 \\
+        0 & A^*-B^*
+    \end{pmatrix}
+\end{equation}
+we finally find values for $\ket{K_S}$ and $\ket{K_L}$ which explicitly are:
+\begin{equation}
+    \ket{K_S}=\frac{1}{\sqrt{1+|r|^2}}(-r^*\ket{K^0}+\ket{\bar{K^0}})
+\end{equation}
+and
+\begin{equation}
+    \ket{K_L}=\frac{1}{1+|r|^2}(r^*\ket{K^0}-\ket{\bar{K^0}}
+\end{equation}
+We now want to calculate the overlap of these eigenvectors. We start with the
+overlap in $H_{eff}$, which is given by:
+\begin{equation}
+    \braket{K_S|K_L}=\frac{1-|r|^2}{1+|r|^2}
+\end{equation}
+We now define $\varepsilon=\frac{1-r}{1+r}\rightarrow r=\frac{1-\varepsilon}{1+\varepsilon}$, which leads to:
+\begin{equation}
+    \braket{K_S|K_L}=\frac{|\varepsilon+1|^2-|\varepsilon-1|^2}{|\varepsilon+1|^2+|\varepsilon-1|^2}
+\end{equation}
+And with only considering the real part of Epsilon, we finally obtain:
+\begin{equation}
+    \braket{K_S|K_L}=\frac{2Re(\varepsilon}{|\varepsilon|^2+1})
+\end{equation}
+We now do the same for the overlap in $H^\dagger_{eff}$, and thereby obtain the result:
+\begin{equation}
+    \braket{K_S|K_L}=\frac{1-|r|^2}{1+|r|^2}=\frac{2Re(\varepsilon)}{1+|\varepsilon|^2}
+\end{equation}
+This means, that in both cases we obtain a CP-violation.
+\subsection{Charge asymmetry}
+Finally, we look at the following charge asymmetry term, given by:
+\begin{equation}
+    \delta(t)=\frac{P(K^0,t;|K^0|)-P(\bar{K^0},t;|K^0|)}{P(K^0,t;|K^0|)+P(\bar{K^0},t;|K^0|)}
+\end{equation}
+Fist we define the following ket:
+\begin{equation}
+    \ket{K^0(t)}=\frac{\sqrt{1+|\varepsilon}|^2}{\sqrt{2}(1+\varepsilon)}(\exp{(-i\lambda_st)}\ket{K_S}+\exp{(-i\lambda_Lt)}\ket{K_L}
+\end{equation}
+with: $\lambda_{S/L}=m{_S/L}-\frac{i}{2}\Gamma_{S/L}$. We now compute the probabilities $P(\bar{K^0},t;|K^0|)$ and $P(K^0,t;|K^0|)$, and obtain:
+\begin{equation}
+    P(K^0,t;|K^0|)=\frac{1}{2|1+\varepsilon|^2}|e^{-i\lambda_S t}+
+    \varepsilon e^{-i\lambda_L t}|^2
+\end{equation}
+and
+\begin{equation}
+    P(\bar{K^0},t;|K^0|)=\frac{1}{2|1-\varepsilon|^2}|
+    e^{-i\lambda_S t}-\varepsilon e^{-i\lambda_L t}|^2
+\end{equation}
+Then:
+\begin{equation}
+    \delta(t)=\frac{\frac{1}{|1+\varepsilon|^2}|
+    e^{-i\lambda_S t}+\varepsilon
+    e^{-i\lambda_L t}|^2-\frac{1}{|1-\varepsilon|^2}|
+    e^{-i\lambda_S t}-\varepsilon
+    e^{-i\lambda_L t}|^2}{\frac{1}{|1+\varepsilon|^2}|
+    e^{-i\lambda_S t}+\varepsilon
+    e^{-i\lambda_L t}|^2+\frac{1}{|1-\varepsilon|^2}|
+    e^{-i\lambda_S t}-\varepsilon
+    e^{-i\lambda_L t}|^2}
+\end{equation}
+and with the limit of $t\rightarrow 0$ we obtain the result:
+\begin{equation}
+    \delta(t)=\frac{|1-\varepsilon|^2-|1+\varepsilon|^2}{|1+\varepsilon|^2+|1-\varepsilon|^2}
+\end{equation}
+And by expansion of the leading order in $Re(\varepsilon)$, finally:
+\begin{equation}
+    \frac{|1-\varepsilon|^2-|1+\varepsilon|^2}{|1+\varepsilon|^2+|1-\varepsilon|^2}=2Re(\varepsilon)+\mathcal{O}(\varepsilon^3)
+\end{equation}
+\subsection{Density Matrix Approach Time Evolution}
 In this section we describe an open quantum system with unstable particles
 (e.g. K-mesons) with the Lindbad-Gorini-Kossakowsky-Sudarhasanan master equation,
 an density matrix approach, by enlarging the Hilbertspace\cite{bgh}. With this

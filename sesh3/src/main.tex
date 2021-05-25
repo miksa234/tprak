@@ -1,0 +1,390 @@
+\documentclass[a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage{mathptmx}
+
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{subcaption}
+\usepackage[shortlabels]{enumitem}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{braket}
+\usepackage{bbm}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[colorlinks=true,naturalnames=true,plainpages=false,pdfpagelabels=true]{hyperref}
+\usepackage[parfill]{parskip}
+\usepackage[backend=biber, sorting=none]{biblatex}
+\addbibresource{uni.bib}
+\pagestyle{myheadings}
+\markright{Popovic, Vogel\hfill Unbiased Fitting \hfill}
+
+\title{Universität Wien\\ Fakultät für Physik\\
+\vspace{1.25cm}Laborpraktikum Theoretische Physik 2021S \\
+}
+\author{Milutin Popovic \& Tim Vogel \vspace{1cm}\\ Betreuer: Dr. Stefan
+Palenta}
+\date{May the 25th, 2021}
+
+\begin{document}
+\maketitle
+\noindent\rule[0.5ex]{\linewidth}{1pt}
+\begin{abstract}
+\end{abstract}
+\noindent\rule[0.5ex]{\linewidth}{1pt}
+
+\tableofcontents
+\section{Kugelkoordinaten in $\mathbb{R}^3$}
+Im euklidischen $\mathbb{R}^3$ Raum werden die Basisvektoren mit partiellen
+Ableitungen identifiziert. In kartesischen Koordinaten wird $e_x,\ e_y, e_z$
+mit $\partial _x,\ \partial _y,\ \partial _z$ identifiziert. Der
+Basisvektor $e_x$ z.B. gibt an in welche Richtung sich ein Punkt $P$
+verschiebt, wenn man man die Koordinate $x$ um ein $dx$ vergrößert. Die
+Koordinatendifferentiale sind dann $dx,\ dy,\ dz$ und die in der euklidischen
+Metrik gilt dann $dx^i(\partial _j) = \partial_j x^i = \delta^i_j$.
+
+Das selbe Spiel kann man mit Kugelkoordinaten machen
+\begin{align}
+    x^i =
+    \begin{pmatrix}
+        r\sin\theta\cos\phi\\
+        r\sin\theta\sin\phi\\
+        r\cos\theta
+    \end{pmatrix}
+\end{align}
+Die Kugelkoordinaten Basisvektoren $\partial _r,\ \partial _\phi,\ \partial
+_\theta$ werden durch die Kettenregel berechnet
+\begin{align}
+    \partial _r &= \partial _r\partial^i\partial_i \\
+        &= \sin\theta\cos\phi \partial_x + \sin\theta\sin\phi \partial_y+
+        \cos\theta \partial_z\\
+        \nonumber\\
+        \partial_\theta &= \partial_\theta  \partial^i \partial_i \\
+        &=-r\cos\theta \sin\phi \partial_x + r\cos\theta \sin\phi \partial
+        _y-r\sin\theta \partial_z\\
+        \nonumber\\
+        \partial_\phi&= \partial_\phi \partial^i \partial_i \\
+        &=-r\sin\theta\sin\phi\partial_x + r\sin\theta\cos\phi \partial_y
+\end{align}
+Die Einheitsvektoren sind die normierten Basisvektoren
+\begin{align}
+    e_r = \partial_r;\;\;\; e_\theta = \frac{1}{r}\partial_\theta;\;\;\;
+    e_\phi = \frac{1}{r\sin\phi}\partial _\phi.
+\end{align}
+Wichtiger einschub ist, dass die Lie-Klammer $[e_r, e_\phi]$ nicht
+verschwindet.
+\begin{align}
+    [e_r, e_\theta]&=e_r e_\theta - e_\theta e_r = \partial_r
+    \frac{1}{r}\partial_\theta  - \frac{1}{r}\partial_\theta\partial_r =\\
+    &=-\frac{1}{r^2}\partial_\theta + \frac{1}{r} \partial_r\partial_\theta
+    -\frac{1}{r}\partial_\theta\partial_r=\\
+    &=\frac{1}{r}([\partial_r, \partial_\theta] - \partial_\theta)
+\end{align}
+was bedeutet, dass $e_r$ nicht mit $e_\theta$ kommutiert. Damit die
+Einheitsvektoren eine Koordinatenbasis bilden können müssen sie linear
+unabhängig voneinander sein, da sie aber eine ncht-triviale Lie-Klammer
+besitzen, sind sie nicht linear unabhängig und können somit keine
+Koordinatenbasis sein kann.
+
+Die Metrik $g_{ij}$ in Kugelkoordinaten ist verschwindend für alle
+$i\neq j$, sie kann sie ausgerechnet werden durch z.B. $g_{rr}
+=\bar{g}(\partial_r, \partial_r)$.
+\begin{align}
+    g_{rr} &= (\sin\theta\cos\phi e_x  + \sin\theta\sin\phi e_y + \cos\theta e_z)^2\\
+    &= 1\\
+    \nonumber\\
+    g_{\phi\phi} &= (-r\sin\theta\sin\phi e_x + r\cos\phi\sin\phi
+    e_y)^2=\\
+    &=r^2\sin^2\theta\sin^2\phi + r^2\sin^2\phi \\
+    &=r^2 \sin^2\theta\\
+    \nonumber\\
+    g_{\theta\theta} &= (r\cos\theta\sin\phi e_x + r\cos\phi\sin\phi e_\phi -
+    r\sin e_z)^2 \\
+    &= r^2\\
+    \nonumber\\
+    (g_{ij}) &=
+    \begin{pmatrix}
+        1&0&0\\
+        0&r^2&0\\
+        0&0&r^2\sin^2\theta
+    \end{pmatrix}
+\end{align}
+Weiteres können wir die kovariante Ableitung $\nabla_{\partial _a}$ (kurz
+$\nabla _a$ eines
+Vektorfeldes $X = X^b\partial _b$ entlang
+$\partial _a$ betrachten, dabei tauchen die Cristoffel symbole
+$\Gamma^c_{ab}$ auf.
+\begin{align}
+    \nabla_{\partial_a}(X^b\partial _b) &= (\nabla_{\partial_b}X^b)\partial_b
+    + X^b(\nabla_{\partial_a}\partial_b) =\\
+    &= (\nabla_{\partial_b}X^b)\partial_b + X^b\Gamma^c_{ab} \partial_c
+\end{align}
+Die Christoffelsymbole sind gegeben durch die Metrikkomponenten.
+\begin{align}
+    \Gamma^{c}_{ab} = \frac{1}{2} g^{ce}(\partial_a g_{cb} + \partial_b
+    g_{ac} - \partial_c g_{ab}).
+\end{align}
+Offensichtlich verschwinden die Christoffelsymbole bzüglich der karthesischen
+Koordinatenbasis, da $g_{ij} = \delta_{ij}$ constant ist. Nun berechnen wir
+die Crhistoffelsymbole $\Gamma^{d}_{\theta\phi}$ und $\Gamma^{d}_{\phi\phi}$
+bezüglich den Kugelkoordinaten ($d \in \{r, \theta, \phi\}$).
+\begin{align}
+\Gamma^{r}_{\theta\phi}&=\frac{1}{2}g^{rr}(\partial_\theta g_{\phi r}
++\partial_\phi g_{\theta r} - \partial_r g_{\phi\theta}) = 0\\
+    \Gamma^{r}_{\phi\phi} &=-\frac{1}{2}g^{rr}\partial_r g_{\phi\phi}=
+    -r\sin^\theta\\
+    \Gamma^{\theta}_{\theta\phi} &= \frac{1}{2}g^{\theta\theta}\partial_\phi
+    g_{\theta\theta} = 0\\
+    \Gamma^{\theta}_{\phi\phi} &= -\frac{1}{2}g^{\theta\theta}\partial_\theta
+    g_{\phi\phi} = -2\sin2\theta\\
+    \Gamma^{\phi}_{\theta\phi} &= \frac{1}{2}g^{\phi\phi}\partial_\theta
+    g_{\phi\phi} = \cot\theta\\
+    \Gamma^{\phi}_{\phi\phi} &= \frac{1}{2}g^{\phi\phi}\partial_\phi
+    g_{\phi\phi} = 0.
+\end{align}
+Die Christoffelsymbole sind symmetrisch bezüglich der Vertauschung der
+kovarianten Indizes, d.h.
+\begin{align}
+    \Gamma^r_{\phi\theta} &= 0\\
+    \Gamma^\theta_{\phi\theta} &= 0 \\
+    \Gamma^\phi_{\phi\theta} & = \frac{1}{2} g^{\phi\phi} \partial_\theta
+    g_{\phi\phi} = \cot\phi
+\end{align}
+\section{Differentialoperatoren}
+In der Allgemeinen Relativitätstheorie ist eine allgemeine Metrik gegeben,
+eine symmetrische $n\ x\ n$ Matrix $g_{ab}$. Mit der inversen Metrik $g^{ab}$
+ergibt sich die triviale identität $g_{ab}g^{bc} = \delta ^c_a$. Mithilfe der
+Determinante $g := \det(g_{ab})$ und der Cramer'schen Regel
+kann auf die inverse Matrix umgeformt
+werden.
+\begin{align}
+    g = g_{ab}\ \text{adj}(g_{ab})
+\end{align}
+Differentiert man diese Gleichung auf biden seiten mit
+$\frac{\partial}{\partial g_{ij}}$
+\begin{align}
+    &\frac{\partial g }{\partial g_{ij}} = \delta_{ab}^{ij}\
+    \text{adj}(g_{ab}) = \text{adj}(g_{ij}) = g^{ab} \cdot g \\
+    \nonumber \\
+    &\Rightarrow \frac{1}{g} \frac{\partial g}{\partial g_{ij}} =
+    g^{ab}.
+\end{align}
+
+Als nächstes zeigen wir eine Relation für Christoffelsymbole $\Gamma
+^{\mu}_{\mu\nu}$ bezüglich einer allgemeinen Metrik.
+
+\begin{align}
+    \Gamma^{\mu}_{\mu\nu} &= \frac{1}{2} g^{\mu\varrho}(\partial _\nu
+    g_{\mu\nu} +\partial_\mu g_{\nu\varrho} - \partial _\varrho
+    g_{\mu\nu})=\\
+    &= \frac{1}{2} g^{\mu\varrho} \partial_\nu g_{\mu\varrho}.
+\end{align}
+Betrachtet man die Ableitung von $g$ nach $\partial _\nu$ bekommt man
+\begin{align}
+    &\partial _\nu g = g g^{\mu\varrho} \partial_nu g_{\mu\varrho} \\
+    &\Rightarrow \frac{\partial _\nu g}{g} = g^{\mu\varrho}\partial_\nu
+    g_{\mu\varrho}.
+\end{align}
+Man kann die wurzel von $g$, $\sqrt{g}$ betrachten dann kommt ein faktor von
+$\frac{1}{2}$ durch die Kettenregel und es ergibt sich die allgemeine
+Relation
+\begin{align}
+    \frac{1}{\sqrt{g}} \partial_\nu \sqrt{g} = g^{\mu\varrho}
+    \partial _\nu g_{\mu\varrho} = \Gamma ^{\mu}_{\mu\nu}.
+\end{align}
+Wetiteres zeigen wir eine weitere relation zur kovarianten Ableitung eines
+Vektorfeldes $\nabla_a A^a$
+\beign{align}
+\nabla_a A^a = \frac{1}{\sqrt{g}} \partial _a (\sqrt{g} A^a).
+\end{align}
+Nun mithilfe von dem Levi-Civita-Zusammenhang
+\begin{align}
+    \nabla _a A^a = \partial _a A^a + \Gamma^a_{ac} A^a
+\end{align}
+um das Kristoffelsymbol auszurechen benutzen wir die allgemein gültige
+Relation
+\begin{align}
+    \nabla _a A^a &= \partial _a A^a + (\frac{1}{\sqrt{g}}) \partial _a
+    \sqrt{g}) A^a = \\
+    &= \partial _a A^a + \frac{1}{\sqrt{g}}\partial_a(\sqrt{g} A^a) -
+    \frac{\sqrt{g}}{\sqrt{g}} \partial _a A^a = \\
+    &= \frac{1}{\sqrt{g}} \partial _a ( \sqrt{g} A^a)
+\end{align}
+Das selbe kann man mit eine antisymetrischen $(2, 0)$ tensor $F^{ab} = -
+F^{ba}$
+\begin{align}
+    \nabla _{a} F^{ab} = \partial_a F^{ab} + \Gamma^{a}_{ac} F^{cb}
+    \Gamma^{b}_{ac} F^{ac}
+\end{align}
+wobei hier das letztere Christoffelsymbol $\Gamma^{b}_{ac}$ verschwindet
+wegen der antisymmetrie des Tensors $F^{ac}$. Weiterhin schreiben wir
+wieder die allgemeine Relation für $\Gamma ^{a}_{ac}$ und wenden
+die umgekehrte Produktregel an, somit kommen wir auf
+\begin{align}
+    \nabla_a F^{ab} =  \frac{1}{\sqrt{g}} \partial_c(\sqrt{g}F^{ca})
+\end{align}
+In der Elektrodyamik ist $F^{ab}$ der Maxwelltensor und die oberen
+Gleichungen representieren die Maxwellgleichungen.
+\begin{align}
+    \nabla_a F^{ab} = J^b
+\end{align}
+Die kontinuitätsgleichung $\nabla_b J^b = 0$ kann leicht gezeigt werden
+\begin{align}
+    \nabla_b \nabla_a F^{ab} &= \nabla_b(\frac{1}{\sqrt{g}}
+    \partial_a(\sqrt{g}F^{ab})) =\\
+    &= \partial_b \frac{1}{\sqrt{g}} \partial_a(\sqrt{g}F^{ab})+
+    \frac{1}{\sqrt{g}}
+    \partial_b (\sqrt{g}\frac{1}{\sqrt{g}}\partial_a(\sqrt{g} F^{ab}))=\\
+    &=-\frac{1}{2}\frac{1}{\sqrt{g}}\partial_a F^{ab}\partial_b
+    \sqrt{g} + \frac{1}{2} \frac{1}{\sqrt{g}} \partial_a F^{ab} \partial_b
+    \sqrt{g} \\
+    &= 0
+\end{align}
+Weiterhin zeigen wir eine weitere Relation, dabei wenden wir zwei mal die
+kovariante Ableitung auf ein Skalarfeld $U$.
+\begin{align}
+    g^{ab}\nabla_a\nabla_b U &= \Delta U = \nabla_a \partial^a U =\\
+    &= \partial_a \partial^a U + \Gamma^{b}_{ac} \partial^a U =\\
+    &= \partial_a\partial^a U
+    \frac{1}{\sqrt{g}}\partial_a(\sqrt{g}\partial^a U) = \\
+    &= \frac{1}{\sqrt{g}} \partial_a(\sqrt{g} \partial^a U)
+\end{align}
+\section{Schwarzschild Metic}
+Eine Kugelsymmetrische Raumzeit kann durch die Schwarzschild-Koordinaten
+beschrieben werden $\{ct, r, \vartheta \varphi\}$, für das Linienelemnt haben
+wir den folgenden Asatz gegeben
+\begin{align}
+    ds^2 = -e^\nu c^2 d^2t + e^\lambda d^2r + r^2(d^2\vartheta
+    \sin^2\vartheta d^2\varphi).
+\end{align}
+wobei hier $\nu = \nu(t, r)$ und $\lambda = \lambda(t, r)$, funktionen sind
+die noch bestimmt werden. Mithilfe dieses Linienelements
+können wir direkt die Metrik ablesen. Weiterhin setzen wir $c=1$ und
+schreiben
+\begin{align}
+    &ds^2 = g_{00} dt^2 + g_{11} dr^2 + g_{22} d^2\vartheta + g_{33}
+    d^2\varphi
+    \nonumber \\
+    &\Rightarrow (g_{ij}) =
+    \begin{pmatrix}
+        -e^\nu & 0 & 0 & 0  \\
+        0 & e^\lambda & 0 & 0  \\
+        0 & 0 & r^2 & 0  \\
+        0 & 0 & 0 & r^2\sin^2\vartheta  \\
+    \end{pmatrix}
+\end{align}
+Alle von null verschiedenen Christoffelsymbole lassen sich leicht berechnen,
+da die meisten koeffizienten wegfallen aufgrund der diagonalen Metrik
+\begin{align}
+    \Gamma^{0}_{00} &= \frac{1}{2} g^{00}\partial_0 g_{00} = \frac{1}{2}
+    \dot{\nu}\\
+    \Gamma^{0}_{01} &= \frac{1}{2} g^{00}\partial_1 g_{00} = \frac{1}{2}
+    \nu'\\
+    \Gamma^{0}_{11} &= -\frac{1}{2} g^{00}\partial_0 g_{11} = \frac{1}{2}
+    e^{\lambda - \nu} \dot{\lambda}\\
+    \Gamma^{1}_{00} &= -\frac{1}{2} g^{11}\partial_1 g_{00} = \frac{1}{2}
+    e^{\nu -\lambda} \nu'\\
+    \Gamma^{1}_{10} &= \frac{1}{2} g^{11}\partial_0 g_{11} =
+    \frac{\dot{\lambda}}{2}\\
+    \Gamma^1_{22} &= -\frac{1}{2} g^{11} \partial_1 g_{22} = -e^{-\lambda}
+    r\\
+    \Gamma^{2}_{12} &= \frac{1}{2} g^{22} \partial_1 g_{22} = r\\
+    \Gamma^{2}_{33} &= \frac{1}{2} g^{22} \partial_2 g_{33} =
+    \frac{1}{2}\sin(2\vartheta)\\
+    \Gamma^{3}_{11} &= \frac{1}{2} g^{33} \partial_1 g_{33} = \frac{1}{r}\\
+    \Gamma^{3}_{23} &= \frac{1}{2} g^{33}\partial_2 g_{33} = \cot\vartheta
+\end{align}
+Nun können wir den Ricci Tensor $R_{ab}$ ausrechnen
+\begin{align}
+    R_{ab}:=R^c_{abc}  = \Gamma^c_{ab,c}-\Gamma^c_{ac, b} + \Gamma^c_{ab}
+    \Gamma^d_{ad} -\Gamma^c_{db}\Gamma^d_{ac}.
+\end{align}
+Für die Indizes $00$ zeigen wir
+\begin{align}
+    R_{00} &= \Gamma^c_{00,c} - \Gamma^c_{0c,0}+\Gamma^c_{dc}\Gamma^d_{00} -
+    \Gamma^c_{d0}\Gamma^d_{0c} =\\
+    &=\Gamma^0_{00,0} + \Gamma^1_{00,1} - \Gamma^0_{00} + \Gamma^1_{01,0}
+    \Gamma^c_{0c}\Gamma^{0}_{00} - \Gamma^c_{00}\Gamma^0_{0c} - \Gamma^c_{10}
+    \Gamma^1_{0c} =\\
+    &= \Gamma^1_{00,1} - \Gamma^1_{01,0} + \Gamma^1_{01}\Gamma^0_{00}
+    \Gamma^1_{11}\Gamma^1_{00} - \Gamma^1_{00}\Gamma^0_{01} - \Gamma^1_{10}
+    \Gamma^1_{01} = \\
+    &=\frac{1}{2}e^{\lambda-\nu}(\frac{\nu'}{r} + \nu'')
+    -\frac{1}{2}\ddot{\lambda} + \frac{1}{4} \dot{\lambda}\dot{\nu}
+    \frac{1}{4}e^{\lambda-\nu} \nu'\lambda' - \frac{1}{4}e^{\lambda-\nu}
+    \nu'\nu' - \frac{1}{4} \dot{\lambda}\dot{\lambda} = \\
+    &=\frac{1}{2} e^{\lambda -\nu} ( \nu'' -\frac{1}{2}(\lambda' - \nu')
+    \frac{\nu'}{r}) -\frac{1}{2} \ddot{\lambda} + \frac{1}{4}\dot{\lambda}(
+    \dot{\nu} - \dot{\lambda}).
+\end{align}
+Die anderen nichtrivialen koeffizienten lauten
+\begin{align}
+    R_{11} &= e^{\lambda-\nu}
+    (\frac{1}{2}\ddot{\lambda}+\frac{1}{4}\dot{\lambda}(\dot{\lambda}-
+    \dot{\nu}))
+    -\frac{1}{4} \nu'(\lambda' - \nu') + \frac{\lambda'}{r}\\
+    R_{22} &= 1-e^{-\lambda}(1+\frac{1}{2r} (\nu'-\lambda'))\\
+    R_{23} &= \sin^2\vartheta R_{22}\\
+    R_{01} &= R_{10} = \frac{\dot{\lambda}}{r}.
+\end{align}
+Im Vakuum besagen die Einsteinschen Feldgleicungen, dass $R_{ab} = 0$ für
+alle $a, b$, somit folg sofort aus $R_{01} = 0$ dass $\lambda = \lambda(r)$.
+Die Funktion $\lambda$ hängt nur vom Abstand ab. Differentiert man $R_{22}$
+nach der $0$ Koordinate so erhält man ein Ergebniss für $\nu$
+\begin{align}
+    &\partial_0 R_{22} = -e^{-\lambda} \dot{\lambda} ( 1+ \frac{r}{2}(\nu' -
+    \lambda')) + e^{-\lambda} \frac{r}{2}\partial_0 \nu' = 0\\
+    \nonumber\\
+    &\Rightarrow \partial_0\partial_1 \nu = \partial_1\partial_0 = 0\\
+    &\Rightarrow \partial_0 \nu =0 \Leftrightarrow \nu = \nu(r)
+\end{align}
+weiterhin zeigen wir, dass $\lambda = -\nu$ indem wir folgendes rechnen
+\begin{aling}
+    &R_{00} + e^{\lambda-\nu} R_11 = 0\\
+    &\frac{\lambda'}{r} + \frac{\nu'}{r} = 0 \Righarrow \lambda = -\nu.
+\end{aling}
+Aus $R_{22} = 0$ und der obigen Relation lässt sich eine
+Differentialgleichung für $\nu$ aufstellen
+\begin{align}
+    R_{22} &= 1 - e^\nu (1 + \frac{1}{2}r(\nu'+ \nu')) = \\
+    &= 1 - e^\nu (1+ \nu' r) = 0.
+\end{align}
+Diese kann man leicht dur separation der Variablen lösen
+\begin{align}
+    &\int \frac{d\nu}{e^{-\nu} -1} = \int \frac{1}{r} dr\\
+    &\Rightarrow e^\nu = 1-\frac{r_S}{r} \;\;\;\; (r_S\in \mathbb{R})
+\end{align}
+\section{Inkompressibler Relativistischer Stern}
+Wir berechnen nun der Druckverlauf eines relativistischen Sterns mit
+konstanter Massedichte $\mu$ mithilfe der TOV-Gleichung. Der Druck and der
+Sternoberfläche ist $p(r_0) =0$. In der Rechnung substituieren wir
+$P = \kappa p$, $A = \frac{8\pi\mu}{3c^2}$ und $x=r^2 \Righarrow dr=
+\frac{dx}{2r}$. Weiters ist zu beachten, das $\mu = \text{const}$ und somit
+die Masse des Sterns gegeben ist durch
+\begin{align}
+    m(r) = m = 4pi \int_0^r \mu \tilde{r}^2 d\tilde{r} =\frac{4\pi}{3}\mu r^3
+\end{align}
+Wir kommen auf die folgende Differentialgleichung.
+\begin{align}
+    \frac{dP}{dx} = -\frac{(3A+P)(A+P)}{(1-Ax)}.
+\end{align}
+Diese lässt sich durch Separation der Variablen lösen und mithilfe von
+$p(r_0) = 0$ bekommen wir die Lösung
+\begin{align}
+    P =
+\end{align}
+
+
+
+
+
+
+
+\nocite{meinel}
+\nocite{piotr}
+\nocite{oloff}
+\printbibliography
+\end{document}
