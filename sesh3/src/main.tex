@@ -20,10 +20,10 @@
 \usepackage[backend=biber, sorting=none]{biblatex}
 \addbibresource{uni.bib}
 \pagestyle{myheadings}
-\markright{Popovic, Vogel\hfill Unbiased Fitting \hfill}
+\markright{Popovic, Vogel\hfill Kugelsymmetrische Sternenmodelle in der ART \hfill}
 
 \title{Universität Wien\\ Fakultät für Physik\\
-\vspace{1.25cm}Laborpraktikum Theoretische Physik 2021S \\
+\vspace{1.25cm}Laborpraktikum Theoretische Physik 2021S \\ Kugelsymmetrische Sternenmodelle in der ART
 }
 \author{Milutin Popovic \& Tim Vogel \vspace{1cm}\\ Betreuer: Dr. Stefan
 Palenta}
@@ -31,12 +31,8 @@ Palenta}
 
 \begin{document}
 \maketitle
-\noindent\rule[0.5ex]{\linewidth}{1pt}
-\begin{abstract}
-\end{abstract}
-\noindent\rule[0.5ex]{\linewidth}{1pt}
-
 \tableofcontents
+\newpage
 \section{Kugelkoordinaten in $\mathbb{R}^3$}
 Im euklidischen $\mathbb{R}^3$ Raum werden die Basisvektoren mit partiellen
 Ableitungen identifiziert. In kartesischen Koordinaten wird $e_x,\ e_y, e_z$
@@ -170,7 +166,7 @@ $\frac{\partial}{\partial g_{ij}}$
     \text{adj}(g_{ab}) = \text{adj}(g_{ij}) = g^{ab} \cdot g \\
     \nonumber \\
     &\Rightarrow \frac{1}{g} \frac{\partial g}{\partial g_{ij}} =
-    g^{ab}.
+    g^{ij}.
 \end{align}
 
 Als nächstes zeigen wir eine Relation für Christoffelsymbole $\Gamma
@@ -252,6 +248,205 @@ kovariante Ableitung auf ein Skalarfeld $U$.
     \frac{1}{\sqrt{g}}\partial_a(\sqrt{g}\partial^a U) = \\
     &= \frac{1}{\sqrt{g}} \partial_a(\sqrt{g} \partial^a U)
 \end{align}
+
+\section{Herleitung der TOV-Gleichung}
+Wir können das Innere eines Stern näherungsweise als ideale Flüssigkeit betrachten. In diesem Fall lautet der Energie-Impuls-Tensor ebendieser Flüssigkeit:
+\begin{equation}
+    T_{ab}=(\mu+\frac{p}{c^2})u_au_b+pg_{ab}
+\end{equation}
+In Schwarzschildkoordinaten, und mittels $u^au_a=-c^2$, lassen sich die Komponenten dieses Tensors wie folgt berechnen:
+\begin{equation}
+    T_{00}=(\mu+\frac{p}{c^2})u_0u_0-pg_{00}=(\mu+\frac{p}{c^2})c^2e^{\mu(r)}-pe^{\mu(r)}=\mu c^2e^{\mu(r)}
+\end{equation}
+ähnlich erhalten wir für die restlichen Diagonalelemente:
+\begin{equation}
+    T_{11}=pe^{\lambda(r)}
+\end{equation}
+\begin{equation}
+    T_{22}=pr^2
+\end{equation}
+\begin{equation}
+    T_{33}=pr^2\sin^2{\theta}
+\end{equation}
+Dies bedeutet, der Energie-Impuls-Tensor, nimmt folgende Form an:
+\begin{equation}
+    T_{ab}=diag(\mu c^2e^{\nu(r)},pe^{\lambda(r)},pr^2,pr^2\sin{\theta})^t
+\end{equation}
+Wir betrachten nun die Einsteinschen Feldgleichungen:
+\begin{equation}
+    R_{ab}-\frac{1}{2}Rg_{ab}=\kappa T_{ab}
+\end{equation}
+Diese, können mitthilfe von $T=-\frac{R}{\kappa}$ umgeformt werden, zu:
+\begin{equation}
+    R_{ab}=\kappa(T_{ab}-\frac{1}{2}Tg_{ab})
+\end{equation}
+Wir wollen nun die Komponenten von Gleichung 127 berechnen, die ungleich Null sind.
+Die Komponenten von $T^\mu_\nu$ erhalten wir durch Verjüngung des Energie-Impuls-Tensors mir der Metrik $g^{\mu\nu}$.
+Diese ergeben sich zu:
+\begin{equation}
+    T^0_0=(\mu+\frac{p}{c^2})u^0u_0+pg^0_0=-\mu c^2
+\end{equation}
+\begin{equation}
+    T^1_1=p
+\end{equation}
+\begin{equation}
+    T^2_2=p
+\end{equation}
+\begin{equation}
+    T^3_3=p
+\end{equation}
+Daraus folgt, für $R_{ab}$:
+\begin{equation}
+    R_{00}=\kappa(\mu c^2e^{\nu(r)}-\frac{1}{2}\mu c^2e^{\nu(r)})=\kappa\frac{1}{2}\mu c^2e^{\nu(r)}
+\end{equation}
+\begin{equation}
+    R_{11}=\kappa\frac{1}{2}pe^{\lambda(r)}
+\end{equation}
+\begin{equation}
+    R_{22}=\kappa\frac{1}{2}pr^2
+\end{equation}
+\begin{equation}
+    R_{33}=\kappa\frac{1}{2}r^2\sin^2{\theta}
+\end{equation}
+
+
+
+\section{Inkompressibler Relativistischer Stern}
+Wir berechnen nun der Druckverlauf eines relativistischen Sterns mit
+konstanter Massendichte $\mu$ mithilfe der TOV-Gleichung. Der Druck an der
+Sternoberfläche ist $p(r_0) =0$. In der Rechnung substituieren wir
+$P = \kappa p$, $A = \frac{8\pi\mu}{3c^2}$ und
+$x=r^2 \Rightarrow dr= \frac{dx}{2r}$. Weiters ist zu
+beachten, das $\mu = \text{konst.}$ und somit
+die Masse des Sterns gegeben ist durch
+\begin{align}
+    m(r) = m = 4pi \int_0^r \mu \tilde{r}^2 d\tilde{r} =\frac{4\pi}{3}\mu r^3
+\end{align}
+Wir kommen auf die folgende Differentialgleichung.
+\begin{align}
+    \frac{dP}{dx} = -\frac{(3A+P)(A+P)}{(1-Ax)}.
+\end{align}
+Diese lässt sich durch Separation der Variablen lösen und mithilfe von
+$p(r_0) = 0$ bekommen wir die Lösung
+\begin{align}
+    P(r) = 3A\left( \frac{\sqrt{\frac{1-Ar^2}{1-Ar_0^2}} -
+    1}{3-\sqrt{\frac{1-Ar^2}{1-Ar_0^2}}}\right)
+\end{align}
+Der Zentraldruch $p_c$ ist gegeben durch
+\begin{align}
+    p_c = p(0) = \frac{3A}{\kappa}\left( \frac{\sqrt{\frac{1}{1-Ar_0^2}} -
+    1}{3-\sqrt{\frac{1}{1-Ar_0^2}}}\right)
+\end{align}
+Weiteres aus $e^{\lambda(r)} > 0$ folgt $e^{\lambda(r_0)} > 0$, was ergibit
+\begin{align}
+    &\sqrt{1-Ar_0^2}>\frac{1}{3}\\
+    &\Rightarrow r_0 > \sqrt{\frac{8}{9A}}
+\end{align}
+hierraus leiten wir die obere Schranke der Masse ab, da $\mu=\text{konst.}$
+rechnet sich $M$ wie oben, $M = \frac{4\pi}{3} \mu r_0^3$. Wir qubieren die
+ungleichung von oben und setzen für $A$ ein, es ergibt sich
+\begin{align}
+    M < M_{max} = \frac{4c^3}{9\sqrt{3\pi G^3\mu}}
+\end{align}
+Die beiden Metrischen Funktionen lassen sich leicht durch einsetzen
+herausfinden
+\begin{align}
+    &e^{\lambda(r)} = \frac{1}{1 - Ar^2}\\
+    &e^{\nu(r)} = e^{-\lambda(r)} = 1 - Ar^2
+\end{align}
+Aus $Ar_0^2 = \frac{r_s}{r_0}$ ergibt sich die Buchdahl Grenze
+\begin{align}
+    Ar_0^2 = \frac{r_s}{r_0} < \frac{8}{9}
+\end{align}
+Für den gravitative Massendeffekt berechnen wir $\Delta M= M_1 -M$, wobei
+$M_1$ durhc das folgende Integral gegeben ist.
+\begin{align}
+    M_1 &= 4\pi \int _0^{r_0}\mu(r) e^{\lambda(r)/2}r^2 dr =\\
+    &= \frac{4\pi\mu} \int_0^{r_0} \sqrt{\frac{1}{1-Ar^2}} r^2 dr= \\
+    &= \frac{2\pi\mu}{A^{3/2}} (\arcsin(\sqrt{A}r_0) -Ar_0\sqrt{1-Ar_0^2})
+\end{align}
+Dann ist $\Delta M$
+\begin{align}
+    \Delta M \frac{2\pi\mu}{A^{3/2}} (\arcsin(\sqrt{A}r_0)
+    -Ar_0\sqrt{1-Ar_0^2})  + \frac{4\pi}{3} \mu r_0^3
+\end{align}
+Der Newtonische Grenzfall der gravitativen Bindungsenergie ist
+\begin{align}
+    W &= -\Delta M c^2 = -c^2(4\pi\int _0^{r_0} \frac{1}{\sqrt{1-Ar^2}} r^2
+    dr + \frac{4\pi}{3} \mu r^3_0) \\
+    \lim_{c\rightarrow \infty} W &= -4\pi G \int_0^{r_0} m rdr
+    = 2\pi Gmr_0^2
+\end{align}
+
+\section{Effektive Berechnungsmethode für Christoffelsymbole}
+In einer gekrümmten Raumzeit, lassen sich Geodäten, also die kürzeste Verbindung zweier Punkte innerhalb dieser Raumzeit, mithilfe der Geodäten-Gleichung berechenen:
+\begin{equation}
+    \frac{d^2x^\alpha}{d\sigma^2}+\Gamma^{a}_{bc}\frac{dx^b}{d\sigma}\frac{dx^c}{d\sigma}
+\end{equation}
+Hierbei ist $\sigma$ ein affiner Paramter, der mit der Weglänge zusammenhängt. Die CHristoffel-Symbole in der obigen Gleichung, lassen sich mittels einer Lagrange-Funktion, relativ zügig ermitteln. Wir stellen hierfür die Lagrange-Funktion auf, als:
+\begin{equation}
+    L=g_{\rho\sigma}(x^n)\dot{x}^\rho\dot{x}^\sigma
+\end{equation}
+Mithilfe dieser Gleichungen, folgt die Äquivalenz:
+\begin{equation}
+    g_{\alpha\beta}\ddot{x^\beta}+\Gamma_{\alpha ab}\dot{x^a}\dot{x^b}=\frac{d}{d\tau}(\frac{\partial L}{\partial\dot{x^\alpha}})-\frac{\partial L}{\partial x^\alpha}
+\end{equation}
+ Mithilfe der Metrik
+ \begin{equation}
+     \begin{pmatrix}
+         1 & 0 & 0 \\
+         0 & r^2 & 0 \\
+         0 & 0 & r^2\sin^2{\theta}
+     \end{pmatrix}
+     =(g_{ab})
+ \end{equation}
+folgt für die Lagrange-Funktion nun:
+\begin{equation}
+    L=\frac{1}{2}(\dot{r^2}+r^2\dot{\theta^2}+r^2\sin^2{\theta}\dot{\phi^2}
+\end{equation}
+Wir berechnen nun die Ableitungen von L:
+\begin{equation}
+    \frac{d}{d\tau}\frac{\partial L}{\partial\dot{r}}=\ddot{r}
+\end{equation}
+\begin{equation}
+    \frac{d}{d\tau}\frac{\partial L}{\partial\dot{\theta}}=2\dot{r}\dot{\theta}+r^2\ddot{\theta}
+\end{equation}
+und
+\begin{equation}
+    \frac{d}{d\tau}\frac{\partial L}{\partial\dot{\phi}}=2\dot{r}r\sin^2{\theta}\dot{\phi}+2r^2\sin{\theta}\cos{\theta}\dot{\theta}\dot{\phi}+r^2\sin^2{\theta}\ddot{\phi}
+\end{equation}
+Des Weiteren:
+\begin{equation}
+    \frac{\partial L}{\partial r}=r\dot{\theta^2}+r\sin^2{^\theta}\dot{\phi^2}
+\end{equation}
+\begin{equation}
+    \frac{\partial L}{\partial\phi}=0
+\end{equation}
+\begin{equation}
+    \frac{\partial L}{\partial\theta}=r^2\sin{\theta}\cos{\theta}\dot{\phi^2}
+\end{equation}
+Aus diesen Gleichungen kann man nun die Christoffel-Symbole bestimmen, und diese ergeben sich zu:
+\begin{equation}
+    \Gamma_{r\theta\theta}=-r
+\end{equation}
+\begin{equation}
+    \Gamma_{r\phi\phi}=-r\sin^2{\theta}
+\end{equation}
+\begin{equation}
+    \Gamma_{\theta r\theta}=2
+\end{equation}
+\begin{equation}
+    \Gamma_{\theta\phi\phi}=-r^2\sin{\theta}\cos{\theta}
+\end{equation}
+\begin{equation}
+    \Gamma_{\phi r\phi}=2r\sin^2{\theta}
+\end{equation}
+und
+\begin{equation}
+    \Gamma_{\phi\theta\phi}=2r^2\sin{\theta}\cos{\theta}
+\end{equation}
+\newline
+
 \section{Schwarzschild Metic}
 Eine Kugelsymmetrische Raumzeit kann durch die Schwarzschild-Koordinaten
 beschrieben werden $\{ct, r, \vartheta \varphi\}$, für das Linienelemnt haben
@@ -357,33 +552,82 @@ Diese kann man leicht durch Separation der Variablen lösen
     &\int \frac{d\nu}{e^{-\nu} -1} = \int \frac{1}{r} dr\\
     &\Rightarrow e^\nu = 1-\frac{r_S}{r} \;\;\;\; (r_S\in \mathbb{R})
 \end{align}
-\section{Inkompressibler Relativistischer Stern}
-Wir berechnen nun der Druckverlauf eines relativistischen Sterns mit
-konstanter Massendichte $\mu$ mithilfe der TOV-Gleichung. Der Druck an der
-Sternoberfläche ist $p(r_0) =0$. In der Rechnung substituieren wir
-$P = \kappa p$, $A = \frac{8\pi\mu}{3c^2}$ und
-$x=r^2 \Rightarrow dr= \frac{dx}{2r}$. Weiters ist zu
-beachten, das $\mu = \text{konst.}$ und somit
-die Masse des Sterns gegeben ist durch
-\begin{align}
-    m(r) = m = 4pi \int_0^r \mu \tilde{r}^2 d\tilde{r} =\frac{4\pi}{3}\mu r^3
-\end{align}
-Wir kommen auf die folgende Differentialgleichung.
-\begin{align}
-    \frac{dP}{dx} = -\frac{(3A+P)(A+P)}{(1-Ax)}.
-\end{align}
-Diese lässt sich durch Separation der Variablen lösen und mithilfe von
-$p(r_0) = 0$ bekommen wir die Lösung
-\begin{align}
-    P(r) = 3A\left( \frac{\sqrt{\frac{1-Ar^2}{1-Ar_0^2}} -
-    1}{3-\sqrt{\frac{1-Ar^2}{1-Ar_0^2}}}\right)
-\end{align}
-Der Zentraldruch $p_c$ ist gegeben durch
-\begin{align}
-    p_c = p(0) = \frac{3A}{\kappa}\left( \frac{\sqrt{\frac{1}{1-Ar_0^2}} -
-    1}{3-\sqrt{\frac{1}{1-Ar_0^2}}}\right)
+\section{Inkompressibler Newton'scher Stern}
+Das Gravitationspotential $U$ eines Sterns, mit Radius $r_0$ und konstanter Massendichte $\mu$, im Rahmen der Newton'schon Physik, kann leicht mittels der Poissongleichung ermittelt werden. Diese lautet:
+\begin{equation}
+    \Delta U=4\pi G\mu
+\end{equation}
+Um das Potential zu ermittlen, betrachten wir zunächst die Lösung der Poissongleichung außerhalb des Sterns. Diese redzuiert sich somit zu:
+\begin{equation}
+    \Delta U=0
+\end{equation}
+oder in Kugelkoordinaten:
+\begin{equation}
+    \Delta U=\frac{1}{r^2}\frac{\partial}{\partial r}(r^2\frac{\partial U}{\partial r}+\frac{1}{r^2\sin{\theta}}\frac{\partial}{\partial\theta}(\sin{\theta}\frac{\partial U}{\partial\theta}+\frac{1}{r^2\sin^2{\theta}}\frac{\partial^2U}{\partial\phi^2}=0
+\end{equation}
+Es wird sofort klar, dass U nicht von $\theta$ und $\phi$ abhängen kann, und somit wird das Potential zu:
+\begin{equation}
+    \Delta U=\frac{1}{r^2}\frac{\partial}{\partial r}(r^2\frac{\partial U}{\partial r}=0
+\end{equation}
+Durch zweilaige Integration nach $r$ erhalten wir schließlich:
+\begin{equation}
+    U=\frac{\alpha}{r}+\beta
+\end{equation}
+In diesem Fall sind $\alpha$ und $\beta$ Konstanten, die es noch zu ermitteln gilt. Setzt man nun vorraus, dass $U$ in unednlich großem Abstand Null sein soll, folgt sofort: $\beta=0$ und es bleibt:
+\begin{equation}
+    U=\frac{\alpha}{r}
+\end{equation}
+für die aüßere Lösung.
+\newline
+Nun zur inneren Lösung.
+Gleichung 120 lässt sich umschreiben, zu:
+\begin{equation}
+    \frac{\partial}{\partial r}(r^2\frac{\partial U}{\partial r}=4\pi G\mu r^2
+\end{equation}
+Und erneut, durch zweimalige Integration, erhalten wir:
+\begin{equation}
+    U=\frac{2}{3}\pi G\mu r^2-\frac{A}{r}+B
+\end{equation}
+A und B sind wieder zu ermittlende Konstanten. Wir setzten nun wiederum vorraus, dass $U$ bei $r=0$ regulär sein soll, woraus direkt folgt $A=0$ und $U(0)=U_0=B$. Und somit:
+\begin{equation}
+    U=\frac{2}{3}\pi G\mu r^2+U_0
+\end{equation}
+Wir wollen nun die Konstanten bestimmen. Dafür betrachten wir die beiden Lösungen $U_A$ als die äußere und $U_I$ als die innere Lösung. Da der Übergang des Potentials, von der inneren zur äußeren Lösung glatt sein soll, ergibt sich an der Stelle $r=r_0$:
+\begin{equation}
+    \frac{dU_A}{dr}=\frac{dU_I}{dr}
+\end{equation}
+Also:
+\begin{equation}
+    -\frac{\alpha}{r_0^2}=\frac{4}{3}\pi G\mu r_0
+\end{equation}
+setzen wir nun $M=\frac{4}{3}\pi r_0^3\mu$, erhalten wir:
+\begin{equation}
+    \alpha=-GM\rightarrow U_A=-\frac{GM}{r}
+\end{equation}
+Für $U_I$ verwenden wir den Fakt, dass bei $r=r_0$ $U_A=U_I$ gelten muss:
+\begin{equation}
+    -\frac{GM}{r_0}=\frac{2}{3}\pi G\mu r_0^2+U_0\rightarrow U_0=-\frac{3GM}{2r_0}
+\end{equation}
+Damit ergbit sich das Potential im Inneren des Sterns zu:
+\begin{equation}
+    U_I=\frac{GM}{2r_0}(\frac{r^2}{r_0^2}-3)
+\end{equation}
+Die gravitative Bindungsenergie eines Sterns, berechnet sich mit der Formel:
+\begin{equation}
+    W_{pot}=\frac{4\pi}{2}\int_{0}^{r_0} U\mu r^2\, dr
+\end{equation}
+Dies bedeutet:
+\begin{equation}
+    W_{pot}=\frac{4\pi}{2}\frac{GM}{2r_0}\int_{0}^{r_0} \frac{r^2}{r_0^2}-3\, dr
+\end{equation}
+Und somit:
+\begin{equation}
+    W_{pot}=-\frac{8\pi}{3}GM
+\end{equation}
+\newline
 
-\end{align}
+
+
 
 
 
