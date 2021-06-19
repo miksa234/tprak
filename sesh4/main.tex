@@ -1,0 +1,108 @@
+\documentclass[a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage{mathptmx}
+
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{subcaption}
+\usepackage[shortlabels]{enumitem}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{braket}
+\usepackage{bbm}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[colorlinks=true,naturalnames=true,plainpages=false,pdfpagelabels=true]{hyperref}
+\usepackage[parfill]{parskip}
+\usepackage[backend=biber, sorting=none]{biblatex}
+\addbibresource{uni.bib}
+\pagestyle{myheadings}
+\markright{Popovic, Vogel\hfill Symmetriegruppen von Differentialgleichungen \hfill}
+
+\title{Universität Wien\\ Fakultät für Physik\\
+\vspace{1.25cm}Laborpraktikum Theoretische Physik 2021S \\ Symmetriegruppen von Differentialgleichungen
+}
+\author{Milutin Popovic \& Tim Vogel \vspace{1cm}\\ Betreuer: Olaf Krüger}
+\date{6. Juni, 2021}
+
+\begin{document}
+\maketitle
+\noindent\rule[0.5ex]{\linewidth}{1pt}
+\begin{abstract}
+\end{abstract}
+\noindent\rule[0.5ex]{\linewidth}{1pt}
+
+\tableofcontents
+\section{Grundlagen}
+Die Symmetriegruppe einer Differentialgleichung, oder eines Systems von Differentialgleichungen, ist eine Gruppe von Transformationen, die auf die abhängigen und unabhängigen Variablen wirkt und die es ermöglicht, aus einer Lösung der Differentialgleichung(en) andere Lösungen zu konstruieren. Es existiert ein expliziter Weg, die Symmetriegruppe einer oder mehrerer Differentialgleichungen zu finden, der in diesem Protokoll vorgestellt und auf die Fokker-Planck Gleichungen angewandt wird. Bis dorthin müssen allerdings einige Bergrillfichkeiten erklärt und hergeleitet und die mathematische Basis geschaffen werden. Bevor wir mit der Symmetriegruppe von Differentialgleichungen beginnen, wird das Konzept anhand von Symmetrien von Gleichungen eingeführt und erläutert.
+\subsection{Symmetrien von Gleichungen}
+Wir betrachten zunächst eine glatte, reele, differenzierbare Funktion $F(x)$, die auf einer beliebigen Mannigfaltigkeit $M$ definiert ist. Sei nun $x$ eine Lösung der Gleichung:
+\begin{equation}
+F(x)=0
+\end{equation}
+Die Symmetriegruppe $G$ dieser Funktion, ist nun eine Transformation auf $M$, die aus der Lösung $x$ andere Lösungen dieser Gleichung bereitstellen kann. Ist als $g$ ein Element dieser Gruppe, so fordern wir:
+\begin{equation}
+    F(g\cdot x)=0
+\end{equation}
+Damit löst auch $g\cdot x$ die Gleichung, und wir erhalten eine neue Lösung. Betrachten wir hierzu ein kurzes Beispiel: Gegeben sei die Funktion $F(t,x)=ct-x=0$ und eine Translation als Transformation $(t,x)\rightarrow (t+\epsilon,x+c\epsilon)$
+Und somit ergibt sich als Lösung:
+\begin{equation}
+    F(g\cdot t,g\cdot x)=c(t+\epsilon)-(x+c\epsilon)=ct-x=0
+\end{equation}
+\newline
+Betrachten wir nun das Folgenede: $G^i_\epsilon$ ist eine Symmetriegruppe einer Gleichung $F(x)=0$. Dann folgt daraus
+\begin{equation}
+    \frac{d}{d\epsilon}\biggl|_{\epsilon=0}G^i_\epsilon F(x)=0
+\end{equation}
+Wir definieren nun:
+\begin{equation}
+    v_i=\frac{d}{d\epsilon}\biggl|_{\epsilon=0}G^i_\epsilon
+\end{equation}
+Und nennen $v_i$ einen Generator der Symmetriegruppe.
+Diese infinitesimale Betrachtung wird einen essentiellen Teil dazu beitragen, die Symmetriegruppen von Differentialgleichungen zu ermitteln und nimmt daher eine sehr wichtige Rolle ein.
+\section{Differentialgleichungen und der Jet-Space}
+Wenden wir die Methoden der vorherigen Sektion nun auf Differentialgleichungen an, kommen wir schnell auf die folgende Definition: Betrachten wir eine Differentialgleichung $F(t,x,u)$,  in welcher $u$ eine abhängige Variable ist, und gibt es eine Transformationsgruppe $G$ mit Elementen $g$ und löst $u=f(x)$ diese Differentialgleichung, so löst auch $u=g\cdot f(x)$ diese Gleichung.
+\newline
+Wir wollen nun auch hier die infinitesimale Komponente miteinbringen. Hierfür betrachten wir die Punkte $(t,x,u)\in X\times U$. Hier sind $t,x$ unabhängige und $u$ abhängige Variablen. Das bedeutet, der Raum $X\times U$ beschreibt genau diese Variablen. Das heißt, für die infinitesimalen Komponenten, müssen wir diesen Raum "prolongieren", indem wir auch die verschiedenen partiellen Ableitungen der Variablen berücksichtigen. Dies funktioniert wie folgt: Gibt es eine Funktion $U=f(x)$, sodass $f: X\rightarrow U$, so existiert eine weitere Funktion $u^{(n)}=pr^{(n)}f(x)$, die wir die n-te Prolongation von $f$ nennen, die definiert ist, als:
+\begin{equation}
+    u^\alpha_f=\partial_f f^\alpha(x)
+\end{equation}
+Dies bedeutet, dass die Prolongation eine Funktion von $X$ nach $U^{(n)}$ ist und für jedes $x$ ind $X$ die Werte von $f$ und die Werte aller Ableitungen von 1 bis n an der Stelle $x$ repräsentiert. Zum Beispiel ergibt die zweite Prolongation von $f(t,x)=u$:
+\begin{equation}
+    pr^{(2)}f(t,x)=(u;u_t,u_x,u_t_t,u_t_x,u_x_x)=(f;\frac{\partial f}{\partial t},\frac{\partial f}{\partial x}, \frac{\partial^2 f}{\partial t^2},\frac{\partial^2 f}{\partial t\partial x},\frac{\partial^2 f}{\partial x^2})
+\end{equation}
+Der Raum $X\times U^{(n)}$, in dem die abhängigen und unabhängigen Variablen enthalten sind und die partiellen Ableitungen der abhängigen Variablen, wird der n-te Jet-Space genannt.
+\newline
+Dies bedeutet also, dass wir für jede Ableitung, eine Koordinatenachse hinzufügen, und die Differentialgleichung somit sowohl abhängig von ihren Variablen, als auch von deren (n-ten) Ableitungen machen. Ein System von Differentialgleichungen kann somit auch als Untervarietät des Jet-Spaces beschrieben werden.
+\section{Prolongation von Gruppenwirkungen}
+Ähnlich wie zuvor, kann eine Prolongation auch auf die Gruppen von Transformationen bzw. Gruppenwirkungen angewandt werden und wird als $pr^{(n)} G$ notiert. Hierbei werden die Ableitungen der Funktionen $u=f(x)$ in die jeweils gleichen Ableitungen, der transformierten Funktion $\Tilde{u}=\Tilde{f}(\Tilde{x})$ überführt. Ein wichtiger Aspekt ist, dass die erste Prolongation von $G$ etwa, genauso auf den Punkt $(x,u)$ wirkt, wie G selbst. Einzig die Wirkung auf $u_x$ bietet neue Information. Dies ist allgemein gültig, ergo unterscheiden sich nachfolgende Prolongationen immer nur in ihren letzten Einträgen.
+\newline
+Diese Prolongation bietet uns nun folgende Möglichkeit: Existiert eine Symmetriegruppe $G$, die Lösungen einer Differentialgleichung in andere Lösungen überführt, und wird diese Differentialgleichung durch eine Untervarietät im zugehörigen Jet-space beschrieben, so ist $G$ eine Symmetriegruppe dieser Differentialgleichung, wenn sie die Untervarietät invariant lässt. Dadurch lässt sich das finden einer Symmetriegruppe einer Differentialgleichung im Großen und Ganzen darauf reduzieren, heruaszufinden, ob eine Gruppe von Transformationen diese Varrietät unverändert lässt. Über diesen Weg, können wir das Problem ähnlich behandeln, wie das zuvor beschriebene finden von Symmetriegruppen von Gleichungen.
+\section{Finden von Symmetriegruppen einer Differentialgleichung}
+Wir verwenden die infinitesimale Betrachtungen aus Sektion 1.1, und beginnen mit einem beliebigen Vektorfeld:
+\begin{equation}
+    v=\tau (t,x,u)\frac{\partial}{\partial t}+\xi (t,x,u)\frac{\partial}{\partial x}+\phi (t,x,u)\frac{\partial}{\partial u}
+\end{equation}
+Wir lösen nun ein System von einfacheren partiellen Differentialgleichungen um die Funktionen $\tau , \xi und \phi$ zu ermitteln. Nun wollen wir das eben ermittelte Vektorfeld prolongiern. Dies funktioneirt mit folgender Formel, die hier nciht näher hergeleitet werden will:
+\begin{equation}
+    pr^{n}v=v+\sum_{J:1\leq |J|\leq n}\phi^J(t,x,u)\frac{\partial}{\partial u_J}
+\end{equation}
+J ist in diesem Falle ein Multiindex, der sämtliche $1-(n-te)$ partielle Ableitungen durchläuft. Die Koeffizienten $\phi^J(t,x,u)$ sind rekursiv definiert:
+\begin{equation}
+    \phi^{Jk}=D_k\phi^J-u_{Jt}D_k\tau-u_{Jx}D_k\xi
+\end{equation}
+mit den vollständigen Ableitungen:
+$$D_t=\frac{\partial}{\partial t}+u_t\frac{\partial}{\partial u},\,\, D_x=\frac{\partial}{\partial x}+u_x\frac{\partial}{\partial u}$$
+\newline
+So findet man einen Satz unabhängiger Vektorfelder $v_i$, die als die Generatoren einer Lie-Algebra funkgieren. Schließlich kann für jedes Vektorfeld die Gruppenwirkung mithilfe von Charakteristiken ermittelt werden, damit gilt:
+\begin{equation}
+    g_\epsilon(t,x,u)=(\Tilde{t},\Tilde{x},\Tilde{u})
+\end{equation}
+Und somit können Lösungen für Differentialgleichungen mithilfe von Symmetrien gefunden und berechnet werden.
+
+
+
+\end{document}
