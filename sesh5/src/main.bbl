@@ -1,0 +1,250 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{cite1}{article}{}
+      \name{author}{1}{}{%
+        {{hash=f6c8e450bcdca89973765cf5d2daf6f1}{%
+           family={Deutsch},
+           familyi={D\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Physical Society}%
+      }
+      \strng{namehash}{f6c8e450bcdca89973765cf5d2daf6f1}
+      \strng{fullhash}{f6c8e450bcdca89973765cf5d2daf6f1}
+      \strng{bibnamehash}{f6c8e450bcdca89973765cf5d2daf6f1}
+      \strng{authorbibnamehash}{f6c8e450bcdca89973765cf5d2daf6f1}
+      \strng{authornamehash}{f6c8e450bcdca89973765cf5d2daf6f1}
+      \strng{authorfullhash}{f6c8e450bcdca89973765cf5d2daf6f1}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issue}{9}
+      \field{journaltitle}{Phys. Rev. Lett.}
+      \field{month}{2}
+      \field{title}{Uncertainty in Quantum Measurements}
+      \field{volume}{50}
+      \field{year}{1983}
+      \true{nocite}
+      \field{pages}{631\bibrangedash 633}
+      \range{pages}{3}
+      \verb{doi}
+      \verb 10.1103/PhysRevLett.50.631
+      \endverb
+      \verb{urlraw}
+      \verb https://link.aps.org/doi/10.1103/PhysRevLett.50.631
+      \endverb
+      \verb{url}
+      \verb https://link.aps.org/doi/10.1103/PhysRevLett.50.631
+      \endverb
+    \endentry
+    \entry{cite2}{article}{}
+      \name{author}{2}{}{%
+        {{hash=fd03e9cee55771f2da1be66b74546ca7}{%
+           family={Maassen},
+           familyi={M\bibinitperiod},
+           given={Hans},
+           giveni={H\bibinitperiod}}}%
+        {{hash=f6b7f41c32904761b25459a288a498d2}{%
+           family={Uffink},
+           familyi={U\bibinitperiod},
+           given={J.\bibnamedelimi B.\bibnamedelimi M.},
+           giveni={J\bibinitperiod\bibinitdelim B\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Physical Society}%
+      }
+      \strng{namehash}{e77ecb12304ceaf875d7f1a4820485ae}
+      \strng{fullhash}{e77ecb12304ceaf875d7f1a4820485ae}
+      \strng{bibnamehash}{e77ecb12304ceaf875d7f1a4820485ae}
+      \strng{authorbibnamehash}{e77ecb12304ceaf875d7f1a4820485ae}
+      \strng{authornamehash}{e77ecb12304ceaf875d7f1a4820485ae}
+      \strng{authorfullhash}{e77ecb12304ceaf875d7f1a4820485ae}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issue}{12}
+      \field{journaltitle}{Phys. Rev. Lett.}
+      \field{month}{3}
+      \field{title}{Generalized entropic uncertainty relations}
+      \field{volume}{60}
+      \field{year}{1988}
+      \true{nocite}
+      \field{pages}{1103\bibrangedash 1106}
+      \range{pages}{4}
+      \verb{doi}
+      \verb 10.1103/PhysRevLett.60.1103
+      \endverb
+      \verb{urlraw}
+      \verb https://link.aps.org/doi/10.1103/PhysRevLett.60.1103
+      \endverb
+      \verb{url}
+      \verb https://link.aps.org/doi/10.1103/PhysRevLett.60.1103
+      \endverb
+    \endentry
+    \entry{cite3}{article}{}
+      \name{author}{2}{}{%
+        {{hash=4a3a6bc61c0b79007a27f68a759c41c5}{%
+           family={Hiesmayr},
+           familyi={H\bibinitperiod},
+           given={Beatrix\bibnamedelima C},
+           giveni={B\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=9326f70a002ee922a600a49e5751a830}{%
+           family={Löffler},
+           familyi={L\bibinitperiod},
+           given={Wolfgang},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IOP Publishing}%
+      }
+      \strng{namehash}{c39ef397de2a49586a7a044f3c670dc1}
+      \strng{fullhash}{c39ef397de2a49586a7a044f3c670dc1}
+      \strng{bibnamehash}{c39ef397de2a49586a7a044f3c670dc1}
+      \strng{authorbibnamehash}{c39ef397de2a49586a7a044f3c670dc1}
+      \strng{authornamehash}{c39ef397de2a49586a7a044f3c670dc1}
+      \strng{authorfullhash}{c39ef397de2a49586a7a044f3c670dc1}
+      \field{extraname}{1}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1367-2630}
+      \field{journaltitle}{New Journal of Physics}
+      \field{month}{8}
+      \field{number}{8}
+      \field{title}{Complementarity reveals bound entanglement of two twisted photons}
+      \field{volume}{15}
+      \field{year}{2013}
+      \true{nocite}
+      \field{pages}{083036}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1088/1367-2630/15/8/083036
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.1088/1367-2630/15/8/083036
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1088/1367-2630/15/8/083036
+      \endverb
+    \endentry
+    \entry{cite4}{article}{}
+      \name{author}{2}{}{%
+        {{hash=038cef343425bee050066635728d1d78}{%
+           family={Hiesmayr},
+           familyi={H\bibinitperiod},
+           given={Beatrix},
+           giveni={B\bibinitperiod}}}%
+        {{hash=9326f70a002ee922a600a49e5751a830}{%
+           family={Löffler},
+           familyi={L\bibinitperiod},
+           given={Wolfgang},
+           giveni={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{3361c869bbd344a8fa8635f2ba4ea67c}
+      \strng{fullhash}{3361c869bbd344a8fa8635f2ba4ea67c}
+      \strng{bibnamehash}{3361c869bbd344a8fa8635f2ba4ea67c}
+      \strng{authorbibnamehash}{3361c869bbd344a8fa8635f2ba4ea67c}
+      \strng{authornamehash}{3361c869bbd344a8fa8635f2ba4ea67c}
+      \strng{authorfullhash}{3361c869bbd344a8fa8635f2ba4ea67c}
+      \field{extraname}{2}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physica Scripta}
+      \field{month}{09}
+      \field{title}{Mutually Unbiased Bases and Bound Entanglement}
+      \field{volume}{2014}
+      \field{year}{2013}
+      \true{nocite}
+      \verb{doi}
+      \verb 10.1088/0031-8949/2014/T160/014017
+      \endverb
+    \endentry
+    \entry{cite5}{article}{}
+      \name{author}{5}{}{%
+        {{hash=e6dbcb67d77eb859d38306c2c56185a9}{%
+           family={Spengler},
+           familyi={S\bibinitperiod},
+           given={Christoph},
+           giveni={C\bibinitperiod}}}%
+        {{hash=93d146cf476e422f1aaaf5815edef308}{%
+           family={Huber},
+           familyi={H\bibinitperiod},
+           given={Marcus},
+           giveni={M\bibinitperiod}}}%
+        {{hash=779d39baa19bb96d78a124cb78e6ee92}{%
+           family={Brierley},
+           familyi={B\bibinitperiod},
+           given={Stephen},
+           giveni={S\bibinitperiod}}}%
+        {{hash=7c87a1fe9c90d97e2360e1c7d2eeb249}{%
+           family={Adaktylos},
+           familyi={A\bibinitperiod},
+           given={Theodor},
+           giveni={T\bibinitperiod}}}%
+        {{hash=4a3a6bc61c0b79007a27f68a759c41c5}{%
+           family={Hiesmayr},
+           familyi={H\bibinitperiod},
+           given={Beatrix\bibnamedelima C.},
+           giveni={B\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Physical Society (APS)}%
+      }
+      \strng{namehash}{89bc1e0689471ae75c5db52ffe15ce0f}
+      \strng{fullhash}{8e59df037a0b0d873000784677720de3}
+      \strng{bibnamehash}{89bc1e0689471ae75c5db52ffe15ce0f}
+      \strng{authorbibnamehash}{89bc1e0689471ae75c5db52ffe15ce0f}
+      \strng{authornamehash}{89bc1e0689471ae75c5db52ffe15ce0f}
+      \strng{authorfullhash}{8e59df037a0b0d873000784677720de3}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1094-1622}
+      \field{journaltitle}{Physical Review A}
+      \field{month}{8}
+      \field{number}{2}
+      \field{title}{Entanglement detection via mutually unbiased bases}
+      \field{volume}{86}
+      \field{year}{2012}
+      \true{nocite}
+      \verb{doi}
+      \verb 10.1103/physreva.86.022311
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.1103/PhysRevA.86.022311
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1103/PhysRevA.86.022311
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
