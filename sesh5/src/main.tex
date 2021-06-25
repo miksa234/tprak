@@ -1,0 +1,515 @@
+\documentclass[a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage{mathptmx}
+
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{subcaption}
+\usepackage[shortlabels]{enumitem}
+\usepackage{bbm}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{braket}
+\usepackage{bbm}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage[colorlinks=true,naturalnames=true,plainpages=false,pdfpagelabels=true]{hyperref}
+\usepackage[parfill]{parskip}
+\usepackage[backend=biber, sorting=none]{biblatex}
+
+\addbibresource{uni.bib}
+\pagestyle{myheadings}
+
+\usepackage{tikz}
+\usetikzlibrary{patterns,decorations.pathmorphing,positioning}
+
+\usepackage[framemethod=TikZ]{mdframed}
+
+\tikzstyle{titlered} =
+    [draw=black, thick, fill=white,%
+        text=black, rectangle,
+        right, minimum height=.7cm]
+
+\newcounter{exercise}
+
+\renewcommand*\theexercise{Exercise~\arabic{exercise}}
+
+\makeatletter
+\mdfdefinestyle{exercisestyle}{%
+    outerlinewidth=1em,%
+    outerlinecolor=white,%
+    leftmargin=-1em,%
+    rightmargin=-1em,%
+    middlelinewidth=1.2pt,%
+    roundcorner=5pt,%
+    linecolor=black,%
+    backgroundcolor=blue!5,
+    innertopmargin=1.2\baselineskip,
+    skipabove={\dimexpr0.5\baselineskip+\topskip\relax},
+    skipbelow={-1em},
+    needspace=3\baselineskip,
+    frametitlefont=\sffamily\bfseries,
+    settings={\global\stepcounter{exercise}},
+    singleextra={%
+        \node[titlered,xshift=1cm] at (P-|O) %
+            {~\mdf@frametitlefont{\theexercise}~};},%
+    firstextra={%
+            \node[titlered,xshift=1cm] at (P-|O) %
+                    {~\mdf@frametitlefont{\theexercise}~};},
+}
+\makeatother
+
+\newenvironment{MyExercise}%
+{\begin{mdframed}[style=exercisestyle]}{\end{mdframed}}
+
+
+
+
+
+\markright{Popovic, Vogel\hfill Detection of Quantum Entanglement with MUBs \hfill}
+
+\title{Universität Wien\\ Fakultät für Physik\\
+\vspace{1.25cm}Labcours Theoretical Physik 2021S \\ Detection of Quantum
+Entanglement with MUBs
+}
+\author{Milutin Popovic \& Tim Vogel \vspace{1cm}\\ Betreuerin: Beatrix C. Hiesmayr}
+\date{20. Juni, 2021}
+
+\begin{document}
+\maketitle
+
+\noindent\rule[0.5ex]{\linewidth}{1pt}
+\begin{abstract}
+    In this lab course we go through the QM problem of detecting entangled and
+    separable states. Even thought given a density matrix we cannot always know if
+    the state is separable or entangled. Thus a new concept is introduced, a
+    witness function build upon by the so called mutually unbiased bases short
+    MUBs. With help of the witness we can experimentally test to prove
+    entangled Bell states.
+\end{abstract}
+\noindent\rule[0.5ex]{\linewidth}{1pt}
+
+\tableofcontents
+
+\section{Background}
+\subsection{Heisenberg's uncertainty relation-Robertson version}
+Given an observable $\mathcal{A}$ we can define a hermitian operator $\hat{A}$
+, given a state $\psi$, we can define the expectation value $\langle \hat{A} \rangle _\psi
+= \text{Tr}(\hat{A}\psi)$ and thus a standard derivation $(\Delta
+\hat{A})^2_\psi = \langle \hat{A}^2 \rangle_\psi - \langle \hat{A}
+\rangle_\psi^2$, where any such operator needs to satisfy.
+\begin{align}
+    \langle \hat{A}^\dagger \hat{A} \rangle_\psi = \langle
+    \psi|\hat{A}^\dagger\hat{A} \rangle = \langle \hat{A}\psi | \hat{A}\psi
+        \rangle \geq 0.
+\end{align}
+Furthermore two arbitrary hermitian operators $\hat{A}$ and $\hat{B}$ hold the
+following inequality
+\begin{align}
+    (\Delta \hat{A})_\psi \cdot (\Delta \hat{B})_\psi \geq \frac{1}{2} |\langle
+    \hat{A}, \hat{B}\rangle_\psi|
+\end{align}
+for any state $\psi$. This uncertainty is called the Heisenberg's uncertainty
+principle and forms a fundamental basis for quantum mechanics the
+unpredictability of quantum mechanics.
+
+\subsection{Entropic Uncertainty Relations-Quantum Information Theoretical
+Formulation}
+In quantum-information theory the entropic uncertainty is defined as the
+following
+\begin{align}
+    H(\hat{O}_n) + H(\hat{O}_m) \geq - \log_2\bigg(\max_{i,j}\{|\langle
+    \chi_n^i|\chi_m^j \rangle|^2\} \bigg) = log_2(|\frac{1}{\sqrt{2}}|^2)
+\end{align}
+where $H(\bar{0})_n$ is the binary entropy for a pure state $\psi$
+\begin{align}
+    H(\bar{O}_n) = -p(n)\log_2(p(n)) -(1-p(n))\log_2(1-p(n))
+\end{align}
+and $p(n) = |\langle \chi_n | \psi \rangle|^2$ is the probability for the
+outcome $n$ of $\hat{O}_n$ for $\psi$.
+
+The entropic uncertainty relation can be extended for an arbitrary number of
+outcomes, $d$, with the von-Neumann Entropy $S(\hat{O}_n)$
+\begin{align}
+    &S(\hat{O}_n) + S(\hat{O}_m) \geq - \log_d\bigg(\max_{i,j}\{|\langle
+    \chi_n^i|\chi_m^j \rangle|^2\} \bigg)\\
+    \nonumber\\
+    &S(\hat{O}_n) = -\sum^{d-1}_{i=0} p_n(i)\ln(p_n(i)) \;\;\;\ \text{or}\\
+    &S(\hat{O}_n) = -\text{Tr}(\hat{O} \ln(\hat{O})). \label{eq:vn}
+\end{align}
+
+\subsection{Mutually Unbiased Bases (MUBs)}
+A ONB of a $d$-dimensional Hilbert space is $B = \{|i \rangle\} = \{|0\rangle ,\dots,
+|(d-1)\rangle \}$. In quantum information theory a set of orthonormal bases
+$\{B_1, \dots, B_m\}$ (each an ONB of the $d$-dimensional Hilbertspace $H^d$) is called mutually
+unbiased if
+\begin{align}
+    |\langle i_k| j_{k'}\rangle|^2 = \delta_{k,k'}\delta_{i,j}
+    (1-\delta_{k,k'})\frac{1}{d}
+\end{align}
+
+Thus the maximum of the entropy uncertainty relation is
+
+\begin{align}
+    S(\hat{O}_n) + S(\hat{O}_m) \geq - \log_d(\frac{1}{d})
+\end{align}
+
+\subsection{Construction of MUBs \label{sec:mubs}}
+In this section we will show how to construct mutually unbiased bases (MUBs)
+using the Hadamard Matrix $\mathbb{H}$. In fact two orthonormal basies are
+connected by the Hadamard Matrix (unitary)
+\begin{align}
+    \mathbb{H}=\sum_{i,j} \frac{1}{\sqrt{d}} e^{i\phi_{ij}}|i\rangle\langle j|.
+\end{align}
+where $\phi_{i,j}$ is a phase chosen such that the $\mathbb{H}$ is unitary. A
+simple choice $e^{i\phi_{i,j}} = \omega^{-ij} = e^{\frac{2\pi i}{d}}$ always
+works. In this case the matrix is called the Fourier matrix
+\begin{align}
+    \mathbb{H}=\sum_{i,j} \frac{1}{\sqrt{d}} \omega^{-ij}|i\rangle\langle j|.
+\end{align}
+Furthermore the Hadamard matrix is directly related to the generalized
+Pauli-matrices.
+\begin{align}
+    &\sigma_{\mathbb{Z}} = \sum_i \omega^i |i\rangle\langle i|\\
+    &\sigma_{\mathbb{X}} = \mathbb{H}\sigma_{\mathbb{Z}} \mathbb{H} = \sum_i
+    |i+1\rangle\langle i|\\
+    &\sigma_{\mathbb{X}}\sigma_{\mathbb{Z}} = i \sigma_{\mathbb{Y}}.
+\end{align}
+
+All this means, the problem of finding MUBs, essentially narrows down, to finding
+these Hadamad matrices.
+\newline
+
+A second way of constructing MUBs is the so called Heisenberg-Weyl
+construction. If $d$ is prime, the eigenvectors of the operators, form a MUB,
+which looks like:
+\begin{align}
+    (\sigma_\mathbb{Z},\sigma_\mathbb{X},\sigma_\mathbb{X}.
+    \sigma_\mathbb{Z},\sigma_\mathbb{X}.\sigma^2_\mathbb{Z},...,\sigma_\mathbb{X}.
+    \sigma^{d-1}_\mathbb{Z})
+\end{align}
+
+\textbf{Examples:}
+\newline
+
+MUBs for qubits (d=2)
+\begin{align}
+    &B_1 = \{|0_1\rangle, |1_1\rangle\} = \{|0\rangle, |1\rangle\}\\
+    &B_2 = \{|0_2\rangle, |1_2\rangle\} = \frac{1}{\sqrt{2}} \{|0\rangle
+    +|1\rangle , |0\rangle - |1\rangle\}\\
+    &B_2 = \{|0_3\rangle, |1_3\rangle\} = \frac{1}{\sqrt{2}} \{|0\rangle
+    +i|1\rangle , |0\rangle - i|1\rangle\}\\
+\end{align}
+
+MUBs for qutrits (d=3)
+\begin{align}
+    &B_1 = \{|0_1\rangle, |1_1\rangle, |2_1\rangle\} =
+    \bigg\{
+        \begin{pmatrix}1 \\ 0\\0\end{pmatrix},
+        \begin{pmatrix}0 \\ 1\\0\end{pmatrix},
+        \begin{pmatrix}0 \\ 0\\1\end{pmatrix}
+    \bigg\}
+    \\
+    &B_2 = \{|0_2\rangle, |1_2\rangle, |2_2\rangle\} =
+    \frac{1}{\sqrt{3}}
+    \bigg\{
+        \begin{pmatrix}1 \\ 1\\1\end{pmatrix},
+        \begin{pmatrix}1 \\ \omega\\\omega^2\end{pmatrix},
+        \begin{pmatrix}1 \\ \omega^2\\\omega\end{pmatrix}
+    \bigg\}
+    \\
+    &B_3 = \{|0_3\rangle, |1_3\rangle, |2_1\rangle\} =
+    \frac{1}{\sqrt{3}}
+    \bigg\{
+        \begin{pmatrix}1 \\\omega\\\omega\end{pmatrix},
+        \begin{pmatrix}1 \\ \omega^2\\1\end{pmatrix},
+        \begin{pmatrix}1 \\ 1\\\omega^2\end{pmatrix}
+    \bigg\}        \\
+    &B_4 = \{|0_4\rangle, |1_1\rangle, |2_1\rangle\} =
+    \frac{1}{\sqrt{3}}
+    \bigg\{
+        \begin{pmatrix}1 \\\omega^2\\\omega^2\end{pmatrix},
+        \begin{pmatrix}1 \\ \omega\\1\end{pmatrix},
+        \begin{pmatrix}1 \\ 1\\\omega\end{pmatrix}
+    \bigg\}
+\end{align}
+
+With these bases we can define an bell state seed $\Omega_{0,0}$ with $P_{0,0}
+= |\Omega_{0,0}\rangle\langle \Omega_{0,0}|$,
+\begin{align}\label{eq:arb}
+    |\Omega_{0,0}\rangle  = \frac{1}{\sqrt{d}} \sum_{s=0}^{d-1} |ss\rangle
+\end{align}
+extending this with the Wely operators $W_{kl}$ we can arrive at an arbitrary
+bell state $P_{i,j}$
+\begin{align}
+    &|\Omega_{k,l}\rangle = W_{kl} \otimes \mathbbm{1}|\Omega_{0,0}\rangle\\
+    \nonumber\text{where:}\\
+    &W_{kl} = \sum_{j=0}^{d-1} \omega^{j\cdot k} |j\rangle \langle j+l|
+\end{align}
+where $\omega = e^{\frac{2\pi i}{d}}$ and $\sum_{j=0}^{d-1} \omega^j = 0$.
+
+\subsection{Detecting Entanglement via MUBs}
+One of the most important aspects of quantum theory, is the prediction of
+entanglement, and furthermore finding ways to construct experiments, that, with
+minimal effort allow the creation of so called entanglement witnesses for
+entanglement detection. Because, the bigger a system gets, the more
+measurements are needed, which for huge systems is often straight up impossible
+to realize. So, essentially, quantum theory tries to witness entanglement with
+as few measurements as possible, and without resorting to full state
+tomography.
+\begin{table}[h!]
+    \centering
+\begin{tabular}{||c|c|c || c|c||}
+\hline
+    & \multicolumn{2}{|c||}{Lower Bounds} &\multicolumn{2}{|c||}{Upper Bounds}\\
+\hline
+    m & $L_{m,2}^{MUB}$ &$L_{m,3}^{MUB}$&$U_{m,2}^{MUB}$ &$U_{m,3}^{MUB}$ \\
+\hline
+    2 & 1/2 &0.211 &3/2 & 4/3\\
+\hline
+    3 & 1 &1/2 &2 & 5/3\\
+\hline
+    4 & &1 &  & 2\\
+\hline
+\end{tabular}
+    \caption{Lower $L$ and upper $U$ bounds for the MUB witness for $d = 2, 3$
+    and $m=1, \dots, d+1$ \label{tab:1}}
+\end{table}
+
+\newpage
+\section{Exercises}
+
+\begin{MyExercise}
+    \textbf{Compute the Heisenberg uncertainty relation for $\hat{A} =
+    \hat{\sigma}_{1}$ and $\hat{B} = \hat{\sigma}_{2}$ (Pauli matrices) for an
+    arbitrary pure state $|\psi \rangle = \cos\frac{\theta}{2} |\Uparrow\rangle
+    + \sin\frac{\theta}{2} e^{i\phi} |\Downarrow\rangle$. Furthermore compute
+    the quantum-information theoretical version of the inequality for
+    $\hat{O}_{n,m} = \hat{\sigma}_{1, 2}$}.
+    \newline
+
+    To start of, the Pauli matrices are
+    \begin{align}
+        \sigma_1 =
+        \begin{pmatrix}
+            0 & 1\\ 1& 0
+        \end{pmatrix} \;\;\;\;\;
+        \sigma_2 =
+        \begin{pmatrix}
+            0 & -i \\ i & 0
+        \end{pmatrix} \;\;\;\;\;
+        \sigma_3 =
+        \begin{pmatrix}
+            1&0\\ 0& -1
+        \end{pmatrix} \;\;\;\;\;
+    \end{align}
+    Now we have a straight forward calculation
+    \begin{align}
+        &\langle \sigma_1\rangle^2_\psi = \sin^2 \theta \cos^2 \phi\\
+        &\langle (\sigma_1)^2\rangle_\psi = 1\\
+        \nonumber \\
+        &\langle \sigma_2\rangle_\psi^2 = \sin^2\theta \sin^2\phi\\
+        &\langle (\sigma_2)^2\rangle_\psi = 1\\
+        \nonumber \\
+        &\frac{1}{2} |\langle[\sigma_1, \sigma_2]\rangle = cos\theta
+    \end{align}
+    after some basic algebra with trigonometric functions we arrive at the
+    following inequality
+    \begin{align}
+        \sin^4\theta \sin^2(2\phi) \geq 0
+    \end{align}
+    which holds true for all $\theta, \phi$.
+
+    For the quantum-theoretical version of the inequality we use Equation
+    \ref{eq:vn} to calculate the von Neumann entropy. The maximum of the right
+    hand side is $\frac{1}{2}$
+    \begin{align}
+        S(\sigma_1) = -\text{Tr}(\sigma_1\ln(\sigma_1)) = 0\\
+        S(\sigma_2) = -\text{Tr}(\sigma_2\ln(\sigma_2)) = \pi
+    \end{align}
+    thus the inequality is
+    \begin{align}
+        \pi \geq 1
+    \end{align}
+
+    Since the Heisenberg's uncertainty principle is mathematically correct,
+    because it holds true for all hermitian operators, a violation of
+    the principle would put the basis of functional analysis and/or
+    the axioms of quantum mechanics at question.
+
+    The quantum information theoretical approach to the uncertainty principal
+    is convenient since the right hand side does not depend on any particular
+    state.
+\end{MyExercise}
+
+\begin{MyExercise}\label{ex:2}
+    \textbf{Compute
+    \begin{align}
+        &I_m^{MUB} = \sum_{k=1}^m\sum_{i=0}^{d-1}
+        \text{Tr}((|i_k\rangle\langle i_k| \otimes |i_k\rangle \langle i_k|)
+        \varrho) \;\;\;\;\;\; \text{and}\\
+        &I_m^{MUB} = \sum_{k=1}^m\sum_{i=0}^{d-1}
+        \text{Tr}((|i_k\rangle\langle i_k| \otimes  (|i_k\rangle \langle
+        i_k|)^*)
+        \varrho)
+    \end{align}
+    for two qubits ($d=2$), for $m=1, 2, 3$ and $|\psi\rangle =
+    cos\alpha|00\rangle + sin\alpha |11>$. Here $|i_k\rangle$ is the eigenvector
+    of the Pauli matrix $\sigma_k$.}
+
+    The strategy to calculate the witness is to use the computer to loop over
+    $d$ and $m$ for $m = 1, \dots, d+1$ then we compare the results with table
+    \ref{tab:1}. Note that $|i_k\rangle\langle i_k|$ is a $d$-dimensional
+    matrix, the density matrix is a $d^2$-dimensional matrix and
+    thus the matrix inside the trace is $d^2$.
+
+    We start of with $I_m^{MUB}$ without conjugation
+    \begin{align}
+        &I^{MUB}_{m=1} = \cos^2\alpha\\
+        &I^{MUB}_{m=2} = \frac{1}{4}(-\sin(2\alpha) + 2\cos(2\alpha) + 3)\\
+        &I^{MUB}_{m=3} = \cos^2(\alpha) + \frac{1}{2}
+    \end{align}
+    For $m=2$ entangled states for lower bound $\alpha = \frac{\pi}{4}$. For
+    $m = 3$ entangled states for lower bound $\alpha = \frac{3\pi}{4}$.
+
+    with conjugation we get
+    \begin{align}
+        &I^{MUB}_{m=1} = \cos^2\alpha\\
+        &I^{MUB}_{m=2} = \frac{1}{4}(\sin(2\alpha) + 2\cos(2\alpha) + 3)\\
+        &I^{MUB}_{m=3} = \frac{1}{\sqrt{2}} \sin(2\alpha + \frac{\pi}{4}) +1
+    \end{align}
+    For $m=2$ entangled states for lower bound $\alpha = \frac{\pi}{4}$. For
+    $m = 3$ entangled states for lower bound $\alpha = -\frac{\pi}{8}$.
+\end{MyExercise}
+
+\begin{MyExercise}
+    \textbf{Compute the same as in exercise \ref{ex:2} for
+    the isotropic state
+    \begin{align}
+        \varrho^{iso}_d (p) = (1-p)\cdot\frac{1}{d^2}\mathbbm{1}_{d^2} + p
+        P_{i,j}
+    \end{align}
+    for a freely chosen bell state $P_{i,j}$, and for both $d=2$ qubits and for
+    $d=3$ qutrits. For $p\in [-\frac{1}{d^2-1}, 1]$
+    we have the positivity condition and for $p\in [-\frac{1}{d^2 -1},
+    \frac{1}{d+1}]$ we have a separable state else entangled.
+        }
+
+    We choose $P_{i,j} = P_{0,0} = |\Omega_{0,0}\rangle \langle \Omega_{0,0}|$.
+    To calculate $\Omega$ we use the equation \ref{eq:arb} and use the MUBs given
+    in section \ref{sec:mubs}.
+
+    For $d=2$ we have the following for the standard $I^{MUB}$
+    \begin{align}
+        &I^{MUB}_{m=1} = \frac{1}{4}(3p+1) \\
+        &I^{MUB}_{m=2} = \frac{1}{2}(3p+1) \\
+        &I^{MUB}_{m=3} = \frac{1}{4}(5p+3) \\
+    \end{align}
+    For $m=2$ we have entanglement on the upper bound for $p = \frac{2}{3}$.
+    For $m=3$ we have entanglement on the upper bound for $p = 1$.
+
+
+    with conjugation we get
+    \begin{align}
+        &I^{MUB}_{m=1} = \frac{1}{4}(3p+1) \\
+        &I^{MUB}_{m=2} = \frac{1}{2}(3p+1) \\
+        &I^{MUB}_{m=3} = \frac{1}{4}(9p+3) \\
+    \end{align}
+    For $m=2$ we have entanglement on the upper bound for $p = \frac{2}{3}$.
+    For $m=3$ we have entanglement on the upper bound for $p = \frac{4}{9}$.
+
+    For $d=3$ we have the following
+    \begin{align}
+        &I^{MUB}_{m=1} = \frac{1}{9}(16p+2) \\
+        &I^{MUB}_{m=2} = \frac{1}{9}(23p+4) \\
+        &I^{MUB}_{m=3} = 3p + \frac{1}{3}\\
+        &I^{MUB}_{m=4} = \frac{1}{9}(31p + 8)
+    \end{align}
+    For $m=2$ we have entanglement on the upper bound for $p = \frac{8}{23}$.
+    For $m=3$ we have entanglement on the upper bound for $p = \frac{4}{9}$.
+
+    with conjugation we get
+    \begin{align}
+        &I^{MUB}_{m=1} = \frac{1}{9}(16p+2) \\
+        &I^{MUB}_{m=2} = \frac{1}{9}(32p+4) \\
+        &I^{MUB}_{m=3} = \frac{16}{3}p + \frac{2}{3}\\
+        &I^{MUB}_{m=4} = \frac{1}{9}(64p + 8)
+    \end{align}
+    For $m=3$ we have entanglement on the upper bound for $p = \frac{5}{3}$.
+\end{MyExercise}
+\newpage
+\begin{MyExercise}
+    \textbf{
+        Compute $I_m^{MUB}$ with conjugation and without for the Werner states
+        for $d=2, 3$ and $m=1,\dots, d+1$
+        \begin{align}
+            \varrho_W(q) = q \frac{P_{sym}}{d(d+1)} + (1-q) \frac{P_{asym}}{d(d-1)}
+        \end{align}
+        where $P_{sym} = (\mathbbm{1} + \mathbb{P})$ and $P_{asym} =
+        (\mathbbm{1} - \mathbb{P})$  for $\mathbb{P} = \sum_{ij}
+        |ji\rangle\langle ij|$. The state is separable for $q\in [0,\frac{1}{2}]$ and
+        entangled for $q\in [\frac{1}{2}, 1]$
+    }
+
+    First we calculate for $d=2$ we choose the basis $B_1$ to calculate the projection
+    operator. And note that $|ij\rangle = |i\rangle \otimes |j\rangle$ we need
+    the tensor product here.
+
+    Straightforward computation gives
+    \begin{align}
+        &I^{MUB}_{m=1} = \frac{q}{3}\\
+        &I^{MUB}_{m=2} = \frac{2q}{3}\\
+        &I^{MUB}_{m=3} =    q
+    \end{align}
+    For $m=3$ we have entanglement on the lower bound for $p = 1/2$.
+
+    with conjugation
+    \begin{align}
+        &I^{MUB}_{m=1} = \frac{q}{3}\\
+        &I^{MUB}_{m=2} = \frac{2q}{3}\\
+        &I^{MUB}_{m=3} = \frac{q}{3} + \frac{1}{2}
+    \end{align}
+    For $m=3$ we have entanglement on the lower bound for $p = 0$.
+
+    For $d=3$ we choose the basis $B_1$ to calculate the projection operator
+    and straightforward computation gives
+    \begin{align}
+        &I^{MUB}_{m=1} = \frac{q}{3}\\
+        &I^{MUB}_{m=2} = \frac{2q}{3}\\
+        &I^{MUB}_{m=3} = q \\
+        &I^{MUB}_{m=3} = \frac{4q}{3}
+    \end{align}
+    For $m=2$ we have entanglement on the lower bound for $p = 0.3165$.
+    For $m=3$ we have entanglement on the lower bound for $p = \frac{1}{2}$.
+
+    with conjugation
+    \begin{align}
+        &I^{MUB}_{m=1} = \frac{q}{3}\\
+        &I^{MUB}_{m=2} = \frac{1}{12}(5q + 2)\\
+        &I^{MUB}_{m=3} = \frac{1}{36}(15q + 14)\\
+        &I^{MUB}_{m=4} = \frac{1}{36}(15q + 22)\\
+    \end{align}
+    For $m=2$ we have entanglement on the lower bound for $p = 0.1064$.
+    For $m=3$ we have entanglement on the lower bound for $p = \frac{4}{15}$.
+
+    A simple comparison with exercise 3, we arrive at the conclusion that for
+    the Werner states we detect entanglement only on the lower bound and for the
+    isotropic states we detect entanglement only on the upper bound.
+\end{MyExercise}
+
+
+
+\nocite{cite1}
+\nocite{cite2}
+\nocite{cite3}
+\nocite{cite4}
+\nocite{cite5}
+\printbibliography
+
+
+
+\end{document}
