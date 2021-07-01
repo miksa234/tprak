@@ -1,0 +1,15 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1}Grundlagen}{1}{section.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.1}Symmetrien von Gleichungen}{2}{subsection.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2}Differentialgleichungen und der Jet-Space}{2}{section.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3}Prolongation von Gruppenwirkungen}{3}{section.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4}Finden von Symmetriegruppen einer Differentialgleichung}{3}{section.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5}Fokker-Planck Gleichung}{4}{section.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6}Diskussion}{6}{section.6}%

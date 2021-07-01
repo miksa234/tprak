@@ -27,7 +27,7 @@
 }
 \author{Milutin Popovic \& Tim Vogel \vspace{1cm}\\ Betreuer: Dr. Stefan
 Palenta}
-\date{May the 25th, 2021}
+\date{May the 26th, 2021}
 
 \begin{document}
 \maketitle
@@ -552,6 +552,74 @@ Diese kann man leicht durch Separation der Variablen lösen
     &\int \frac{d\nu}{e^{-\nu} -1} = \int \frac{1}{r} dr\\
     &\Rightarrow e^\nu = 1-\frac{r_S}{r} \;\;\;\; (r_S\in \mathbb{R})
 \end{align}
+<<<<<<< HEAD
+\section{Inkompressibler Relativistischer Stern}
+Wir berechnen nun der Druckverlauf eines relativistischen Sterns mit
+konstanter Massendichte $\mu$ mithilfe der TOV-Gleichung. Der Druck an der
+Sternoberfläche ist $p(r_0) =0$. In der Rechnung substituieren wir
+$P = \kappa p$, $A = \frac{8\pi\mu}{3c^2}$ und
+$x=r^2 \Rightarrow dr= \frac{dx}{2r}$. Weiters ist zu
+beachten, das $\mu = \text{konst.}$ und somit
+die Masse des Sterns gegeben ist durch
+\begin{align}
+    m(r) = m = 4pi \int_0^r \mu \tilde{r}^2 d\tilde{r} =\frac{4\pi}{3}\mu r^3
+\end{align}
+Wir kommen auf die folgende Differentialgleichung.
+\begin{align}
+    \frac{dP}{dx} = -\frac{(3A+P)(A+P)}{(1-Ax)}.
+\end{align}
+Diese lässt sich durch Separation der Variablen lösen und mithilfe von
+$p(r_0) = 0$ bekommen wir die Lösung
+\begin{align}
+    P(r) = 3A\left( \frac{\sqrt{\frac{1-Ar^2}{1-Ar_0^2}} -
+    1}{3-\sqrt{\frac{1-Ar^2}{1-Ar_0^2}}}\right)
+\end{align}
+Der Zentraldruch $p_c$ ist gegeben durch
+\begin{align}
+    p_c = p(0) = \frac{3A}{\kappa}\left( \frac{\sqrt{\frac{1}{1-Ar_0^2}} -
+    1}{3-\sqrt{\frac{1}{1-Ar_0^2}}}\right)
+\end{align}
+Weiteres aus $e^{\lambda(r)} > 0$ folgt $e^{\lambda(r_0)} > 0$, was ergibit
+\begin{align}
+    &\sqrt{1-Ar_0^2}>\frac{1}{3}\\
+    &\Rightarrow r_0 > \sqrt{\frac{8}{9A}}
+\end{align}
+hierraus leiten wir die obere Schranke der Masse ab, da $\mu=\text{konst.}$
+rechnet sich $M$ wie oben, $M = \frac{4\pi}{3} \mu r_0^3$. Wir qubieren die
+ungleichung von oben und setzen für $A$ ein, es ergibt sich
+\begin{align}
+    M < M_{max} = \frac{4c^3}{9\sqrt{3\pi G^3\mu}}
+\end{align}
+Die beiden Metrischen Funktionen lassen sich leicht durch einsetzen
+herausfinden
+\begin{align}
+    &e^{\lambda(r)} = \frac{1}{1 - Ar^2}\\
+    &e^{\nu(r)} = e^{-\lambda(r)} = 1 - Ar^2
+\end{align}
+Aus $Ar_0^2 = \frac{r_s}{r_0}$ ergibt sich die Buchdahl Grenze
+\begin{align}
+    Ar_0^2 = \frac{r_s}{r_0} < \frac{8}{9}
+\end{align}
+Für den gravitative Massendeffekt berechnen wir $\Delta M= M_1 -M$, wobei
+$M_1$ durhc das folgende Integral gegeben ist.
+\begin{align}
+    M_1 &= 4\pi \int _0^{r_0}\mu(r) e^{\lambda(r)/2}r^2 dr =\\
+    &= \frac{4\pi\mu} \int_0^{r_0} \sqrt{\frac{1}{1-Ar^2}} r^2 dr= \\
+    &= \frac{2\pi\mu}{A^{3/2}} (\arcsin(\sqrt{A}r_0) -Ar_0\sqrt{1-Ar_0^2})
+\end{align}
+Dann ist $\Delta M$
+\begin{align}
+    \Delta M \frac{2\pi\mu}{A^{3/2}} (\arcsin(\sqrt{A}r_0)
+    -Ar_0\sqrt{1-Ar_0^2})  + \frac{4\pi}{3} \mu r_0^3
+\end{align}
+Der Newtonische Grenzfall der gravitativen Bindungsenergie ist
+\begin{align}
+    W &= -\Delta M c^2 = -c^2(4\pi\int _0^{r_0} \frac{1}{\sqrt{1-Ar^2}} r^2
+    dr + \frac{4\pi}{3} \mu r^3_0) \\
+    \lim_{c\rightarrow \infty} W &= -4\pi G \int_0^{r_0} m rdr
+    = 2\pi Gmr_0^2
+\end{align}
+=======
 \section{Inkompressibler Newton'scher Stern}
 Das Gravitationspotential $U$ eines Sterns, mit Radius $r_0$ und konstanter Massendichte $\mu$, im Rahmen der Newton'schon Physik, kann leicht mittels der Poissongleichung ermittelt werden. Diese lautet:
 \begin{equation}
@@ -629,6 +697,7 @@ Und somit:
 
 
 
+>>>>>>> origin/master
 
 
 
