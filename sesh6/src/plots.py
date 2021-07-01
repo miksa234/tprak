@@ -45,6 +45,7 @@ def main():
         ax[i].spines['top'].set_visible(False)
         ax[i].yaxis.set_ticks_position('left')
         ax[i].xaxis.set_ticks_position('bottom')
+        ax[i].xaxis.set_ticks(np.arange(0.9,1.1,0.05))
 
     ax[0].plot(w_np/w_00, np.abs(G_np(w_np))**2/G_n, c='black')
     ax[0].set_xlabel(r'$\frac{\omega}{\omega_0}$')
@@ -90,14 +91,20 @@ def main():
 
     F = np.exp(first + second + 1j * delta(s))
 
-    # BW - Omnes representations
-    plt.figure(figsize=[10, 7])
-    plt.plot(s, np.abs(F), label='Omnes', c='black')
-    plt.plot(s, np.abs(F_BW(s)), label='Breit-Wigner', c='red')
-    plt.legend(loc='best', fontsize=12)
-    plt.xlabel(r'$s\ [GeV^2]$')
-    plt.ylabel(r'$|F_\pi^V(s)|$')
-    plt.savefig('omnes_bw.png')
+    # BW - Omnès representations
+
+    fig, ax = plt.subplots(figsize=[10, 7])
+    ax.spines['right'].set_visible(False)
+    ax.spines['top'].set_visible(False)
+    ax.yaxis.set_ticks_position('left')
+    ax.xaxis.set_ticks_position('bottom')
+
+    ax.plot(s, np.abs(F), label='Omnès', c='black')
+    ax.plot(s, np.abs(F_BW(s)), label='Breit-Wigner', c='red')
+    ax.legend(loc='best', fontsize=12)
+    ax.set_xlabel(r'$s\ [GeV^2]$')
+    ax.set_ylabel(r'$|F_\pi^V(s)|$')
+    fig.savefig('omnes_bw.png')
 
 
 if __name__ == '__main__':

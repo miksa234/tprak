@@ -28,7 +28,7 @@
 
 
 \title{Universität Wien\\ Fakultät für Physik\\
-\vspace{1.25cm}Laborpraktikum Theoretische Physik 2021S \\ Dispertion relations
+\vspace{1.25cm}Laborpraktikum Theoretische Physik 2021S \\ Dispersion relations
 }
 \author{Milutin Popovic \& Tim Vogel \vspace{1cm}\\ Betreuer: Peter Stoffer}
 \date{30. Juni, 2021}
@@ -37,6 +37,15 @@
 \maketitle
 \noindent\rule[0.5ex]{\linewidth}{1pt}
 \begin{abstract}
+This protocol will provide a first look at dispersion relations. We will show
+some trivial examples in the harmonic oscillator, where the mathematical basics
+are provided and applied. From this we will dive into more complex topics,
+derive a few equations within scattering processes in quantum dynamics and
+after that, show, that dispersion do not only work in the quantum physical
+world, but also find application in particle physics, where they can be used to
+obtain results in areas, where quantum chromodynamics fail. We explicitly
+calculate solutions to the so called Omnés-problem, and finally apply some
+numerical values to the found solutions.
 \end{abstract}
 \noindent\rule[0.5ex]{\linewidth}{1pt}
 \newcommand{\PV}{\mathop{\mathrlap{\pushR}}\!\int}
@@ -48,28 +57,18 @@
 }
 
 \tableofcontents
-
 \section{Introduction}
 Within the tools of complex analysis, there exists the possibility, to form
 relations between observable quantities of physicals systems, for example
 dispersion in a dielectric medium. This can be taken even further, by using the
 same methods within particle-physical problems, where the now more popular
-methods of qauntum chromodynamics do not apply, which would be low energy
+methods of quantum chromodynamics do not apply, which would be low energy
 hadronic processes. We will firstly apply these concepts to the simple example
 of the harmonic oscillator and finally work out more complex problems,
 regarding the pion vector form factor. The reader is expected to be familiar
 with the subject of complex analysis, especially analyticity/holomorphicity of
 a function, integration of complex functions, the residue theorem and the
 Schwartz reflection principle.
-
-
-
-
-
-
-
-
-
 
 \section{Damped harmonic oscillator}
 Considering a free harmonic oscillator, the equation of motion accounts to:
@@ -150,7 +149,7 @@ gives us the approximation for the with at half maximum
 In the figure below we plotted the squared modulus of $|G(\omega)|^2$
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{plots_sec2.png}
+    \includegraphics[width=\textwidth]{section2.png}
     \caption{On the left the squared modulus $|G(\omega)|^2$ in $\omega
 \in [\omega_0 - 2\gamma, w_0 + w\gamma]$ for $\gamma \ll \omega_0$, precisely
 $\gamma = \omega_0/20$ for $\omega_0 = 1$ and on the right $arg(G(\omega))$}
@@ -231,7 +230,7 @@ Treating the cases $t<0$ and $t>0$ separately we can join them with the
 Heaviside-theta function $\theta(t)$, the Green's function for the damped
 harmonic oscillator is
 \begin{align}
-    g(t) = \frac{\sin(\tilde{\omega}_0t}{\tilde{\omega}_0}
+    g(t) = \frac{\sin(\tilde{\omega}_0t)}{\tilde{\omega}_0}
     e^{-\frac{\gamma}{2}t} \theta(t)
 \end{align}
 With convolution we can arrive at a solution for the damped harmonic oscillator
@@ -324,7 +323,7 @@ $G(\omega)$ into real and imaginary parts
 \end{align}
 which are Hilbert transforms of each other, the equations are also known
 as ``dispersion relations''. It should be noted that these equations also allow
-negative frequencies. Let us derrive an representation for only positive
+negative frequencies. Let us derive an representation for only positive
 frequencies. We start off by a simple statement
 \begin{align}
     G(-\omega^*) = G(\omega)^*.
@@ -410,7 +409,7 @@ Which means the identity is
     i\pi f(\omega)\label{eq:pv}
 \end{align}
 \section{Potential scattering in quantum mechanics}
-If we consider elastic scattering of a spinless particle off a
+If we consider elastic scattering of a spineless particle off a
 time-independent, spherically symmetric potential of finite range, we look for
 stationary solutions $\psi$ of the Schrödinger equation
 \begin{equation}
@@ -450,7 +449,7 @@ With $\Vec{e}_r$ being a unit vector in direction of the radius, and the current
 \begin{equation}
 \Vec{j}=\frac{i\hbbar}{2m}(\psi\Vec{\nabla}\psi^*-\psi^*\Vec{\nabla}\psi)
 \end{equation}
-By applying these equations, we obtain the differential crosssection as:
+By applying these equations, we obtain the differential cross section as:
 \begin{equation}
     \frac{d\sigma}{d\Omega}=|f(E,\theta)|^2
 \end{equation}
@@ -460,7 +459,7 @@ With the scattering amplitude, being given as:
 \end{equation}
 where $l$ denotes the magnitude of orbital angular momentum, and
 $P_l(cos\theta)$ are the Legendre polynomials.
-We can now work out the total crosssection $\sigma$ via the integral:
+We can now work out the total cross section $\sigma$ via the integral:
 \begin{equation}
     \sigma=\int{d\Omega\frac{d\sigma}{d\Omega}}
 \end{equation}
@@ -470,19 +469,133 @@ We do this, by applying the orthogonality relation
 \end{equation}
 Thus, we obtain:
 \begin{equation}
-    \sigma=\sum_{l,l'}(2l+1)(2l'+1)f^*_l(E)f_{l'}(E)\int{d\Omega P_l(cos\theta)P_{l'}(cos\theta)}
+    \sigma=\sum_{l,l'}(2l+1)(2l'+1)f^*_l(E)f_{l'}(E)\int{d\Omega
+    P_l(cos\theta)P_{l'}(cos\theta)}
 \end{equation}
 Which, finally leads to:
 \begin{equation}
     \sigma=4\pi\sum_l(2l+1)|f(E)|^2
 \end{equation}
-
-
+By now defining a phase shift of:
+\begin{equation}
+    S_l(k)=1+2ikf_l(E)
+\end{equation}
+where, $S_l(k)$ is the $l$-th matrix element of the scattering operator, and
+can also be written as:
+\begin{equation}
+    S_l=e^{2i\delta_l}
+\end{equation}
+Thus, one can see pretty quickly, that
+\begin{equation}
+    f_l(E)=\frac{e^{2i\delta_t}-1}{2ik}=\frac{e^{i\delta_l}\sin{\delta_l}}{k}
+\end{equation}
+With this result, we can now derive the optical theorem. We start, by plugging
+the result above into equation (66)
+\begin{equation}
+    \sigma=4\pi\sum_{l=0}^\infty
+    (2l+1)|\frac{1}{k}e^{i\delta_lE}\sin{\delta_l(E)}|^2
+    =\frac{4\pi}{k^2}\sum_l (2l+1)\sin^2{\delta_l}
+\end{equation}
+with
+\begin{equation}
+    Im\, f(E,0)=\sum_{l=0}^\infty
+    (2l+1)Im(\frac{e^{i\delta_l}}{k})\sin{\delta_l}=\frac{1}{k}\sum_l
+    (2l+1)\sin^2{\delta_l}
+\end{equation}
+Which, finally leads to:
+\begin{equation}
+    \sigma_{el}=\frac{4\pi}{k}Im\, f(E,0)
+\end{equation}
+We now consider a froward scattering amplitude, with the asymptotic behavior
+$[f(E,0)-f_\infty(0)]\rightarrow E^{}-1-\epsilon$ for $|E|\rightarrow\infty$,
+with $\epsilon>0$. We want to compute the integral, given by:
+\begin{equation}
+    \oint_\Gamma dE'\frac{f(E',0)-f_\infty(0)}{E'-E}=2\pi i\sum_i^N\frac{Res_{E'=E_i(f(E',0)-f_\infty(0)}}{E_i-E}
+\end{equation}
+From the optical theorem we know, that the forward scattering amplitude is real
+on the negative real axis, and we also assume that $F_\infty(0)$ is real, as
+well. For further calculations the integrand in equation (73) will be named
+$F(E')$, to improve readability, also the arguments of the functions $f(E,0)$
+and $f_\infty(0)$ will be left out, from this point forward. Firstly, we
+consider the parts of the curve, parallel to the real axis. We say $f(E,0)$ is
+analytical on the upper half plane, to the point E. By making use of the
+Schwarz reflection principle, we can write:
+\begin{equation}
+    \int_\leftarrow dE'F(E'^*)+\int_\rightarrow dE'F(E')=\int_\leftarrow
+    dE'F^*(E')+\int_\rightarrow dE'F(E')=2i\int\rightarrow dE'\, ImF(E')
+\end{equation}
+The imaginary part of $F(E')$ equates to:
+\begin{equation}
+    Im(F)=Im(\frac{f-f_\infty}{E'-E})=\frac{1}{|E'-E|^2}[Im(f)Re(E'-E)-Re(f)Im(E'-E)+f_\infty
+    Im(E'-E)]
+\end{equation}
+We can now calculate the residues of each term of equation (75) individually.
+To achieve this, we consider the point $E=E_r+\alpha iE_i$. We will start by
+calculating the residues for the second and third term first, since the first
+term will be used differently. So, for the second term, we obtain the residue
+as follows:
+\begin{equation}
+    Res_{E_2}=\lim\limits_{\alpha\rightarrow
+    0}\frac{d}{dE'}(E'-E)^2\frac{Re(f)Im(E'-E)}{(E'-E)(E'-E)^*}|_{E'=E}
+\end{equation}
+\begin{equation}
+    =\lim\limits_{\alpha\rightarrow
+    0}\frac{d}{dE'}\frac{Re(f)Im(E'-E)(E'-E)}{(E'-E)^*}|_{E'=E}
+\end{equation}
+The product rule leaves four terms to calculate from this equation, but three
+of which can be disregarded, since they vanish, if the limit is taken before
+the derivation. The last term comes to:
+\begin{equation}
+    \frac{d}{dE'}Im(E'-E)=-\frac{i}{2}
+\end{equation}
+Which leaves the residue as:
+\begin{equation}
+   Res_{E_2}=-\frac{i}{2}Ref(E)
+\end{equation}
+By the same procedure, the other residue amounts to:
+\begin{equation}
+    Res_{E_3}=-\frac{i}{2}f_\infty
+\end{equation}
+For the first term, we calculate the integral
+\begin{equation}
+   \lim\limits_{\alpha\rightarrow 0}\int_0^\infty dE'\frac{Imf(E',0)}{|E'-E|^2}=P\int_0^\infty dE'\frac{Imf(E',0)}{E'-E}+\int_{circle}dE'\frac{Imf(E',0)}{|E'-E|^2}
+\end{equation}
+Where $P\int$ denotes the principal value integral. With $E'=E_r-\rho e^{i\phi}$ and $E=E_r+i\alpha E_i$, the seconds integral in equation (81) can be written as
+\begin{equation}
+    \lim\limits_{\alpha\rightarrow 0}\lim\limits_{\rho\rightarrow 0}\int_\pi^{2\pi}d\phi\frac{Imf(E_r-\rho e^{i\phi},0)(\rho\cos{\phi})}{|(E_r-\rho e^{i\phi})-(E_r+i\alpha E_i)|^2}(-i\rho e^{i\phi})\rightarrow 0
+\end{equation}
+Thus, we finally obtain:
+\begin{equation}
+    \oint_\Gamma dE'\frac{f(E',0)-f_\infty(0)}{E'-E}=2i(-\pi Ref(E',0)+\pi f_\infty(0)+P\int_0^\infty dE'\frac{Imf(E',0)}{E'-E})
+\end{equation}
+Which is equal to
+\begin{equation}
+    Ref(E',0)=f_\infty(0)+\frac{1}{\pi}P\int_0^\infty dE'\frac{Imf(E',0)}{E'-E}-\sum_i^N\frac{Res_{E'=E_i}(f(E',0)-f_\infty(0))}{E_i-E}
+\end{equation}
 
 \section{The pion vector from factor and the Omn\`es Problem}
-Insert Text
+Not only do the principles of unitarity and analyticity apply in quantum
+physical scattering processes, they also work very well within relativistic
+ones in quantum field theory. For processes involving the strong nuclear force,
+quantum chromodynamics describe the involved theory. While for high energies,
+the very usual way, of perturbative expansion works very well, the smaller the
+energy the more unreliable the perturbative schemes get. The advantage of
+dispersion relations is now, that they hold non-perturbatively and thus
+enabling us, to obtain results by plugging in experimental input and deriving
+relations between observables. One such application is the pion vector form
+factor, which describes the non-perturbative effects of the strong interaction,
+affecting the transition of the virtual photon into the pion pair, in a
+collision between an electron and its anti-particle. The so called Omnés
+problem describes a way to find the pion VFF, via the $\pi\pi$ - phase shift.
 \subsection{Unitarity of the scattering matrix}
-Insert Text
+As in quantum mechanics, we also define a scattering matrix in particle
+physics. This S-matrix describes the transition of incoming particles into
+outgoing particles in a scattering experiment. The S-operator must be unitary,
+in order to preserve probability and not to change the norm of the state:
+\begin{equation}
+    SS^\dagger=S^\dagger S=1
+\end{equation}
+This can be used to obtain Watson's final state theorem:
 \begin{align}
     \label{eq:rec}
     \text{Im}(F^V_\pi(s) = F^V_\pi(s) e^{-i\delta_{\pi\pi}(s)}\sin\delta_{\pi\pi}(s)
@@ -493,7 +606,7 @@ Factor, based on strictly formulated conditions. This is known as the Omn\`es
 Problem. First of all the equation tells us that $F_\pi^V(s)$ is a complex
 valued function, as $s$ is an analytic variable in the complex plane, apart
 from a cut complex s-plane $\Gamma = [s_0, \infty) \subset \mathbb{R}$, where
-$s = 4M_\pi^2 > 0$. To summerize the conditions are
+$s_0 = 4M_\pi^2 > 0$. To summarize e the conditions are
 \begin{itemize}
     \item $F_\pi^V(s)$ is analytic on the cut complex s-plane
         $\mathbb{C}\backslash \Gamma$
@@ -501,7 +614,7 @@ $s = 4M_\pi^2 > 0$. To summerize the conditions are
         \mathbb{R}\backslash \Gamma$
     \item $\lim_{\varepsilon \rightarrow 0}(F_\pi^V(s+i\varepsilon)
         e^{-i\delta_{\pi\pi}(s)}) \in \mathbb{R}$ on $\Gamma$ for a real
-        bounded fucntion $\delta_{\pi\pi}(s)$
+        bounded function $\delta_{\pi\pi}(s)$
     \item We assume $F_\pi^V(0) = 1$ and $F_\pi^V(s)$ has no zeros.
 \end{itemize}
 We start off with the Couchy Integral
@@ -545,7 +658,7 @@ This means the integral can be separated into
     -i\varepsilon}
     \bigg) ds' \frac{\ln(F(s'))}{s'-s}
 \end{align}
-The integrals over $C(R)$ and $C(\varrho)$ dissapear. For the last two
+The integrals over $C(R)$ and $C(\varrho)$ disappear. For the last two
 integrals we can use the Schwarz reflection principle and then we get
 \begin{align}
     \oint_C ds' \frac{\ln(F(s'))}{s'-s} = \frac{1}{\pi} \int_{s_0}^{\infty}ds'
@@ -595,7 +708,7 @@ with the condition $F_\pi^V(0) = 1$ and the relation from \ref{eq:pv} we get
 To compute the principal value integral we use the following trick
 \begin{align}
     \frac{s}{\pi}\PV_{s_0}^\infty ds' \frac{\delta_{\pi\pi}(s')}{s'(s'-s)} =
-    \frac{2}{\pi} \int_{s_0}^\infty ds' \frac{\delta_{\pi\pi}(s')
+    \frac{s}{\pi} \int_{s_0}^\infty ds' \frac{\delta_{\pi\pi}(s')
     -\delta_{\pi\pi}(s)}{s'(s'-s)}+
     \delta_{\pi\pi}\frac{s}{\pi}\PV_{s_0}^\infty \frac{1}{s'(s'-s)}.
 \end{align}
@@ -625,7 +738,7 @@ that means the second integral is
 
 Lastly we would like to plot the modulus of the Omn\`es representation of the
 pion vector form
-factor. For the phase we would usually use experimentall value, but in our case
+factor. For the phase we would usually use experimental values, but in our case
 we will use the Breit-Wigner representation of the pion VVF to compute the
 phase $\delta_{\pi\pi}$. A reminder the Breit-Wigner representation is the
 following
@@ -652,6 +765,9 @@ $\Gamma_\varrho = 0.15\ \text{GeV}$, $M_\pi = 0.14 \text{GeV}$.
     \caption{Plot of the modulus of the Breit-Wigner(red) and the Omn\`es
     representation(black) of the pion Vector From Factor for $s \in [0, 1]$ in $GeV^2$}
 \end{figure}
+The code for the plots and some minor calculations e.g. numerical integration
+can be found in \cite{code}.
+
 \nocite{mathe}
 \nocite{stoffer}
 \nocite{omnes}
