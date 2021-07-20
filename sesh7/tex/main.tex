@@ -1,0 +1,365 @@
+\documentclass[a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage{mathptmx}
+
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{subcaption}
+\usepackage[shortlabels]{enumitem}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{braket}
+\usepackage{bbm}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{yhmath}
+\usepackage{tikz}
+\usetikzlibrary{calc,decorations.markings}
+\usepackage[colorlinks=true,naturalnames=true,plainpages=false,pdfpagelabels=true]{hyperref}
+\usepackage[parfill]{parskip}
+\usepackage[backend=biber, sorting=none]{biblatex}
+\newcommand{\hbbar}{{\raisebox{0.05ex}{$\mathchar '26$}\mkern -9mu\raisebox{-0.15ex}{$\mathchar '26$}\mkern -9muh}}
+\addbibresource{uni.bib}
+\pagestyle{myheadings}
+\markright{Popovic, Vogel\hfill Teleportation and Quantum Cryptography \hfill}
+
+
+\title{University of Vienna\\ Faculty of Physics\\
+\vspace{1.25cm}Lab-Course Theoretical Physics 2021S \\ Dispersion relations
+}
+\author{Milutin Popovic \& Tim Vogel \vspace{1cm}\\ Supervisor: Beatrix Hiesmyr}
+\date{11. Juli, 2021}
+
+\begin{document}
+\maketitle
+\noindent\rule[0.5ex]{\linewidth}{1pt}
+\begin{abstract}
+\end{abstract}
+\noindent\rule[0.5ex]{\linewidth}{1pt}
+
+\tableofcontents
+\section{Teleportation}
+\subsection{Classical Teleportation}
+In science fiction books, movies and video games the idea of teleportation,
+that is almost instantaneous transportation, has been endorsed to full extent.
+Real life realization of this concept would bring enormous advantages and solve
+a lot of problems for humanity. This is partly allready put been into practice via
+3D printers, but imagine we have constructed a technology that would allow us
+to send matter over large distances almost instantaneously. We can discuss a
+scenario where we would like to send an object or even a human body through
+this apparatus, questions instantly arise.  At which level would we decompose
+the object so , how would we decompose and/or recompose it, how long would it take to send
+the pieces from one location to another etc. ? Let's say we want to send a
+human, decomposing it on the organ level doesn't really come into question
+since the transportation time would be the same as for the whole human.
+Going lower than the atom level decomposition would just take up too much
+energy, since we would have to split up the atom in electrons, protons and
+neutrons. The atom level decomposition sounds most promising since the
+molecules are just too massive and would also require a lot of energy to
+accelerate and wouldn't make the assembly process easier.
+
+Now, how fast can we send the human body on the atom level, how long would it
+take. An average human body is about $70\ \text{kg}$ and contains
+approximately $7\cdot 10^{27}$ \cite{body}.
+Let's say we can accelerate these atoms to  $99\%$ the speed of light
+($v=0.99c$). But to accelerate atoms we need to ionize them, so we would need
+to send an extra electron with the atom.
+To transport one such atom of the human body from one location to the other
+we quickly notice that distance is not a priority factor, e.g from earth to sun
+(distance $150\cdot10^9\ \text{m}$), it would take around $t = 8.5\ \text{min}$
+for one such atom. But we need to send $7\cdot 10^{27}$ atoms, so sending them
+one by one is not an option. If we can send one mole of particles ($N_A = 6.022
+\cdot 10^{23}$)  per second this would reduce the time required to transport
+them significantly to about three hours and 15 minutes plus the transportation
+time of one such atom to the destination. However if we sent all the atoms of a
+human body, we would still need to deploy the information needed to reconstruct
+it. In that case we could think about only sending the blueprint, since atoms
+are not unique and can be a prerequisite for teleportation
+on the other side of the teleport.
+
+The idea of the blueprint type approach would be to map the human body
+($2x1x1m$) to a discrete space with a resolution of one lattice position
+($10^{-10}$) which is either filled with an atom (hydrogen, oxygen, calcium,
+kalium) or doesn't contain an atom at all.  This would allow us only to send
+information, that is the blueprint, to the destination where we would
+ultimately reconstruct the human body. This can be done by sending bits of
+information, for instance one lattice position only requires three bits since
+we need to encode 5 pieces of information, $\log_2(5) \simeq 3$.We can't round
+down since we need to store at least 5 pieces of information . Alternatively we
+could encode the information in two bits, or no bits at all. Meaning if the
+encoder finds two bits then there is an atom of a specific kind and if it finds
+no bits there is no atom. On the other hand a number with the resolution of
+$10^{-10}$ has $10^{10}$ possibilities and can be encoded in $\log_2(10^{10})
+\simeq 34$ bits. We have $2\cdot10^{30}$ positions to cover, ultimately needing
+around $\log_2((2\cdot10^{30})^5) \simeq 504$ bits. A light pulse frequency of
+$5\cdot 10^{14}$ this would take us about $12\ \text{ps}$ to send all those
+bits.
+
+\subsection{Quantum Teleportation}
+Consider a scenario where Alice is given a unknown quantum system, e.g. a qubit.
+Even thought she is not interested in what state the system is, she knows that
+Bob wants the same quantum system. By examining different scenarios she
+concludes that sending the qubit through a quantum channel, there will be a non
+vanishing possibility that the state is changed. Thus she wants to send Bob the
+information needed to construct an accurate copy of the quantum system.
+
+Let's say that both Alice and Bob own an qubit, where the overall quantum state
+is an entangled state, e.g. one of the Bell states.
+\begin{align}
+    |e_1\rangle_{AB} := |\psi^-\rangle_{AB} =
+    \frac{1}{\sqrt{2}}\bigg(|0\rangle_A \otimes|1\rangle_B - |1\rangle_A
+    \otimes |0\rangle_B\bigg),\\
+    |e_2\rangle_{AB} := |\psi^+\rangle_{AB} =
+    \frac{1}{\sqrt{2}}\bigg(|0\rangle_A \otimes|1\rangle_B + |1\rangle_A
+    \otimes |0\rangle_B\bigg),\\
+    |e_3\rangle_{AB} := |\phi^-\rangle_{AB} =
+    \frac{1}{\sqrt{2}}\bigg(|0\rangle_A \otimes|0\rangle_B - |1\rangle_A
+    \otimes |1\rangle_B\bigg),\\
+    |e_4\rangle_{AB} := |\phi^-\rangle_{AB} =
+    \frac{1}{\sqrt{2}}\bigg(|0\rangle_A \otimes|0\rangle_B + |1\rangle_A
+    \otimes |1\rangle_B\bigg),\\
+\end{align}
+Without loss of generality we choose the state $|\phi^+\rangle_{AB}$ that Alice
+and Bob have and the unknown quantum state
+\begin{align}
+    |\phi\rangle_G = \alpha |0\rangle + \beta |1\rangle
+\end{align}
+with the normalization condition $|\alpha|^2 + |\beta|^2 = 1$.
+
+We can describe these three particles with the following state
+\begin{align}
+    |\Phi\rangle_G \otimes |\phi^+\beta_{AB} &= (\alpha|0\rangle_G +\beta |1\beta_G)
+    \otimes \frac{1}{\sqrt{2}} (|00\rangle_{AB} + |11\rangle_{AB})=\\
+    &= \frac{1}{\sqrt{2}} (\alpha |00\rangle_{GA}\otimes |0\rangle_B
+    \alpha|01\rangle_{GA}\otimes |1\rangle_B\\
+    &\;\;\;\;\;\;\;\;\;\;\;\;+\beta |10\rangle_{GA}\otimes |0\rangle_B + \beta
+    |11\rangle_{GA}\otimes
+    |1\rangle_B)\label{eq:factor}.
+\end{align}
+To formally write $\alpha$ and $\beta$ at Bobs states we need to
+express the equation as the tensor product of the kets with the subscript
+$GA$ with the subscript $B$, which can be done by rewriting the $GA$ kets as
+a superposition of the Bell states
+\begin{align}
+    |00\rangle_{GA} &= \frac{1}{\sqrt{2}}(|\phi^+\rangle_{GA}+
+    |\phi^-\rangle_{GA}),\\
+    |11\rangle_{GA} &= \frac{1}{\sqrt{2}}(|\phi^+\rangle_{GA} -
+    |\phi^-\rangle_{GA}),\\
+    |01\rangle_{GA} &= \frac{1}{\sqrt{2}}(|\psi^+\rangle_{GA}+
+    |\psi^-\rangle_{GA}),\\
+    |10\rangle_{GA} &= \frac{1}{\sqrt{2}}(|\psi^+\rangle_{GA}-
+    |\psi^-\rangle_{GA}).
+\end{align}
+
+Substituting these into equation \ref{eq:factor} we get
+\begin{align}
+    |\Phi\rangle_G \otimes |\phi^+\rangle_{AB} = \frac{1}{2} \big(&
+     |\psi^-\rangle \otimes ( -\beta|0\rangle + \alpha |1\rangle)\\
+    +&|\psi^+\rangle \otimes ( \beta|0\rangle +  \alpha|1\rangle)\\
+    +&|\phi^-\rangle \otimes ( \alpha|0\rangle -\beta |1\rangle)\\
+    +&|\phi^+\rangle \otimes ( \alpha|0\rangle +  \beta|1\rangle)
+        \big).
+\end{align}
+Thus the unitäry transformation operators are
+\begin{align}
+    U_{1} =
+    \begin{pmatrix}
+        0 & -1\\
+        1 & 0
+    \end{pmatrix} \;\;\;\;\;\;\;
+    U_{2} =
+    \begin{pmatrix}
+        0 & 1\\
+        1 & 0
+    \end{pmatrix}\\
+    U_{3} =
+    \begin{pmatrix}
+        1 & 0\\
+        0 & -1
+    \end{pmatrix} \;\;\;\;\;\;\;
+    U_{4} =
+    \begin{pmatrix}
+        1 & 0\\
+        0 & 1
+    \end{pmatrix}.
+\end{align}
+With this Alice can send the unknown state $|\phi\rangle_G$ to Bob. For this
+Alice needs to make a measurement in one of the Bell basis components
+$\{|e_\lambda\rangle\}_{\lambda=1,2,3,4}$. Depending on this she operates on
+the ket via $U_\lambda |\phi\rangle_B$ and bob needs to preform the opposite
+measurement of $U_\lambda^\dagger$.
+
+What if we would like to find out what state Bob possesses before or after Alice
+performing the measurement on the system, without Bob knowing the outcome of
+the measurement.
+
+Before the measurement Bob's state is
+\begin{align}
+    \varrho_{GAB} &=
+    (|\Phi\rangle_G \otimes |\phi^+\beta_{AB})(\langle\Phi|_G^\dagger\otimes
+    \langle\phi^+|_{AB}^\dagger)=\\
+    &=
+\begin{pmatrix}0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\0 & \frac{|\beta|^{2}}{2} & -
+    \frac{|\beta|^{2}}{2} & 0 & 0 & \frac{\alpha\beta^*}{2} & -
+    \frac{\alpha\beta^*}{2} & 0\\0 & -
+\frac{|\beta|^{2}}{2} & \frac{|\beta|^{2}}{2} & 0 & 0 & - \frac{\alpha
+    \beta^*}{2} & \frac{\alpha \beta^*}{2} &
+0\\0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\0 &
+    \frac{\alpha^*
+\beta}{2} & - \frac{\alpha^* \beta}{2} & 0 & 0 & \frac{|\alpha|^{2}}{2} & -
+    \frac{|\alpha|^{2}}{2} & 0\\0 &
+- \frac{\alpha^* \beta}{2} & \frac{\alpha^* \beta}{2} & 0 & 0 & -
+    \frac{|\alpha|^{2}}{2} & \frac{|\alpha|^{2}}{2} &
+0\\0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\end{pmatrix}.
+\end{align}
+taking the trace over the $GA$ components gets us
+\begin{align}
+    \text{Tr}_{GA}(\varrho_{GAB}) = \frac{1}{2}
+    \begin{pmatrix}
+        1 & 0 \\
+        0 & 1
+    \end{pmatrix}
+\end{align}
+where we used $|\alpha|^2 + |\beta|^2 = 1$.
+
+On the other hand after the measurement Bob's still doesn't know the outcome
+and cannot apply the measurement $U_\lambda^\dagger$ for a
+$\lambda$ provided by Alice. With this Bob has a chance of $\frac{1}{4}$th to
+get the state $|\phi\rangle_G$.
+
+
+
+\section{Quantum Cryptography}
+\subsection{One-Time-Pad}
+Nowadays computers use sequences of bits, of 0's and 1's to encode information.
+To represent the English alphabet, which consists of 26 letters, in a sequence
+of bits, we need a series of 0's and 1's that have 26 possible outcomes. With
+$N$ bits we can represent $2^N$ possible outcomes, which means the English
+alphabet can be encoded in $\log_2(26) \rightarrow 5$ bits.  Even thought $2^5
+= 32$, we need to keep in mind that we need to encode at least $26$ different
+outcomes which would then leave $6$ outcomes empty.  Introducing capital
+letters and special characters like ``!?\%\$\#...'', we ultimately need $8$
+bits defining $1$ byte. This type of character encoding ($8$-bit) is the
+standard for electronic communication and is referred as ``American Standard
+Code for Information Interchange'', ASCII for short.
+
+The One-Time-Pad (OTP) is a encryption technique, that uses a one time single
+use pre-shared key. Let's say we want to encrypt the massage "BYE" in ASII
+encoding this would be
+\begin{align}
+        010000100101100101000101.
+\end{align}
+With this bit sequence we add another randomly generated one which is called
+the key. The operations used are the basic boolean algebra operations.
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l|c}
+        Massage: &  $010000100101100101000101$\\
+        Key:     &  $110101100110010101110011$ \\
+        \hline
+        Code:   &   $100101000011110000110110$
+    \end{tabular}
+\end{table}
+The same key decrypts the code into the massage.
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l|c}
+        Code : &  $100101000011110000110110$\\
+        Key:     & $110101100110010101110011$ \\
+        \hline
+        Massage :   & $010000110100111101000011$
+    \end{tabular}
+\end{table}
+
+It is mathematically proved, that if the key is really randomly generated, at
+least the same length as the massage, only used once and only the sender and
+the receiver are in possession of the key this encryption method is not
+crackable.
+
+\subsection{BB-84 Protocol}
+To make OTP encryption more secure, a protocol based on quantum mechanics, the
+BB-84 protocol is introduced. The BB-84 protocol allows us to generate a random key such that
+it is much harder for an eavesdropper ``Eve'' to acquire it. The protocol calls for two
+mutually unbiased bases and thus four possible outcomes.
+This can be for example a polarized photon that is either
+horizontally ($|H\rangle$), vertically ($|V\rangle$), $+45^\circ$ or
+$-45^\circ$ polarized. We can translate $|H\rangle, |+45^\circ\rangle \equiv 0$ and
+$|V\rangle, |-45^\circ\rangle \equiv 1$.  In the Bra-Ket notation we can write
+\begin{align}
+        |+45^\circ\rangle = \frac{1}{\sqrt{2}}(|H\rangle + |V\rangle),\\
+        |-45^\circ\rangle = \frac{1}{\sqrt{2}}(|H\rangle - |V\rangle)
+\end{align}
+which can be achieved by rotating the polarization filter by $\pm 45^\circ$ in
+the x-z axis.
+
+All in all Alice has four states in her repertoire to choose from which
+she then sends to Bob. Bob on the other hand can analyze the incoming photons
+based on their polarization with a dual channel analyzer, where the $|H/V\rangle$
+analyzer distracts photons left/right and the $|\pm45^\circ\rangle$ analyzer distracts
+photons left/right.
+
+To construct a randomly generated key Alice writes down
+a random sequence of bits, for a each $0$ she chooses from the states $|H\rangle$ or
+$|+45^\circ\rangle$ and for each $1$ she chooses from the states $|V\rangle$
+and $|-45^\circ\rangle$. These polarized photons are sent to Bob's analyzer,
+which leads to two possibilities, he either chose the correct basis on his
+analyzer or he doesn't. Meaning that in the mean Bob chooses the right basis
+$\frac{1}{2}$ of the time. After all photons are sent, Alice and Bob need to compare
+the basis they chose (which they can do completely publicly) and cross of the
+results where they choose the wrong basis. With this we have a randomly
+generated key that can be used for OTP encryption.
+
+The only way a third person, we called her Eve, can interfere is if she places
+herself between Alice and Bob. For this Eve needs to measure the polarization
+of the photon Alice sent, and then with this information send a photon to Bob.
+If she doesn't send anything to Bob, Bob will notice somebody is interfering
+and Eve would get caught. When the basis is then compared Eve will have the
+same key Alice has.
+
+Let us explore what would Bob get. Eve has a $\frac{1}{2}$ chance to choose the
+same basis that Alice choose. This ultimately leads to a $\frac{1}{4}$ chance that Bob
+and Alice have the wrong key, since Bob also needs to choose a basis.
+
+To reduce the possibility that a third person is eavesdropping, Alice and Bob
+need to compare a small part of their measurement results. This results in the
+protocol needing to being carried out much longer for the sake of security.
+
+\subsection{Six-State-Protocol}
+The ``Six-state-protocol'' SSP is a generalization of the BB-84 protocol, where
+instead of two, three mutually unbiased basis are used resulting in 6 states.
+Thus, Alice and Bob have the chance of $\frac{1}{3}$ to choose the same basis,
+meaning they would have to cross out $\frac{2}{3}$ of the results before
+getting the key.
+
+For Eve to not get detected there are two scenarios. In the first scenario she
+would need to choose the same basis as Alice and Bob, that is a probability
+of $\frac{1}{3}$ for each measurement. In the second scenario Eve
+chooses the wrong basis but Bob measures in the right basis. Eve picking the
+wrong basis happens with the probability of $\frac{2}{3}$, \textbf{after} that
+Bob measuring in the correct basis would happen with the probability of
+$\frac{1}{2}$, since we are dealing with MUBs.  Meaning Eve remains undetected
+with a probability of $\frac{1}{3}$.
+
+For Eve to get detected she would need to measure the wrong results
+($\frac{2}{3}$) and \textbf{after} Bob needs to measure the wrong results
+($\frac{1}{2}$). Ultimately Eve gets detected with the probability of
+$\frac{1}{3}$.
+
+The probability to detect Eve trivially scales with the number of measurements,
+meaning $P(\text{detected}) = 1 - (\frac{2}{3})^n$ where $n$ are the
+number of measurements. On the other hand the chance of not being detected
+after $n$ measurements is $P(\text{not detected}) = 1 - P(\text{detected}$,
+of course this doesn't mean Eve managed to get the right key. For Eve to pick
+the get the right key she would also additionally need to choose the right
+basis.
+
+To even further minimize the risk of an eavesdropper Alice and Bob could
+compare small parts of their qubit string like in the BB-84 protocol.
+
+\nocite{teleportation}
+\nocite{six-state}
+\printbibliography
+\end{document}
