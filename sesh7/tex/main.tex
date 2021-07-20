@@ -37,6 +37,7 @@
 \maketitle
 \noindent\rule[0.5ex]{\linewidth}{1pt}
 \begin{abstract}
+In this report we explore the ideas of teleportation and cryptography. First we discuss what teleportation means in a classical sense, we differ between transporting matter and transporting information. Then we prospect teleportation in the quantum world with a quantum computer. Finally we introduce the OTP encryption technique and explore the possibility of reducing the risk of an eves dropper by choosing the ansatz to generate a key with help of quantum theory, in cases of two and then three mutually unbiased bases.
 \end{abstract}
 \noindent\rule[0.5ex]{\linewidth}{1pt}
 
@@ -100,7 +101,7 @@ bits.
 
 \subsection{Quantum Teleportation}
 Consider a scenario where Alice is given a unknown quantum system, e.g. a qubit.
-Even thought she is not interested in what state the system is, she knows that
+Even though she is not interested in what state the system is, she knows that
 Bob wants the same quantum system. By examining different scenarios she
 concludes that sending the qubit through a quantum channel, there will be a non
 vanishing possibility that the state is changed. Thus she wants to send Bob the
@@ -225,12 +226,37 @@ taking the trace over the $GA$ components gets us
 \end{align}
 where we used $|\alpha|^2 + |\beta|^2 = 1$.
 
-On the other hand after the measurement Bob's still doesn't know the outcome
+On the other hand after the measurement, Bob still doesn't know the outcome
 and cannot apply the measurement $U_\lambda^\dagger$ for a
 $\lambda$ provided by Alice. With this Bob has a chance of $\frac{1}{4}$th to
 get the state $|\phi\rangle_G$.
-
-
+\subsection{Teleportation on a Quantum computer}
+We want to consider an algorithm, consisting of Hadamard gates, CNOT gates, and a measurement in the computational basis $(\ket{0},\ket{1})$ at the end. The Hadamard gates are given as $H=\frac{1}{\sqrt{2}}\begin{pmatrix}
+    1 & 1 \\
+    1 & -1 \\
+\end{pmatrix}$
+and the CNOT gates as $\ket{0}\bra{0}\bigotimes\mathbb{I}+\ket{1}\bra{1}\bigotimes\sigma_1$.
+The algorithm contains the following steps:
+We input a set of three qubits, all in the state $\ket{0}$. We shall name them $q_1,q_2$ and $q_3$. At first we apply a Hadamard gate to $q_3$, followed by a CNOT gate to $q_2$ and $q_3$ in the second step. Then we apply a CNOT gate to the first two qubits, whereas a Hadamard gate is applied to the third one. For the last three steps, we start by applying a Hadamard gate onto the first two qubits in step three. For the fourth step we use a CNOT gate onto $q_2$ and $q_3$ and finally, we apply a Hadamard gate to the same two qubits and end with a measurement. So, if we input the state $I=\ket{000}$, going through all the above mentioned steps, we obtain as a result:
+\begin{equation}
+    O=\frac{1}{2}(\ket{000}+\ket{010}+\ket{100}+\ket{110})
+\end{equation}
+This means, Bob obtains the original $\ket{0}$ in any way he measures, and thus a teleportation is successful. What if we now consider an arbitrary state, given by:
+\begin{equation}
+    \ket{\psi}=\alpha\ket{0}+\beta\ket{1}=q_1
+\end{equation}
+This means, our input now looks like
+\begin{equation}
+    (\alpha\ket{0}+\beta\ket{1})\ket{00}
+\end{equation}
+As to expect, this input yields a different result:
+\begin{equation}
+    O=\frac{\alpha}{2}(\ket{000}+\ket{010}+\ket{100}+\ket{110)}+\frac{\beta}{2}(\ket{001}+\ket{011}-\ket{101}-\ket{111})
+\end{equation}
+\begin{equation}
+    =\frac{1}{\sqrt{2}}((\ket{\phi^+}+\ket{\psi^+})\alpha\ket{0}+(\ket{\phi^-}+\ket{\psi^-})\beta\ket{1})
+\end{equation}
+This again completes a successful teleportation, since Bob will measure the Eigenvalue of $\ket{0}$ with a probability of $|\alpha|^2$ and the one of $\ket{1}$ with a probability of $|\beta|^2$, which is the same as measuring the initial state in the first place.
 
 \section{Quantum Cryptography}
 \subsection{One-Time-Pad}
@@ -358,8 +384,7 @@ basis.
 
 To even further minimize the risk of an eavesdropper Alice and Bob could
 compare small parts of their qubit string like in the BB-84 protocol.
-
-\nocite{teleportation}
 \nocite{six-state}
+\nocite{teleportation}
 \printbibliography
 \end{document}
